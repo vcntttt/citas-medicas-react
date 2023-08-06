@@ -1,11 +1,10 @@
-import styles from  '../styles/UserCard.module.css'
-import Image from 'next/image'
+import styles from  './UserCard.module.css'
 export default function UserCard(){
 return (
     <div className={styles.container}>
-        <Image
+        <img
         alt='user'
-        src='/assets/user.svg'
+        src= 'https://cdn-icons-png.flaticon.com/512/25/25231.png'
         width={20}
         height={20}
         />

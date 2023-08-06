@@ -4,7 +4,6 @@
   padding: 10px;
   justify-content: space-between;
   align-items: center;
-  border-bottom: #333 1px solid;
 }
 
 .navLinks li {
@@ -13,8 +12,6 @@
 
 .navLinks li a {
   text-decoration: underline;
-  color: #333;
-  font-weight: bold;
   padding: 8px 16px;
   border-radius: 5px;
 }
@@ -22,4 +19,12 @@
 .navLinks li a:hover {
   background-color: #ddd;
   cursor: pointer;
+}
+
+.active{
+  color: red;
+  font-weight: bold;
+}
+.noActive{
+  color: #000;
 }
