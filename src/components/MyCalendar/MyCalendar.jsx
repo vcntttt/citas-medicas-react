@@ -1,18 +1,16 @@
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
-import "moment-timezone";
 import "react-big-calendar/lib/css/react-big-calendar.css";
-
-moment.locale("en-GB");
+import styles from "./Calendar.module.css";
 const localizer = momentLocalizer(moment);
-
 const App = () => (
-  <div style={{ height: 700 }}>
+  <div className={styles.container}>
     <Calendar
       localizer={localizer}
       step={15}
       timeslots={4}
-      defaultDate={new Date(2015, 3, 12)}
+      views={["week", "day"]}
+      defaultView="week"
     />
   </div>
 );
