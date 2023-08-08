@@ -5,8 +5,8 @@ return (
         <img
         alt='user'
         src= 'https://cdn-icons-png.flaticon.com/512/25/25231.png'
-        width={20}
-        height={20}
+        width={25}
+        height={25}
         />
         <h1 className={styles.text}>Login</h1>
     </div>
