@@ -5,6 +5,9 @@ import DrsPage from './pages/Drspage.jsx';
 import NotFound from './pages/NotFound.jsx';
 import MyCalendar from './pages/CalendarPage.jsx';
 import NavBar from './components/Header/NavBar.jsx';
+import Login from "./pages/Login.jsx"
+import Register from "./pages/Register.jsx"
+
 
 export default function App() {
   return (
@@ -15,6 +18,8 @@ export default function App() {
       <Route path="/jobs" element={<Jobs />} />
       <Route path="/drspage" element={<DrsPage />} />
       <Route path="/calendar" element={<MyCalendar />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   </Router>
