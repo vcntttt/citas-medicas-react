@@ -5,11 +5,12 @@ return (
     <Link to="/login">    <div className={styles.container}>
     <img
     alt='user'
-    src= 'https://cdn-icons-png.flaticon.com/512/25/25231.png'
+    src= 'https://www.flaticon.com/free-icons/person'
+
     width={25}
     height={25}
     />
-    <h1 className={styles.text}>Login</h1>
+    <h1 className={styles.text}>Iniciar Sesion</h1>
 </div></Link>
 )
 }

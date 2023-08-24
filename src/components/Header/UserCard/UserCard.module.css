@@ -4,6 +4,7 @@
     align-items: center;
     gap: 10px;
     border-radius: 10px;
+    background-color: #C1FFFF;
 }
 .container:hover{
     background-color: #c8c8c8;
@@ -11,6 +12,9 @@
 
 }
 .text{
+    color: black;
     font-size: 14px;
-    text-decoration: underline;
+    text-decoration: none;
+    
+
 }
