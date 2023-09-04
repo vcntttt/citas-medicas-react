@@ -14,17 +14,24 @@ import { AuthProvider } from "./context/AuthContext.jsx";
 
 export default function App() {
   return (
-    <Router>
-      <NavBar/>
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/jobs" element={<Jobs />} />
-      <Route path="/drspage" element={<DrsPage />} />
-      <Route path="/calendar" element={<MyCalendar />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="*" element={<NotFound />} />
-    </Routes>
-  </Router>
-  )
+    <AuthProvider>
+      <Router>
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/jobs" element={<Jobs />} />
+          <Route path="/drspage" element={<DrsPage />} />
+
+        <Route element={<ProtectedRoute />}>
+          <Route path="/calendar" element={<MyCalendar />} />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/pick" element={<PickPage />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+        </Routes>
+      </Router>
+    </AuthProvider>
+  );
 }
