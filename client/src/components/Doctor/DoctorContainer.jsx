@@ -6,7 +6,6 @@ export default function Doctor() {
         <div>
             <aside className={styles.aside}>
                 <p className={styles.p}>a</p>
-
             </aside>
             <div className={styles.container}> 
                 <h2 className={styles.SecondTitle}>Doctora</h2>
