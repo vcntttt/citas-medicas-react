@@ -1,16 +1,23 @@
-import { Link } from 'react-router-dom'
-import styles from  './UserCard.module.css'
-export default function UserCard(){
-return (
-    <Link to="/login">    <div className={styles.container}>
-    <img
-    alt='user'
-    src= 'https://www.flaticon.com/free-icons/person'
+import { Link } from "react-router-dom";
+import styles from "./UserCard.module.css";
+import { useAuth } from "../../../context/AuthContext";
 
-    width={25}
-    height={25}
-    />
-    <h1 className={styles.text}>Iniciar Sesion</h1>
-</div></Link>
-)
+export default function UserCard() {
+    const { user, isAutenticated } = useAuth();
+
+  return (
+    isAutenticated ? (
+        <Link to="/profile">
+        <div className={styles.container}>
+          <h1 className={styles.text}>Perfil</h1>
+        </div>
+      </Link>
+    ) : (
+        <Link to="/login">
+        <div className={styles.container}>
+          <h1 className={styles.text}>Iniciar Sesion</h1>
+        </div>
+      </Link>
+    )
+  );
 }

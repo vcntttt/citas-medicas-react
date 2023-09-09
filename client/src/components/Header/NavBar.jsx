@@ -6,8 +6,8 @@ export default function NavBar() {
     <div className={styles.navLinks}>
         <ul>
             <li><NavLink className={({isActive}) => isActive ? styles.active : styles.noActive} to="/">Home</NavLink></li>
-            <li><NavLink className={({isActive}) => isActive ? styles.active : styles.noActive} to="/jobs">Especialidades Disponibles</NavLink></li>
-            <li><NavLink className={({isActive}) => isActive ? styles.active : styles.noActive} to="/drspage">Nuestros Doctores</NavLink></li>
+            {/* <li><NavLink className={({isActive}) => isActive ? styles.active : styles.noActive} to="/jobs">Especialidades Disponibles</NavLink></li>
+            <li><NavLink className={({isActive}) => isActive ? styles.active : styles.noActive} to="/drspage">Nuestros Doctores</NavLink></li> */}
             <li><NavLink className={({isActive}) => isActive ? styles.active : styles.noActive} to="/calendar">Calendario</NavLink></li>
         </ul>
         <UserCard/>
