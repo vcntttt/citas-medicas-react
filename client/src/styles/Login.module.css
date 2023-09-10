@@ -5,12 +5,13 @@
     display: flex;
     width: 1200px;
     margin: 0px auto;
+    height: 800px;
 
 }
 
 
 .imageContainer {
-    width: 70%;
+    width: 65%;
 }
 
 .imageContainer img {
@@ -22,7 +23,7 @@
 
 .registerMenu {
     background-color: rgb(36, 36, 36);
-    width: 30%;
+    width:35%;
 }
 
 .containerTitle {
@@ -42,13 +43,19 @@
 }
 
 .containerInput {
-    height: 50%;
+    height: 40%;
 }
 
 .submit {
     margin: 0px auto;
-    height: 50%;
+    height: 35%;
 
+}
+
+.register {
+    color: rgb(255, 255, 255);
+    text-align: center;
+    
 }
 
 .bottom {
