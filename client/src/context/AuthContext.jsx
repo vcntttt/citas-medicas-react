@@ -1,5 +1,6 @@
 import { createContext, useState, useContext } from "react";
 import listUsers from '../tempData/tablaUsuarios.json';
+
 export const AuthContext = createContext();
 export const useAuth = () => {
     const context = useContext(AuthContext);

@@ -1,12 +1,21 @@
 import { useForm } from "react-hook-form"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext.jsx";
+import { useEffect } from "react";
+
 
 export default function Login() {
-    const {register, handleSubmit} = useForm();
-    const {signIn} = useAuth();
-    const onSubmit = (data) => signIn(data);
 
+    const {register, handleSubmit} = useForm();
+    const {signIn, isAuthenticated} = useAuth();
+    const navigate = useNavigate();
+    const onSubmit = (data) => (signIn(data));
+
+    useEffect(() => {
+      if (isAuthenticated) {
+        navigate("/");
+    }},[isAuthenticated]);
+    
   return (
     <form action="" onSubmit={handleSubmit(onSubmit)}>
         <label>Email: </label>

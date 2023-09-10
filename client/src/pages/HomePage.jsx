@@ -6,7 +6,7 @@ export default function Home() {
     <div className={styles.container}>
       <div className={styles.ui}>
         <h1 className={styles.title}>Hola, usuario</h1>
-        <Link to ="/pick"><button className={styles.btn}>Tomar Hora</button></Link>
+        <Link to ="/jobs"><button className={styles.btn}>Tomar Hora</button></Link>
       </div>
       <aside>
         <img
