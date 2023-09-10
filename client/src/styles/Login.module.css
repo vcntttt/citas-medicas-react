@@ -1,0 +1,73 @@
+
+
+
+.container {
+    display: flex;
+    width: 1200px;
+    margin: 0px auto;
+    height: 800px;
+
+}
+
+
+.imageContainer {
+    width: 65%;
+}
+
+.imageContainer img {
+    width: 100%;
+    height: 100%;
+
+
+}
+
+.registerMenu {
+    background-color: rgb(36, 36, 36);
+    width:35%;
+}
+
+.containerTitle {
+    width: 100%;
+    height: 30%;
+    color: rgb(255, 255, 255);
+    text-align: center;
+
+
+
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    height: 70%;
+}
+
+.containerInput {
+    height: 40%;
+}
+
+.submit {
+    margin: 0px auto;
+    height: 35%;
+
+}
+
+.register {
+    color: rgb(255, 255, 255);
+    text-align: center;
+    
+}
+
+.bottom {
+    background-color: aqua;
+    border: none;
+}
+
+
+.input {
+    text-align: center;
+    color: white;
+    margin: 20px auto;
+}
+
+

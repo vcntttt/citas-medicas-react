@@ -25,9 +25,9 @@ export default function App() {
           <Route path="*" element={<NotFound />} />
           <Route path="/calendar/:id" element={<MyCalendar />} />
           <Route path="/confirm" element={<ConfirmPage />} />
-        <Route element={<ProtectedRoute />}>
-          <Route path="/profile" element={<ProfilePage />} />
           <Route path="/jobs" element={<Jobs />} />
+          <Route path="/profile" element={<ProfilePage />} />
+        <Route element={<ProtectedRoute />}>
         </Route>
         </Routes>
       </Router>
