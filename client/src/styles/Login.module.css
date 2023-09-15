@@ -34,38 +34,33 @@
 
 }
 
-.form {
-    display: flex;
-    flex-direction: column;
+.containerForm {
+    background-color: blueviolet;
     height: 70%;
 }
 
 
-.containerInput {
-    height: 50%;
-}
 
-.input {
+.containerData {
     display: flex;
+    background-color: brown;
     flex-direction: column;
+    height: 40%;
+}
+
+.containerData input {
+    margin: 10px 20px;
+}
+
+.containerSubmit {
+    background-color: coral;
     text-align: center;
-    color: white;
-    margin: 20px auto;
-}
+    height: 30%;
 
-.input input {
-    margin: 4px;
-}
-
-
-.submit {
-    margin: 0px auto;
-    height: 50%;
-    background-color: aqua;
 
 }
 
-
-
-
-
+.containerRegister {
+    background-color: darkred;
+    height: 30%;
+} 

@@ -22,36 +22,31 @@ export default function Login() {
 
       <div className={styles.registerMenu}>
 
+
         <div className={styles.containerTitle}>
           <h1 className={styles.title}>Login</h1>
         </div>
 
-        <form className={styles.form} action="" onSubmit={handleSubmit(onSubmit)}>
+
+          <form className={styles.containerForm} action="" onSubmit={handleSubmit(onSubmit)}>
+
+              <div className={styles.containerData}>
+                <input {...register ("email", { required: true })} placeholder="Email" />
+                <input type="password" {...register ("password", { required: true })} placeholder="Password" />
+              </div>
 
 
-          <div className={styles.containerInput}>
+              <div className={styles.containerSubmit}>
+                <input className={styles.submit} type="submit" />
+              </div>
 
-            <div className={styles.input}>
-              <input {...register ("email", { required: true })} placeholder="Email" />
-              <input type="password" {...register ("password", { required: true })} placeholder="Password" />
-            </div>
+              <div className={styles.containerRegister}>
+                <label >No tienes una cuenta? <Link className={styles.link} to="/register"><u>Registrate</u></Link> </label>
+              </div>
 
+          </form>
+ 
 
-            <div className={styles.input}>
-              <input className={styles.submit} type="submit" />
-            </div>
-
-            <div className={styles.input}>
-              <label >No tienes una cuenta? <Link className={styles.link} to="/register"><u>Registrate</u></Link> </label>
-
-
-            </div>
-
-
-          </div>
-
-
-        </form>
 
       </div>
 
