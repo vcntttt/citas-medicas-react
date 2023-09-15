@@ -26,6 +26,7 @@ export default function Register() {
             <h1>Register</h1>
           </div>
 
+          
           <form className={styles.form} action="" onSubmit={handleSubmit(onSubmit)}>
 
             <div className={styles.containerInput}>

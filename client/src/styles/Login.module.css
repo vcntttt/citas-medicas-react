@@ -1,17 +1,15 @@
 
-
-
 .container {
     display: flex;
     width: 1200px;
+    height: 800px; 
     margin: 0px auto;
-    height: 800px;
 
 }
 
 
 .imageContainer {
-    width: 65%;
+    width: 70%;
 }
 
 .imageContainer img {
@@ -22,8 +20,8 @@
 }
 
 .registerMenu {
-    background-color: rgb(36, 36, 36);
-    width:35%;
+    background-color: #2E3238;
+    width: 30%;
 }
 
 .containerTitle {
@@ -42,32 +40,32 @@
     height: 70%;
 }
 
+
 .containerInput {
-    height: 40%;
+    height: 50%;
 }
-
-.submit {
-    margin: 0px auto;
-    height: 35%;
-
-}
-
-.register {
-    color: rgb(255, 255, 255);
-    text-align: center;
-    
-}
-
-.bottom {
-    background-color: aqua;
-    border: none;
-}
-
 
 .input {
+    display: flex;
+    flex-direction: column;
     text-align: center;
     color: white;
     margin: 20px auto;
 }
+
+.input input {
+    margin: 4px;
+}
+
+
+.submit {
+    margin: 0px auto;
+    height: 50%;
+    background-color: aqua;
+
+}
+
+
+
 
 
