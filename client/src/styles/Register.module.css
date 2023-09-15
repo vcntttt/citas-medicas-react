@@ -47,7 +47,8 @@
     margin: 10px auto;
     background-color: #55ccc9;
     border: none;
-    padding: 10px 40px;
+    padding: 10px 90px;
+    color: rgb(255, 255, 255);
   }
   
 .bottom {
@@ -55,10 +56,14 @@
     border: none;
   }
   
-.input {
-    text-align: center;
-    color: white;
-    margin: 20px auto;
+.inputContainer {
+  text-align: center;
+  color: white;
+  margin: 20px 0;
 
-  }
+}
 
+.inputContainer input {
+  padding: 0px 25px;
+
+}

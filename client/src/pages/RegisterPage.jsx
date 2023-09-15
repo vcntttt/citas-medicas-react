@@ -29,21 +29,21 @@ export default function Register() {
           <form className={styles.form} action="" onSubmit={handleSubmit(onSubmit)}>
 
             <div className={styles.containerInput}>
-              <div className={styles.input}>
-                <label htmlFor="">Email</label>
-                <input {...register("email", { required: true })} placeholder="Email"/>
+              <div className={styles.inputContainer}>
+                <label htmlFor=""></label>
+                <input className={styles.input}{...register("email", { required: true })} placeholder="Email"/>
                 {errors.email && <p>Este campo es requerido</p>}
               </div>
 
-              <div className={styles.input}>
-                <label htmlFor="">Contraseña</label>
-                <input {...register("Password", { required: true })} placeholder="Password" />
+              <div className={styles.inputContainer}>
+                <label htmlFor=""></label>
+                <input className={styles.input} {...register("Password", { required: true })} placeholder="Password" />
                 {errors.Password && <p>Este campo es requerido</p>}
               </div>
 
-              <div className={styles.input}>
-                <label htmlFor="">Repetir Contraseña</label>
-                <input {...register("ConfirmPass", { required: true})} placeholder="Password" />
+              <div className={styles.inputContainer}>
+                <label htmlFor=""></label>
+                <input className={styles.input} {...register("ConfirmPass", { required: true})} placeholder="Password" />
                 {errors.ConfirmPass && <p>Este campo es requerido</p>}
 
               </div>
