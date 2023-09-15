@@ -1,5 +1,4 @@
 import styles from '../styles/Register.module.css';
-import image from '../assets/doctor_register.jpg';
 import { useForm } from "react-hook-form";
 import { useAuth } from "../context/AuthContext.jsx";
 import { useEffect } from "react";
@@ -18,7 +17,7 @@ export default function Register() {
     <div className={styles.container}>
 
       <div className={styles.imageContainer}>
-        <img src={image}/>
+        <img src="https://images.pexels.com/photos/5327653/pexels-photo-5327653.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"/>
       </div>
 
       <div className={styles.registerMenu}>

@@ -1,5 +1,4 @@
 import styles from "../styles/Login.module.css";
-import image from "../assets/doctor.jpg";
 import { useForm } from "react-hook-form"
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext.jsx";
@@ -21,33 +20,17 @@ export default function Login() {
   return (
     <div className={styles.container}>
       <div className={styles.registerMenu}>
-        <div className={styles.containerTitle}>
-          <h1>Login</h1>
-        </div>
+          <h1 className={styles.title}>Login</h1>
         <form className={styles.form} action="" onSubmit={handleSubmit(onSubmit)}>
-          <div className={styles.containerInput}>
-            <div className={styles.input}>
-              <label>Email: </label>
               <input {...register ("email", { required: true })} placeholder="Email" />
-            </div>
-            <div className={styles.input}>
-              <label >Password: </label>
               <input type="password" {...register ("password", { required: true })} placeholder="Password" />
-            </div>
-          </div>
-          <div className={styles.submit}>
-            <input className={styles.bottom} type="submit" />
-          </div>
-          <div className={styles.register}>
-            <label >No tienes una cuenta? <Link to="/register"><u>Registrate</u></Link> </label>
-          </div>
+            <input className={styles.submit} type="submit" />
+            <label >No tienes una cuenta? <Link className={styles.link} to="/register"><u>Registrate</u></Link> </label>
         </form>
       </div>
       <div className={styles.imageContainer}>
-        <img src={image}/>
+        <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80"/>
       </div>
-
     </div>
-
   )
 }
