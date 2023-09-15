@@ -26,7 +26,6 @@ export default function Register() {
             <h1>Register</h1>
           </div>
 
-          
           <form className={styles.form} action="" onSubmit={handleSubmit(onSubmit)}>
 
             <div className={styles.containerInput}>
@@ -52,9 +51,9 @@ export default function Register() {
             </div>
 
 
-            <div className={styles.submit}>
+            <div className={styles.containerSubmit}>
 
-              <input className={styles.bottom} type="submit" />
+              <input className={styles.submit} type="submit" />
 
             </div>
 
