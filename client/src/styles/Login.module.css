@@ -38,11 +38,19 @@
     height: 70%;
   }
 
-.containerData {
+
+  .containerData {
     display: flex;
     flex-direction: column;
     height: 40%;
     justify-content: center;
+
+}
+
+.containerData input{
+  font-size: 15px;
+  margin: 20px 40px;
+
 
 }
 
@@ -53,15 +61,22 @@
     align-items: center;
 }
 
+.containerSubmit  input{
+  padding: 10px 90px;
+
+
+}
+
   .submit {
     margin: 10px auto;
     background-color: #55ccc9;
     border: none;
     padding: 10px 40px;
+    color: black;
   }
   
   input {
-    color: white;
+    color: rgb(0, 0, 0);
     margin: 20px auto;
     border: none;
     outline: none;
@@ -74,15 +89,24 @@
     opacity: 0.6;
   }
 
-  .containerRegister {
+.containerRegister {
     display: flex;
     height: 30%;
     justify-content: center;
     align-items: center;
 } 
-  .link {
+
+
+.containerRegister  label{
+  font-size: 17px;
+  font-weight: 400;
+
+} 
+
+
+.link {
     color: white;
   }
-  .link:hover {
+.link:hover {
     color: #55ccc9;
   }
