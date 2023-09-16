@@ -26,11 +26,11 @@ export default function Login() {
         <form className={styles.form} action="" onSubmit={handleSubmit(onSubmit)}>
           <div className={styles.containerData}>
             <input {...register ("email", { required: true })} placeholder="Email" />
-            <input type="password" {...register ("password", { required: true })} placeholder="Password" />
+            <input type="password" {...register ("password", { required: true })} placeholder="Contraseña" />
           </div>
 
           <div className={styles.containerSubmit }>
-            <input className={styles.submit} type="submit" />
+            <input className={styles.submit} type="submit" value="Entrar"/>
           </div>
           <div className={styles.containerRegister}>
             <label >No tienes una cuenta? <Link className={styles.link} to="/register"><u>Registrate</u></Link> </label>
