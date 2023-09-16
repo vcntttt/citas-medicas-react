@@ -1,6 +1,9 @@
-
+import image from '../assets/404_not_found.jpg';
 export default function NotFound() {
   return (
-    <div>404 | NotFound</div>
+    <div>
+      <img src={image}/>
+      
+    </div>
   )
 }
