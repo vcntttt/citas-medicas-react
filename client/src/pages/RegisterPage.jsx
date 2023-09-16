@@ -1,5 +1,5 @@
 import styles from '../styles/Register.module.css';
-import image from '../assets/foto_registro.jpeg';
+import image from '../assets/foto_registro_1.jpeg';
 import { useForm } from "react-hook-form";
 import { useAuth } from "../context/AuthContext.jsx";
 import { useEffect } from "react";
@@ -16,6 +16,10 @@ export default function Register() {
     const onSubmit = (data) => signUp(data) 
   return (
     <div className={styles.container}>
+
+
+
+
 
       <div className={styles.imageContainer}>
         <img src={image}/>
@@ -62,6 +66,8 @@ export default function Register() {
           </form> 
 
       </div>
+
+
 
     </div>
 
