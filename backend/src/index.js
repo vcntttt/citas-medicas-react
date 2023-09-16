@@ -1,9 +1,7 @@
-import express from "express"
 import morgan from "morgan"
 import connectDB from "./db.js"
+import app from "./app.js"
 
-
-const app = express();
 
 app.use(morgan("dev"))
 connectDB()

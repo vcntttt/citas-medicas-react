@@ -12,7 +12,7 @@ const router = Router()
 
 router.post("/register", register);
 
-router.login("/login", login);
+router.post("/login", login);
 
 router.post("/logout", logout)
 
