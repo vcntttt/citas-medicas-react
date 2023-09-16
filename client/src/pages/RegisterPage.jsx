@@ -1,4 +1,5 @@
 import styles from '../styles/Register.module.css';
+import image from '../assets/foto_registro_1.jpeg';
 import { useForm } from "react-hook-form";
 import { useAuth } from "../context/AuthContext.jsx";
 import { useEffect } from "react";
@@ -16,14 +17,18 @@ export default function Register() {
   return (
     <div className={styles.container}>
 
+
+
+
+
       <div className={styles.imageContainer}>
-        <img src="https://images.pexels.com/photos/5327653/pexels-photo-5327653.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"/>
+        <img src={image}/>
       </div>
 
       <div className={styles.registerMenu}>
 
           <div className={styles.containerTitle}>
-            <h1>Register</h1>
+            <h1>Registro</h1>
           </div>
 
           <form className={styles.form} action="" onSubmit={handleSubmit(onSubmit)}>
@@ -37,13 +42,13 @@ export default function Register() {
 
               <div className={styles.inputContainer}>
                 <label htmlFor=""></label>
-                <input className={styles.input} {...register("Password", { required: true })} placeholder="Password" />
+                <input className={styles.input} {...register("Password", { required: true })} placeholder="Contraseña" />
                 {errors.Password && <p>Este campo es requerido</p>}
               </div>
 
               <div className={styles.inputContainer}>
                 <label htmlFor=""></label>
-                <input className={styles.input} {...register("ConfirmPass", { required: true})} placeholder="Password" />
+                <input className={styles.input} {...register("ConfirmPass", { required: true})} placeholder="Confirmar Contraseña" />
                 {errors.ConfirmPass && <p>Este campo es requerido</p>}
 
               </div>
@@ -53,7 +58,7 @@ export default function Register() {
 
             <div className={styles.containerSubmit}>
 
-              <input className={styles.submit} type="submit" />
+              <input className={styles.submit} type="submit" value="Entrar"/>
 
             </div>
 
@@ -61,6 +66,8 @@ export default function Register() {
           </form> 
 
       </div>
+
+
 
     </div>
 
