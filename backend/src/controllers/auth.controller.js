@@ -71,27 +71,30 @@ export const logout = (req, res) => {
 }
 
 
-// export const profile = (req, res) => {
-//     const userFound = User.findById(req.user.id)
+export const profile = async (req, res) => {
+    try {
+        const userId = req.user.id;
 
-//     if (!userFound) return res.status(400).json({ message: "user not found" });
+        const user = await User.findById(userId);
 
-//     return res.json({
-//         id: userFound._id,
-//         username: userFound.username,
-//         email: userFound.email,
-//         firstName: user.firstName,
-//         lastName: user.lastName,
-//         rut: user.rut,
-//         createdAt: userFound.createdAt,
-//         updatedAt: userFound.updatedAt,
+        if (!user) {
+            return res.status(404).json({ message: 'Usuario no encontrado' });
+        }
 
-//     })
-// }
+        res.json({
+            id: user._id,
+            email: user.email,
+            nombre: user.nombre,
+            apellido: user.apellido,
+            rut: user.rut,
+            createdAt: user.createdAt,
+            updatedAt: user.updatedAt
+        });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
 
-export const profile = (req, res) =>{
-    res.send("profile")
-}
 
 
 export const updateProfile = async (req, res) => {
@@ -99,6 +102,11 @@ export const updateProfile = async (req, res) => {
     const { nombre, apellido, rut, role } = req.body;
 
     try {
+        const existingUserWithRut = await User.findOne({ rut: rut, _id: { $ne: userId } });
+        if (existingUserWithRut) {
+            return res.status(400).json({ message: 'Ya existe un usuario con este RUT.' });
+        }
+
         const user = await User.findByIdAndUpdate(
             userId,
             { nombre, apellido, rut, role },
