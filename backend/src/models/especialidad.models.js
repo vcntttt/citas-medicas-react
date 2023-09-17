@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
 const especialidadSchema = new mongoose.Schema({
-    nombre: String,
+    espcialidad: String,
     // Otros campos relacionados con la especialidad
 });
