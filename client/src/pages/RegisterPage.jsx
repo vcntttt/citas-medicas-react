@@ -37,24 +37,23 @@ export default function Register() {
               <div className={styles.inputContainer}>
                 <label htmlFor=""></label>
                 <input className={styles.input}{...register("email", { required: true })} placeholder="Email"/>
-                {errors.email && <p>Este campo es requerido</p>}
+                {errors.email && <p className={styles.errorField}>Este campo es requerido</p>}
               </div>
 
               <div className={styles.inputContainer}>
                 <label htmlFor=""></label>
                 <input className={styles.input} {...register("Password", { required: true })} placeholder="Contraseña" />
-                {errors.Password && <p>Este campo es requerido</p>}
+                {errors.Password && <p className={styles.errorField}>Este campo es requerido</p>}
               </div>
 
               <div className={styles.inputContainer}>
                 <label htmlFor=""></label>
                 <input className={styles.input} {...register("ConfirmPass", { required: true})} placeholder="Confirmar Contraseña" />
-                {errors.ConfirmPass && <p>Este campo es requerido</p>}
+                {errors.ConfirmPass && <p className={styles.errorField}>Este campo es requerido</p>}
 
               </div>
 
             </div>
-
 
             <div className={styles.containerSubmit}>
 
@@ -63,7 +62,9 @@ export default function Register() {
             </div>
 
 
+
           </form> 
+
 
       </div>
 
