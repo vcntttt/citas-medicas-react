@@ -8,9 +8,9 @@ import { useEffect } from "react";
 export default function Login() {
 
     const {register, handleSubmit} = useForm();
-    const {signIn, isAuthenticated} = useAuth();
+    const {isAuthenticated} = useAuth();
     const navigate = useNavigate();
-    const onSubmit = (data) => (signIn(data));
+    const onSubmit = (data) => (console.log(data));
 
     useEffect(() => {
       if (isAuthenticated) {
