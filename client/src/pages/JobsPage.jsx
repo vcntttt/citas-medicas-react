@@ -13,9 +13,9 @@ export default function JobsPage() {
   }, []);
 
   return (
-    <div>
-      <h1 className={styles.title}>¿Que Tipo de Servicio Necesita?</h1>
-      <div className={styles.container}>
+    <div className='container'>
+      <div className={styles.contenedor}>
+        <h2>¿Que Tipo de Servicio Necesita?</h2>
       {uniqueJobs.map((item, index) => (
         <Card key={index} item={item} />
       ))}

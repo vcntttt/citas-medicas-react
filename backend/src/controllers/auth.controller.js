@@ -4,30 +4,31 @@ import { createAccesToken } from '../libs/jwt.js'
 
 
 export const register = async (req, res) => {
-    const { email, password, username } = req.body
-    console.log(email, password, username)
+    const { email, password, passwordConfirmation } = req.body;
+
+
+    if (password !== passwordConfirmation) {
+        return res.status(400).json({ message: "La contraseña y la confirmación de contraseña no coinciden" });
+    }
 
     try {
-
-        const passwordHash = await bcrypt.hash(password, 10)
+        const passwordHash = await bcrypt.hash(password, 10);
 
         const newUser = new User({
-            username,
             email,
             password: passwordHash
-        })
+        });
 
         const userSaved = await newUser.save();
-        const token = await createAccesToken({ id: userSaved._id })
+        const token = await createAccesToken({ id: userSaved._id });
 
         res.cookie('token', token);
         res.json({
             id: userSaved._id,
-            username: userSaved.username,
             email: userSaved.email,
             createdAt: userSaved.createdAt,
             updatedAt: userSaved.updatedAt,
-        })
+        });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
@@ -70,18 +71,63 @@ export const logout = (req, res) => {
 }
 
 
-export const profile = (req, res) => {
-    const userFound = User.findById(req.user.id)
+export const profile = async (req, res) => {
+    try {
+        const userId = req.user.id;
 
-    if (!userFound) return res.status(400).json({ message: "user not found" });
+        const user = await User.findById(userId);
 
-    return res.json({
-        id: userFound._id,
-        username: userFound.username,
-        email: userFound.email,
-        createdAt: userFound.createdAt,
-        updatedAt: userFound.updatedAt,
+        if (!user) {
+            return res.status(404).json({ message: 'Usuario no encontrado' });
+        }
 
-    })
+        res.json({
+            id: user._id,
+            email: user.email,
+            nombre: user.nombre,
+            apellido: user.apellido,
+            rut: user.rut,
+            createdAt: user.createdAt,
+            updatedAt: user.updatedAt
+        });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
 
-}
+
+
+export const updateProfile = async (req, res) => {
+    const userId = req.user.id;
+    const { nombre, apellido, rut, role } = req.body;
+
+    try {
+        const existingUserWithRut = await User.findOne({ rut: rut, _id: { $ne: userId } });
+        if (existingUserWithRut) {
+            return res.status(400).json({ message: 'Ya existe un usuario con este RUT.' });
+        }
+
+        const user = await User.findByIdAndUpdate(
+            userId,
+            { nombre, apellido, rut, role },
+            { new: true }
+        );
+
+        if (!user) {
+            return res.status(404).json({ message: 'Usuario no encontrado' });
+        }
+
+        res.json({
+            id: user._id,
+            email: user.email,
+            nombre: user.nombre,
+            apellido: user.apellido,
+            rut: user.rut,
+            role: user.role, 
+            createdAt: user.createdAt,
+            updatedAt: user.updatedAt
+        });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
