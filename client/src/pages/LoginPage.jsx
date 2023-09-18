@@ -7,7 +7,7 @@ import { useEffect } from "react";
 
 export default function Login() {
 
-    const {register, handleSubmit} = useForm();
+    const {register, handleSubmit, formState: { errors }} = useForm();
     const {isAuthenticated} = useAuth();
     const navigate = useNavigate();
     const onSubmit = (data) => (console.log(data));
@@ -27,10 +27,12 @@ export default function Login() {
           <div className={styles.containerData}>
             <input {...register ("email", { required: true })} placeholder="Email" />
             <input type="password" {...register ("password", { required: true })} placeholder="Contraseña" />
+            {errors.email && <p className={styles.errorField}>Este campo es requerido</p>}
           </div>
 
           <div className={styles.containerSubmit }>
             <input className={styles.submit} type="submit" value="Entrar"/>
+            {errors.password && <p className={styles.errorField}>Este campo es requerido</p>}
           </div>
           <div className={styles.containerRegister}>
             <label >No tienes una cuenta? <Link className={styles.link} to="/register"><u>Registrate</u></Link> </label>

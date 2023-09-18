@@ -51,7 +51,7 @@
 .containerData input{
   font-size: 15px;
   margin: 20px 40px;
-
+  color: white;
 
 }
 
@@ -74,6 +74,10 @@
     border: none;
     padding: 10px 40px;
     color: black;
+  }
+  .submit:hover{
+    cursor: pointer;
+    background-color:#C1FFFF;
   }
   
   input {
@@ -111,3 +115,14 @@
 .link:hover {
     color: #55ccc9;
   }
+  .errorField {
+    display: flex;
+    color: rgb(221, 58, 58);
+    justify-content: left;
+    margin: 0px 0px 0px 40px;
+    font-size: 15px;
+    font-weight: 200;
+  }
+label {
+    color: white;
+}
