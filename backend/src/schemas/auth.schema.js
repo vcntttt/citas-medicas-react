@@ -15,9 +15,7 @@ export const registerSchema = z.object({
     passwordConfirmation: z.
         string({
             required_error: "se requiere confirmar la contraseña"
-        }).min(6).refine((passwordConfirmation, data) => {
-            return passwordConfirmation === data.password;
-        }, {
+        }).min(6, {
             message: "La contraseña y la confirmación de contraseña no coinciden"
         })
 })

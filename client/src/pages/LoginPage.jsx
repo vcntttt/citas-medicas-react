@@ -35,7 +35,7 @@ export default function Login() {
             {errors.password && <p className={styles.errorField}>Este campo es requerido</p>}
           </div>
           <div className={styles.containerRegister}>
-            <label >No tienes una cuenta? <Link className={styles.link} to="/register"><u>Registrate</u></Link> </label>
+            <label >No tienes una cuenta? <Link className={styles.link} to="/register">Inicia Sesion</Link> </label>
           </div>
 
 
