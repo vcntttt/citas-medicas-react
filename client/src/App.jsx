@@ -22,11 +22,11 @@ export default function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/drspage" element={<DrsPage />} />
           <Route path="*" element={<NotFound />} />
+        <Route element={<ProtectedRoute />}>
+          <Route path="/profile" element={<ProfilePage />} />
           <Route path="/calendar/:id" element={<MyCalendar />} />
           <Route path="/confirm" element={<ConfirmPage />} />
           <Route path="/jobs" element={<Jobs />} />
-          <Route path="/profile" element={<ProfilePage />} />
-        <Route element={<ProtectedRoute />}>
         </Route>
         </Routes>
       </Router>

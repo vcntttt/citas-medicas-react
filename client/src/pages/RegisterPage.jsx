@@ -4,6 +4,8 @@ import { useForm } from "react-hook-form";
 import { useAuth } from "../context/AuthContext.jsx";
 import { useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { Toaster , toast} from "sonner";
+
 export default function Register() {
   const {register, handleSubmit, formState: { errors },} = useForm();
 
@@ -18,7 +20,13 @@ export default function Register() {
   const onSubmit =  handleSubmit(async (data) => {
     signUp(data);
   })
-
+  useEffect(() => {
+    if(registerErrors && registerErrors.length > 0){
+      registerErrors.forEach(error => {
+        toast.error(error)
+      })
+    }
+  }, [registerErrors])
   return (
     <div className={styles.container}>
       <div className={styles.imageContainer}>
@@ -69,14 +77,14 @@ export default function Register() {
               {errors.passwordConfirmation && <p className={styles.errorField}>Este campo es requerido</p>}
             </div>
           </div>
-          {registerErrors.map((error,i) => (
-        <p className={styles.errorField} key={i}>{error}</p>
-      ))}
+          <Toaster 
+          visibleToasts={3}
+          duration={1000}/>
           <div className={styles.containerSubmit}>
             
             <input className={styles.submit} type="submit" value="Entrar" />
           </div>
-          <label >Ya tienes una cuenta? <Link className={styles.link} to="/login"><u>Registrate</u></Link> </label>
+          <label >Ya tienes una cuenta? <Link className={styles.link} to="/login"><u>Inicia Sesion</u></Link> </label>
         </form>
       </div>
     </div>
