@@ -1,0 +1,49 @@
+
+.modal {
+    position: fixed;
+    background-color: #131313a5;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+}
+.ventana{
+  padding: 15px;
+  background-color:#ffffff;
+  width: 500px;
+  height: 800px;
+  margin: auto;
+  border-radius: 10px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+.form input {
+    color: white;
+}
+
+.form h2 {
+    margin: 0px auto;
+    color: black;
+}
+
+.formDataInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.formDataContact {
+    display: flex;
+    flex-direction: column;
+}
