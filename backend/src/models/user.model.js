@@ -1,9 +1,18 @@
 import mongoose from 'mongoose';
 
-const validateRut = (rut) => {
-    const rutRegex = /^\d{2}\.\d{3}\.\d{3}-\d$/;
-    return rutRegex.test(rut);
+
+const generateRandomRut = () => {
+    const randomPart = Math.floor(Math.random() * 1000000000); 
+    const rut = `${String(randomPart).padStart(9, '0')}`;
+    const rutFormatted = `${rut.substr(0, 2)}.${rut.substr(2, 3)}.${rut.substr(5, 3)}-${rut.substr(8, 1)}`;
+    return rutFormatted;
 };
+
+
+// const validateRut = (rut) => {
+//     const rutRegex = /^\d{2}\.\d{3}\.\d{3}-\d$/;
+//     return rutRegex.test(rut);
+// };
 
 const userSchema = new mongoose.Schema({
 
@@ -22,10 +31,7 @@ const userSchema = new mongoose.Schema({
     rut: {
         type: String,
         unique: true,
-        validate: {
-            validator: validateRut,
-            message: "el formato del rut no es valido"
-        }
+        default: generateRandomRut
     },
     role: {
         type: String,
