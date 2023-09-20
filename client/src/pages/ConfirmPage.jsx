@@ -1,32 +1,33 @@
-import styles from "../styles/confirm.css";
+import styles from "../styles/Confirm.module.css";
 import { useLocation } from "react-router-dom";
 export default function ConfirmPage() {
-    const location = useLocation();
-    const event = location.state?.event;
-    const handleClick = () => {
-        console.log("esto lo hace el backend")
-    }
-    return (
-      <div className="container">
-        <div className="contenedor">
-          <div className="fila">
-            <p>Profesional:</p>
-          </div>
-          <div className="fila">
-            <p>Servicio:</p>
-          </div>
-          <div className="fila">
-            <p>Fechas:</p>
-          </div>
-          <div className="fila">
-            <p>Ubicación:</p>
-          </div>
-          <div>
-            <div className="divBot">
-              <button onClick={handleClick} className="confirmarBot">Confirmar</button>
-            </div>
-          </div>
-        </div>
+  const location = useLocation();
+  const event = location.state?.event;
+  const handleClick = () => {
+    console.log("esto lo hace el backend");
+  };
+
+  
+return (
+    <div className={styles.container}>
+      <div className={styles.subContainer}>
+        <p>
+          <span>Profesional:</span>Lorem ipsum dolor sit.
+        </p>
+        <p>
+          <span>Servicio:</span>Lorem.
+        </p>
+        <p>
+          <span>Fechas:</span>Lorem, ipsum.
+        </p>
+        <p>
+          <span>Ubicación:</span>Lorem ipsum dolor sit amet.
+        </p>
+        <button onClick={handleClick} className={styles.btn}>
+          Confirmar
+        </button>
       </div>
-      );
-    }
+    </div>
+  );
+}
+ 
