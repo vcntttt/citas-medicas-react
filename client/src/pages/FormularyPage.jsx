@@ -12,10 +12,7 @@ export default function Form() {
     return (
         <div className={styles.modal}>
             <div className={styles.ventana}>
-
-                
                 <h1>Formulario</h1>
-
                 <form className={styles.form}>
                     <h2>Datos personales</h2>
                     <div className={styles.formDataInfo}>
@@ -28,7 +25,6 @@ export default function Form() {
                             <option value="mujer">Mujer</option>
                         </select>
                         <input type="text" placeholder='Direccion' />
-
                     </div>
                     <h2>Datos de contacto</h2>
                     <div className={styles.formDataContact}>
@@ -36,8 +32,6 @@ export default function Form() {
                         <input type="text" placeholder='Telefono' />
                         <input type="text" placeholder='Email' />
                     </div>
-
-
                     <input type="submit" value="enviar"/>
 
                 </form>
