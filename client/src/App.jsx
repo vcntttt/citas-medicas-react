@@ -7,10 +7,12 @@ import MyCalendar from "./pages/CalendarPage.jsx";
 import Login from "./pages/LoginPage.jsx";
 import Register from "./pages/RegisterPage.jsx";
 import ProfilePage from "./pages/ProfilePage.jsx";
+import Form from "./pages/FormularyPage.jsx";
 import ProtectedRoute from "./ProtectedRoute.jsx";
 import { AuthProvider } from "./context/AuthContext.jsx";
 import ConfirmPage from "./pages/ConfirmPage.jsx";
 import Layout from "./components/Header/Layout.jsx";
+
 export default function App() {
   return (
     <AuthProvider>
@@ -27,6 +29,12 @@ export default function App() {
           <Route path="/calendar/:id" element={<MyCalendar />} />
           <Route path="/confirm" element={<ConfirmPage />} />
           <Route path="/jobs" element={<Jobs />} />
+<<<<<<< HEAD
+=======
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/formulary" element={<Form />} />
+        <Route element={<ProtectedRoute />}>
+>>>>>>> form
         </Route>
         </Routes>
       </Router>
