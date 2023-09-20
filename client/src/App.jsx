@@ -28,7 +28,7 @@ export default function App() {
           <Route path="/confirm" element={<ConfirmPage />} />
           <Route path="/jobs" element={<Jobs />} />
           <Route path="/profile" element={<ProfilePage />} />
-          <Route path="/formulary" element={<Form/>} />
+          <Route path="/formulary" element={<Form />} />
         <Route element={<ProtectedRoute />}>
         </Route>
         </Routes>
