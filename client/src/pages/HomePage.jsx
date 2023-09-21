@@ -1,25 +1,16 @@
 import styles from '../styles/homePage.module.css';
 import image from '../assets/docCosas.jpg'
-import { Link, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import {useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 export default function Home() {
   
   const navigate = useNavigate();
-
-  const [userData, setUserData] = useState(true);
-
-  /*      <Link to ="/jobs" ><button className={styles.btn}>Tomar Hora</button></Link>*/
-
-  const userName = "Juan";
-  
-  useState(() => {
-    console.log("comprobando si esta logeado")
-  })
+  const { userData, haveData } = useAuth();
   return (
     <div className={styles.container}>
       <div className={styles.ui}>
-        <h1 className={styles.title}>Hola, {userName}</h1>
-        <button className={styles.btn} onClick={() => userData ? navigate("/jobs") : navigate("/formulary")}>Tomar Hora</button>
+        <h1 className={styles.title}>Hola, {userData.nombre}</h1>
+        <button className={styles.btn} onClick={() => haveData ? navigate("/jobs") : navigate("/formulary")}>Tomar Hora</button>
       </div>
       <aside>
         <img

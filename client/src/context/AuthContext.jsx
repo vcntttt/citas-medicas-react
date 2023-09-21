@@ -1,5 +1,5 @@
 import { createContext, useState, useContext, useEffect } from "react";
-import { registerRequest, loginRequest, verifyTokenRequest } from "../api/auth";
+import { registerRequest, loginRequest, verifyTokenRequest, getProfileRequest } from "../api/auth";
 import  Cookies  from "js-cookie";
 export const AuthContext = createContext();
 export const useAuth = () => {
@@ -13,12 +13,25 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [errors, setErrors] = useState([]);
+    const [haveData, setHaveData] = useState(false);
+    const [userData, setUserData] = useState([]);
+
+    async function userHaveData(){
+        const res = await getProfileRequest();
+        if (res.data.nombre && res.data.apellido && res.data.rut){
+            setHaveData(true);
+            setUserData(res.data);
+        } else{
+            setHaveData(false);
+        }
+    }
     const signUp = async (user) => {
         try{
             const res = await registerRequest(user);
             console.log(res.data);
             setUser(res.data);
             setIsAuthenticated(true);
+            userHaveData();
         } catch(error){
             console.log(error.response);
             setErrors(error.response.data);
@@ -30,6 +43,7 @@ export const AuthProvider = ({ children }) => {
             console.log(res);
             setUser(res.data);
             setIsAuthenticated(true);
+            userHaveData();
         } catch(error){
             console.log(error.response);
             setErrors(error.response.data);
@@ -50,6 +64,7 @@ export const AuthProvider = ({ children }) => {
                     if (res.data){
                         setUser(res.data);
                         setIsAuthenticated(true);
+                        userHaveData();
                     }else {
                         setIsAuthenticated(false);
                     }
@@ -62,7 +77,7 @@ export const AuthProvider = ({ children }) => {
         checkLogin();
     },[]);
     return (
-        <AuthContext.Provider value={{signUp, user, isAuthenticated, errors, signIn, logOut}}>
+        <AuthContext.Provider value={{signUp, user, isAuthenticated, errors, signIn, logOut, haveData, userData}}>
             {children}
         </AuthContext.Provider>
     );
