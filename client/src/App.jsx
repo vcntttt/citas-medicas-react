@@ -29,12 +29,7 @@ export default function App() {
           <Route path="/calendar/:id" element={<MyCalendar />} />
           <Route path="/confirm" element={<ConfirmPage />} />
           <Route path="/jobs" element={<Jobs />} />
-<<<<<<< HEAD
-=======
-          <Route path="/profile" element={<ProfilePage />} />
           <Route path="/formulary" element={<Form />} />
-        <Route element={<ProtectedRoute />}>
->>>>>>> form
         </Route>
         </Routes>
       </Router>
