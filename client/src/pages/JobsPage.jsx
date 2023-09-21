@@ -10,7 +10,9 @@ useEffect(() => {
     const res = await getEspecialidadesRequest();
     setEspecialidades(res.data);
   }
-  getEspecialidades();
+  if (especialidades.length === 0){
+    getEspecialidades();
+  }
 })
 
   return (
