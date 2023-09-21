@@ -24,18 +24,13 @@ export default function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/drspage" element={<DrsPage />} />
           <Route path="*" element={<NotFound />} />
-        <Route element={<ProtectedRoute />}>
+          <Route element={<ProtectedRoute />}/>
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/calendar/:id" element={<MyCalendar />} />
           <Route path="/confirm" element={<ConfirmPage />} />
           <Route path="/jobs" element={<Jobs />} />
-<<<<<<< HEAD
-=======
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/formulary" element={<Form />} />
-        <Route element={<ProtectedRoute />}>
->>>>>>> form
-        </Route>
         </Routes>
       </Router>
     </AuthProvider>

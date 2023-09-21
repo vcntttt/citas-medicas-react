@@ -1,13 +1,24 @@
+import { useState } from 'react';
 import styles from '../styles/Formulary.module.css'
+import { Link } from 'react-router-dom';
 
 
 export default function Form() {
 
+    
     const dataForm = data => {
         data.preventDefault();
         let infoData = data.target;
         console.log(infoData);
     } 
+
+    const [Data, SetData] = useState(false);
+
+    const handleData = () => {
+        {console.log("enviados")}
+
+        SetData(true);
+    }
 
     return (
         <div className={styles.modal}>
@@ -18,8 +29,7 @@ export default function Form() {
                     <div className={styles.formDataInfo}>
                         <input type="text" placeholder='Rut:' />
                         <input type="text" placeholder='Nombre' />
-                        <input type="text" placeholder='Primer apellido' />
-                        <input type="text" placeholder='Segundo apellido' />
+                        <input type="text" placeholder='Apellidos' />
                         <select name="" id="">
                             <option value="hombre">Hombre</option>
                             <option value="mujer">Mujer</option>
@@ -32,10 +42,11 @@ export default function Form() {
                         <input type="text" placeholder='Telefono' />
                         <input type="text" placeholder='Email' />
                     </div>
-                    <input type="submit" value="enviar"/>
+                    <input type="submit" value="enviar" onClick={handleData}/>
 
                 </form>
 
+                <Link to="/"><button >Salir</button></Link>
 
             </div>
         </div>
