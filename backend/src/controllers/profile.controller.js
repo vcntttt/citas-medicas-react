@@ -1,3 +1,6 @@
+import User from '../models/user.model.js';
+
+
 export const profile = async (req, res) => {
     try {
         const userId = req.user.id;

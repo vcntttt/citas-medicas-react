@@ -8,3 +8,5 @@ export const loginRequest = (user) => axios.post(`/login`, user);
 export const verifyTokenRequest = () => axios.get(`/verify`);
 
 export const getProfileRequest = () => axios.get(`/profile`);
+
+export const getEspecialidadesRequest = () => axios.get(`/especialidades`);

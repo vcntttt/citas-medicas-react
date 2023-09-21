@@ -1,26 +1,24 @@
-
 import Card from '../components/JobCard/Card.jsx'
 import styles from '../components/JobCard/Card.module.css'
-import dataDrs from '../tempData/tablaDoctores.json'
-
+import { getEspecialidadesRequest } from '../api/auth.js';
+import { useEffect, useState } from 'react';
 export default function JobsPage() {
 
-
-  const uniqueJobs = dataDrs.reduce((acc, current) => {
-    const x = acc.find(item => item.JobTitle === current.JobTitle);
-    if (!x) {
-      return acc.concat([current]);
-    } else {
-      return acc;
-    }
-  }, []);
+const [especialidades, setEspecialidades] = useState([]);
+useEffect(() => {
+  async function getEspecialidades() {
+    const res = await getEspecialidadesRequest();
+    setEspecialidades(res.data);
+  }
+  getEspecialidades();
+})
 
   return (
     <div className='container'>
       <div className={styles.contenedor}>
         <h2>¿Que Tipo de Servicio Necesita?</h2>
-      {uniqueJobs.map((item, index) => (
-        <Card key={index} item={item} />
+      {especialidades.map((item, index) => (
+        <Card key={index} item={item}/>
       ))}
     </div>
     </div>
