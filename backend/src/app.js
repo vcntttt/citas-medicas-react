@@ -3,7 +3,8 @@ import morgan from 'morgan';
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
 import authRoutes from "./routes/auth.routes.js";
-
+import profileRoutes from "./routes/profile.routes.js";
+import drsRoutes from "./routes/drs.routes.js";
 
 const app = express();
 app.use(cors({
@@ -16,6 +17,8 @@ app.use(cookieParser());
 
 
 app.use("/api", authRoutes);
+app.use("/api", profileRoutes);
+app.use("/api", drsRoutes);
 
 
 export default app; 
