@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <div className={styles.ui}>
-        <h1 className={styles.title}>Hola, {userData.nombre}</h1>
+        <h1 className={styles.title}>Hola, {userData.nombre ? userData.nombre : "usuario"}</h1>
         <button className={styles.btn} onClick={() => haveData ? navigate("/jobs") : navigate("/formulary")}>Tomar Hora</button>
       </div>
       <aside>

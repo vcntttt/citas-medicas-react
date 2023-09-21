@@ -23,6 +23,7 @@ export const AuthProvider = ({ children }) => {
             setUserData(res.data);
         } else{
             setHaveData(false);
+            setUserData([]);
         }
     }
     const signUp = async (user) => {
