@@ -1,0 +1,130 @@
+.saludo{
+    position: absolute;
+    margin-top: -10px;
+    margin-left: 600px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 13pt;
+    font-weight: bold;
+}
+.contenedor{
+    position: absolute;
+    background-color: rgb(31, 32, 44);
+    height: 700px ;
+    width: 500px;
+    border-radius: 20px;
+}
+
+.titulo{
+    text-align: center;
+    margin: auto;
+    background-color: white;
+    height: 30px;
+    width: 400px;
+    font-size: 17pt;
+    font-family: 'Times New Roman', Times, serif;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.infoDiv{
+    position: absolute;
+    background-color: white;
+    height: 200px;
+    width: 400px;
+    border-radius: 10px;
+    margin-top: 40px;
+    margin-left: 50px;
+}
+
+.info{
+    font-size: 17pt;
+    font-family: 'Times New Roman', Times, serif;
+    margin-top: 31px ;
+    margin-left: 15px;
+    font-weight: bold;
+}
+
+.contenedor2{
+    margin-top: 100px;
+    margin-left: 600px;
+    position: absolute;
+    background-color: rgb(31, 32, 44);
+    height: 600px ;
+    width: 800px;
+    border-radius: 20px;
+}
+
+.datospersDiv{
+    position: absolute;
+    background-color: white;
+    height: 300px;
+    width: 600px;
+    margin-top: 35px;
+    margin-left: 100px;
+    border-radius: 10px;
+}
+
+.titulo2{
+    font-size: 17pt;
+    font-family: 'Times New Roman', Times, serif;
+    margin-top: 20px ;
+    margin-left: 15px;
+    font-weight: bold;
+
+
+}
+
+.datospers{
+    font-size: 17pt;
+    font-family: 'Times New Roman', Times, serif;
+    margin-top: 31px ;
+    margin-left: 24px;
+    font-weight: bold;
+
+}
+
+.datoscontacDiv{
+    position: absolute;
+    background-color: white;
+    height: 220px;
+    width: 600px;
+    margin-top: 350px;
+    margin-left: 100px;
+    border-radius: 10px;
+
+}
+
+.titulo3{
+    font-size: 17pt;
+    font-family: 'Times New Roman', Times, serif;
+    margin-top: 20px ;
+    margin-left: 15px;
+    font-weight: bold;
+}
+
+.datoscontac{
+    font-size: 17pt;
+    font-family: 'Times New Roman', Times, serif;
+    margin-top: 26px ;
+    margin-left: 24px;
+    font-weight: bold;
+}
+
+.btnCambiar{
+    position: absolute;
+    margin-top: -20px;
+    margin-left: 290px;
+    background: aqua;
+    width: 100px ;
+    height: 30px;
+}
+
+.btnModi{
+    position: absolute;
+    margin-top: -47px;
+    margin-left: 480px;
+    background: aqua;
+    width: 100px ;
+    height: 30px;
+}
+
