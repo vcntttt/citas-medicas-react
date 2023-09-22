@@ -9,12 +9,13 @@ export default function Event({ event, onClose }) {
     <div className={styles.modal}>
         <div className={styles.ventana}>
         <h3>{event.title}</h3>
-        <p>Hora de Inicio:</p>
-        <p>Hora de Fin: </p>
-        <p>Profesional a cargo: </p>
-        <p>Sala: </p>
+        <p>Dia : {event.start.toLocaleDateString()}</p>
+        <p>Hora de Inicio: {event.start.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
+        <p>Hora de Fin: {event.end.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
+        <p>Profesional a cargo: {event.doctor.nombre} {event.doctor.apellido}</p>
+        <p>Sala: {event.sala} </p>
         <p>Direccion del Hospital: Av.Alemania 231</p>
-        <button onClick={handlePick}>Tomar Hora</button>
+        {event.estado === false && <button onClick={handlePick}>Tomar Hora</button>}
         <button onClick={onClose}>Cerrar</button>
         </div>
     </div>

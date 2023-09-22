@@ -29,7 +29,7 @@ export const AuthProvider = ({ children }) => {
     const signUp = async (user) => {
         try{
             const res = await registerRequest(user);
-            console.log(res.data);
+            // console.log(res.data);
             setUser(res.data);
             setIsAuthenticated(true);
             userHaveData();
@@ -41,7 +41,7 @@ export const AuthProvider = ({ children }) => {
     const signIn = async (user) => {
         try{
             const res = await loginRequest(user);
-            console.log(res);
+            // console.log(res);
             setUser(res.data);
             setIsAuthenticated(true);
             userHaveData();
@@ -61,7 +61,7 @@ export const AuthProvider = ({ children }) => {
             if (cookies.token) {
                 try {
                 const res = await verifyTokenRequest(cookies.token)
-                console.log(res)
+                // console.log(res)
                     if (res.data){
                         setUser(res.data);
                         setIsAuthenticated(true);
