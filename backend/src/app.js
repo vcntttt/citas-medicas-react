@@ -8,8 +8,12 @@ import drsRoutes from "./routes/drs.routes.js";
 import citasRoutes from './routes/citas.routes.js';
 
 const app = express();
+const allowedOrigins = [
+    'http://localhost:5173',
+    'https://reservatumed.netlify.app/'
+]
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: allowedOrigins,
     credentials: true
 }));
 
