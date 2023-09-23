@@ -12,7 +12,7 @@
 }
 .ventana{
   padding: 15px;
-  background-color:#ffffff;
+  background-color:#2e3238;
   width: 500px;
   height: 800px;
   margin: auto;
@@ -21,29 +21,91 @@
 
 h1 {
     text-align: center;
+    font-size: 40px;
+    font-weight: 400;
+    color: white;
 }
 
 .form {
     display: flex;
     flex-direction: column;
-    color: white;
+    margin: 50px auto 80px auto;
+    color: #6e1717;
 }
 
 .form input {
-    color: white;
+    color: rgb(0, 0, 0);
+    width: 300px;
+    font-size:15px;
+}
+
+.form select {
+    text-align: center;
+    margin: 10px auto;
+    width: 300px;
 }
 
 .form h2 {
+    font-size: 20px;
+    font-weight: 400;
+
     margin: 0px auto;
-    color: black;
+    color: rgb(255, 255, 255);
 }
 
 .formDataInfo {
+    margin: 0px auto 15px auto;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.formDataContact {
+    margin: 10px auto;
     display: flex;
     flex-direction: column;
 }
 
-.formDataContact {
-    display: flex;
-    flex-direction: column;
+.SubmitButton  {
+    background-color: #5fcc55;
+    width: 300px;
+    height: 35px;
+    margin: 10px 100px;
+    font-size: 16px;
+    text-align: center;
+    border-style: none;
+
+}
+
+.SubmitButton:hover {
+    cursor: pointer;
+    background-color:#53b14a;
+}
+
+
+
+.ExitButton {
+    text-align: center;
+    margin: 50px auto;
+    width: 300px;
+    border-style: none;
+    background-color: #55ccc9;
+}
+
+
+.ExitButton button {
+    text-decoration: none;
+    border-style: none;
+    color: black;
+    background-color:#55ccc9 ;
+    height: 35px;
+    font-size: 16px;
+
+
+}
+
+.ExitButton button:hover {
+    cursor: pointer;
+
+
 }

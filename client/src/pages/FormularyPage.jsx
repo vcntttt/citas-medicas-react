@@ -23,30 +23,49 @@ export default function Form() {
     return (
         <div className={styles.modal}>
             <div className={styles.ventana}>
-                <h1>Formulario</h1>
-                <form className={styles.form}>
-                    <h2>Datos personales</h2>
+                <h1>Ingrese datos personales</h1>
+                <form className={styles.form} action=''>
                     <div className={styles.formDataInfo}>
+
                         <input type="text" placeholder='Rut:' />
                         <input type="text" placeholder='Nombre' />
                         <input type="text" placeholder='Apellidos' />
-                        <select name="" id="">
+                        <select className={styles.select}name="" id="" >
                             <option value="hombre">Hombre</option>
                             <option value="mujer">Mujer</option>
                         </select>
-                        <input type="text" placeholder='Direccion' />
                     </div>
-                    <h2>Datos de contacto</h2>
+
+                    {/* 
                     <div className={styles.formDataContact}>
-                    <input type="text" placeholder='Rut:' />
+                        <h2>Datos de contacto</h2>
+
+
+                        <input type="text" placeholder='Rut:' />
                         <input type="text" placeholder='Telefono' />
                         <input type="text" placeholder='Email' />
+                        <input type="text" placeholder='Direccion' />
                     </div>
-                    <input type="submit" value="enviar" onClick={handleData}/>
+
+                    */}
+
+
 
                 </form>
 
-                <Link to="/"><button >Salir</button></Link>
+    
+                <input className={styles.SubmitButton} type="submit" value="enviar" onClick={handleData}/>
+
+
+
+
+
+
+                <div className={styles.ExitButton}>
+                    <Link to="/"><button>Salir</button></Link>
+
+                </div>
+
 
             </div>
         </div>
