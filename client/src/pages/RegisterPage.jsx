@@ -84,7 +84,7 @@ export default function Register() {
             
             <input className={styles.submit} type="submit" value="Entrar" />
           </div>
-          <label >Ya tienes una cuenta? <Link className={styles.link} to="/login"><u>Inicia Sesion</u></Link> </label>
+          <label className={styles.containerLink} >Ya tienes una cuenta? <Link className={styles.link} to="/login"><u>Inicia Sesion</u></Link> </label>
         </form>
       </div>
     </div>
