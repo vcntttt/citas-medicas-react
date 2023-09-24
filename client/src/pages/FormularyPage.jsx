@@ -8,11 +8,13 @@ export default function Form() {
 
     const { register, handleSubmit, formState: { errors }, watch} = useForm();
     const {UpdateUp} = useAuth();
+    const navigate = useNavigate();
 
     const onSubmit =  handleSubmit(async (data,e) => {
         const gender = watch("gender")
         UpdateUp(data)
         e.preventDefault()
+        navigate("/")
     })
 
 
@@ -25,9 +27,13 @@ export default function Form() {
 
                     <div className={styles.formDataInfo}>
                         <input type="text" placeholder='Rut:' {...register("rut", { required: true })}/>
-                        <input type="text"   placeholder='Nombre' {...register("nombre", { required: true })} />
-                        <input type="text" placeholder='Apellidos' {...register("apellido", { required: true })} />
+                        {errors.rut && <p className={styles.errorField}>Este campo es requerido</p>}
 
+                        <input type="text"   placeholder='Nombre' {...register("nombre", { required: true })} />
+                        {errors.nombre && <p className={styles.errorField}>Este campo es requerido</p>}
+
+                        <input type="text" placeholder='Apellidos' {...register("apellido", { required: true })} />
+                        {errors.apellido && <p className={styles.errorField}>Este campo es requerido</p>}
                         <select  className={styles.select}  {...register("genero",{required: true})} >
                             <option value="hombre">Hombre</option>
                             <option value="mujer">Mujer</option>
@@ -45,7 +51,7 @@ export default function Form() {
                         <input type="text" placeholder='Direccion' />
                     </div>
                     */}
-                    <input className={styles.SubmitButton} type="submit" value="enviar"/>
+                    <input className={styles.SubmitButton} type="submit" value="Enviar"/>
 
                 </form>
                 <div className={styles.ExitButton}>

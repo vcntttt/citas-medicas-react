@@ -1,5 +1,5 @@
 import styles from "../styles/Register.module.css";
-import image from "../assets/foto_registro_1.jpeg";
+import image from "../assets/registerImg.webp";
 import { useForm } from "react-hook-form";
 
 import { useAuth } from "../context/AuthContext.jsx";
@@ -86,8 +86,15 @@ export default function Register() {
             </div>
           </div>
           <Toaster 
-          visibleToasts={3}
-          duration={1000}/>
+          duration={3000}
+          toastOptions={{
+            style: {
+              background: "red",
+              color: "#fff",
+              border: 0
+            }
+          }}
+          />
           <div className={styles.containerSubmit}>
             
             <input className={styles.submit} type="submit" value="Entrar" />

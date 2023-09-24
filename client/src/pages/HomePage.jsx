@@ -1,5 +1,5 @@
 import styles from '../styles/homePage.module.css';
-import image from '../assets/docCosas.jpg'
+import image from '../assets/homeImg.webp'
 import {useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 export default function Home() {

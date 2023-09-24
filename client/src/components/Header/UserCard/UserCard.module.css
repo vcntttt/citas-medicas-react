@@ -1,20 +1,25 @@
 .container{
     display: flex;
-    padding: 0px 15px;
     align-items: center;
-    gap: 10px;
     border-radius: 10px;
     background-color: #C1FFFF;
+    margin: 10px;
+    border:0px;
+    text-decoration: none;
+    font-family: Inter;
+    font-size: 1rem;
+}
+#profile{
+    padding: 0px 15px;
 }
 .container:hover{
     background-color: #c8c8c8;
     cursor: pointer;
-
 }
-.text{
+.container:active{
     color: black;
-    font-size: 14px;
-    text-decoration: none;
-    
-
+}
+.flex{
+    display: flex;
+    flex-direction: row;
 }

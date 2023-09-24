@@ -1,11 +1,7 @@
-import Doctor from "../components/Doctor/DoctorContainer";
-
 export default function Drspage() {
   return (
     <div>
-      <Doctor/>
-      
-
+      <h1 style={{color: "black"}}>Aca se podran ver los doctores</h1>
     </div>
   )
 }

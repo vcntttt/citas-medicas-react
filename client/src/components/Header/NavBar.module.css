@@ -8,15 +8,15 @@
 
 .navLinks li {
   display: inline;
+  margin: 0 10px;
 }
-
 .navLinks li a {
   text-decoration: underline;
   padding: 8px 16px;
   border-radius: 5px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #000;
-
+  font-family: Inter;
+  font-size: 1.3rem;
 }
 
 .navLinks li a:hover {

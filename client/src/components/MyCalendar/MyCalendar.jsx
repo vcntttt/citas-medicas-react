@@ -5,7 +5,7 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 import styles from "./Calendar.module.css";
 import Event from "./Event";
 import { useState, useEffect } from "react";
-import { getCitasByEspecialidadRequest } from "../../api/auth.js";
+import { getCitasByEspecialidadRequest } from "../../api/citas.js";
 import { useParams } from "react-router-dom";
 
 moment.tz.setDefault("America/Santiago");

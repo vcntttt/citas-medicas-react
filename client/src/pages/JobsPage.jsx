@@ -1,6 +1,6 @@
 import Card from '../components/JobCard/Card.jsx'
 import styles from '../components/JobCard/Card.module.css'
-import { getEspecialidadesRequest } from '../api/auth.js';
+import { getEspecialidadesRequest } from '../api/citas.js';
 import { useEffect, useState } from 'react';
 export default function JobsPage() {
 

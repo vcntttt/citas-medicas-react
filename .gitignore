@@ -9,18 +9,12 @@ client/yarn-debug.log*
 client/yarn-error.log*
 client/pnpm-debug.log*
 client/lerna-debug.log*
-<<<<<<< HEAD
-=======
 
->>>>>>> 0a728c7ee81655a9b96533de3ff507f71237d30d
 client/node_modules
 client/dist
 client/dist-ssr
 client/*.local
-<<<<<<< HEAD
-=======
 
->>>>>>> 0a728c7ee81655a9b96533de3ff507f71237d30d
 # Editor directories and files
 client/.vscode/*
 client/!.vscode/extensions.json
@@ -31,3 +25,4 @@ client/*.ntvs*
 client/*.njsproj
 client/*.sw?
 client/*.sln
+backend/.env

@@ -3,24 +3,22 @@ import styles from "./UserCard.module.css";
 import { useAuth } from "../../../context/AuthContext";
 
 export default function UserCard() {
-    const { logOut, isAuthenticated } = useAuth();
+  const { logOut, isAuthenticated } = useAuth();
 
-  return (
-    isAuthenticated ? (
+  return isAuthenticated ? (
+    <div className={styles.flex}>
+      <Link to="/profile" className={styles.container} id={styles.profile}>
+        <p>Perfil</p>
+      </Link>
+      <button onClick={logOut} className={styles.container}>
+        Cerrar Sesion
+      </button>
+    </div>
+  ) : (
+    <Link to="/login" className={styles.container} id={styles.profile}>
       <div>
-      <Link to="/profile">
-      <div className={styles.container}>
-        <h1 className={styles.text}>Perfil</h1>
+        <p>Iniciar Sesion</p>
       </div>
     </Link>
-    <button onClick={logOut}>Cerrar Sesion</button>
-      </div>
-    ) : (
-        <Link to="/login">
-        <div className={styles.container}>
-          <h1 className={styles.text}>Iniciar Sesion</h1>
-        </div>
-      </Link>
-    )
   );
 }

@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext.jsx";
 import { useEffect } from "react";
 import { Toaster , toast} from "sonner";
-
+import image from "../assets/loginIMG.webp"
 export default function Login() {
 
     const {register, handleSubmit, formState: { errors }} = useForm();
@@ -48,7 +48,6 @@ export default function Login() {
           </div>
           <Toaster 
           duration={3000}
-          // richColors
           toastOptions={{
             style: {
               background: "red",
@@ -60,7 +59,7 @@ export default function Login() {
         </form>
       </div>
       <div className={styles.imageContainer}>
-        <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80"/>
+        <img src={image}/>
       </div>
     </div>
   )
