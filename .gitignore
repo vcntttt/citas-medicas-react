@@ -25,5 +25,4 @@ client/*.ntvs*
 client/*.njsproj
 client/*.sw?
 client/*.sln
-
 backend/.env

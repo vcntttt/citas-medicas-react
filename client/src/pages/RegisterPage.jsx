@@ -1,15 +1,18 @@
 import styles from "../styles/Register.module.css";
-import image from "../assets/foto_registro_1.jpeg";
+import image from "../assets/registerImg.webp";
 import { useForm } from "react-hook-form";
+
 import { useAuth } from "../context/AuthContext.jsx";
 import { useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { Toaster , toast} from "sonner";
 
 export default function Register() {
+
   const {register, handleSubmit, formState: { errors },} = useForm();
 
   const { signUp, isAuthenticated, errors: registerErrors} = useAuth();
+
   const navigate = useNavigate();
   useEffect(() => {
     if (isAuthenticated) {
@@ -17,9 +20,12 @@ export default function Register() {
     }
   }, [isAuthenticated, navigate]);
   
+  
   const onSubmit =  handleSubmit(async (data) => {
     signUp(data);
   })
+
+
   useEffect(() => {
     if(registerErrors && registerErrors.length > 0){
       registerErrors.forEach(error => {
@@ -27,6 +33,8 @@ export default function Register() {
       })
     }
   }, [registerErrors])
+
+
   return (
     <div className={styles.container}>
       <div className={styles.imageContainer}>
@@ -78,13 +86,20 @@ export default function Register() {
             </div>
           </div>
           <Toaster 
-          visibleToasts={3}
-          duration={1000}/>
+          duration={3000}
+          toastOptions={{
+            style: {
+              background: "red",
+              color: "#fff",
+              border: 0
+            }
+          }}
+          />
           <div className={styles.containerSubmit}>
             
             <input className={styles.submit} type="submit" value="Entrar" />
           </div>
-          <label >Ya tienes una cuenta? <Link className={styles.link} to="/login"><u>Inicia Sesion</u></Link> </label>
+          <label className={styles.containerLink} >Ya tienes una cuenta? <Link className={styles.link} to="/login"><u>Inicia Sesion</u></Link> </label>
         </form>
       </div>
     </div>

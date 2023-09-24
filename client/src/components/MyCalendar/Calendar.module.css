@@ -18,7 +18,21 @@
 padding: 15px;
 background-color:#fbfbfb;
 width: 500px;
-height: 300px;
+height: 370px;
 margin: auto;
 border-radius: 10px;
+}
+.btn {
+  background-color: #55ccc9;
+  color: black;
+  font-size: 0.8rem;
+  width: 100%;
+  margin : 10px auto;
+  height: 35px;
+  border-radius: 5px;
+  border: 0;
+}
+.btn:hover{
+  cursor: pointer;
+  background-color: #C1FFFF;
 }

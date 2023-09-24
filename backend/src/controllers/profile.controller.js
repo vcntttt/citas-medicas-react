@@ -11,6 +11,7 @@ export const profile = async (req, res) => {
             return res.status(404).json({ message: 'Usuario no encontrado' });
         }
 
+
         res.json({
             id: user._id,
             email: user.email,
@@ -29,7 +30,7 @@ export const profile = async (req, res) => {
 
 export const updateProfile = async (req, res) => {
     const userId = req.user.id;
-    const { nombre, apellido, rut, role } = req.body;
+    const { nombre, apellido, rut, genero, role } = req.body;
 
     try {
         const existingUserWithRut = await User.findOne({ rut: rut, _id: { $ne: userId } });

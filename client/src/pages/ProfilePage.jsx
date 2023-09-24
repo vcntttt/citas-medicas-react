@@ -4,7 +4,8 @@ import styles from "../styles/Profile.module.css";
 export default function ProfilePaga() {
   return (
     <div>
-      <div className={styles.saludo}>
+      <h1 style={{color: "black"}}>Pagina del Perfil</h1>
+      {/* <div className={styles.saludo}>
         <p>¡Hola!</p>
         <p>Nombre:</p>
       </div>
@@ -38,7 +39,7 @@ export default function ProfilePaga() {
 
       </div>
 
-      </div>
+      </div> */}
     </div>
   )
 }

@@ -9,14 +9,14 @@ export default function Event({ event, onClose }) {
     <div className={styles.modal}>
         <div className={styles.ventana}>
         <h3>{event.title}</h3>
-        <p>Dia : {event.start.toLocaleDateString()}</p>
-        <p>Hora de Inicio: {event.start.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
-        <p>Hora de Fin: {event.end.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
-        <p>Profesional a cargo: {event.doctor.nombre} {event.doctor.apellido}</p>
-        <p>Sala: {event.sala} </p>
-        <p>Direccion del Hospital: Av.Alemania 231</p>
-        {event.estado === false && <button onClick={handlePick}>Tomar Hora</button>}
-        <button onClick={onClose}>Cerrar</button>
+        <p><strong>Dia : </strong>{event.start.toLocaleDateString()}</p>
+        <p><strong>Hora de Inicio: </strong>{event.start.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
+        <p><strong>Hora de Fin: </strong>{event.end.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
+        <p><strong>Profesional a cargo: </strong>{event.doctor.nombre} {event.doctor.apellido}</p>
+        <p><strong>Sala: </strong>{event.sala} </p>
+        <p><strong>Direccion del Hospital:</strong> Av.Alemania 231</p>
+        {event.estado === false && <button className={styles.btn} onClick={handlePick}>Tomar Hora</button>}
+        <button className={styles.btn} onClick={onClose}>Cerrar</button>
         </div>
     </div>
   )
