@@ -1,5 +1,5 @@
 import { createContext, useState, useContext, useEffect } from "react";
-import { registerRequest, loginRequest, verifyTokenRequest, getProfileRequest } from "../api/auth";
+import { registerRequest, loginRequest, verifyTokenRequest, getProfileRequest, updateProfile } from "../api/auth";
 import  Cookies  from "js-cookie";
 export const AuthContext = createContext();
 export const useAuth = () => {
@@ -50,6 +50,21 @@ export const AuthProvider = ({ children }) => {
             setErrors(error.response.data);
         }
     }
+
+    const UpdateUp = async (user) => {
+        try {
+            console.log("user", user)
+            const res = await updateProfile(user)
+            console.log("res",res)
+            console.log("desde Update up")
+            
+        } catch(error) {
+            console.log(error)
+            console.log("no funciono")
+        }
+    }
+
+
     const logOut = () => {
         Cookies.remove("token");
         setUser(null);
@@ -78,7 +93,7 @@ export const AuthProvider = ({ children }) => {
         checkLogin();
     },[]);
     return (
-        <AuthContext.Provider value={{signUp, user, isAuthenticated, errors, signIn, logOut, haveData, userData}}>
+        <AuthContext.Provider value={{signUp, user, isAuthenticated, errors, signIn, logOut, haveData, userData,UpdateUp}}>
             {children}
         </AuthContext.Provider>
     );

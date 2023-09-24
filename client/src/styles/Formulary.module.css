@@ -34,7 +34,7 @@ h1 {
 }
 
 .form input {
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     width: 300px;
     font-size:15px;
 }
@@ -70,7 +70,7 @@ h1 {
     background-color: #5fcc55;
     width: 300px;
     height: 35px;
-    margin: 10px 100px;
+    margin: 100px auto;
     font-size: 16px;
     text-align: center;
     border-style: none;
@@ -86,7 +86,7 @@ h1 {
 
 .ExitButton {
     text-align: center;
-    margin: 50px auto;
+    margin: 10px auto;
     width: 300px;
     border-style: none;
     background-color: #55ccc9;
