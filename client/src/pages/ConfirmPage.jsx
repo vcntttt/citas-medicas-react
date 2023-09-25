@@ -9,6 +9,7 @@ export default function ConfirmPage() {
   const event = location.state?.event;
   const {user} = useAuth();
   const navigate = useNavigate();
+  
   const handleClick = async () => {
     try{
       const userEmail = {email: user.email};
