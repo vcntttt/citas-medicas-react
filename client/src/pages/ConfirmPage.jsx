@@ -29,6 +29,7 @@ export default function ConfirmPage() {
 return (
     <div className={styles.container}>
       <div className={styles.subContainer}>
+      <h1>Confirme su cita</h1>
         <p>
           <span>Profesional:</span>{event.doctor.nombre} {event.doctor.apellido}
         </p>
