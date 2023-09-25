@@ -2,10 +2,14 @@ import styles from '../styles/homePage.module.css';
 import image from '../assets/homeImg.webp'
 import {useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { useEffect } from 'react';
 export default function Home() {
   
   const navigate = useNavigate();
-  const { userData, haveData } = useAuth();
+  const { userData, haveData, userHaveData } = useAuth();
+  useEffect(() => {
+    userHaveData();
+    }, [])
   return (
     <div className={styles.container}>
       <div className={styles.ui}>
