@@ -7,9 +7,11 @@ export default function Home() {
   
   const navigate = useNavigate();
   const { userData, haveData, userHaveData } = useAuth();
+
   useEffect(() => {
     userHaveData();
-    }, [])
+    }, [userHaveData])
+
   return (
     <div className={styles.container}>
       <div className={styles.ui}>
