@@ -9,10 +9,8 @@ export default function Home() {
   const { userData, haveData, userHaveData } = useAuth();
 
   useEffect(() => {
-    if (!haveData) {
       userHaveData();
-    }
-    }, [userHaveData])
+    }, [haveData]);
 
   return (
     <div className={styles.container}>
