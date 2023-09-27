@@ -9,7 +9,9 @@ export default function Home() {
   const { userData, haveData, userHaveData } = useAuth();
 
   useEffect(() => {
-    userHaveData();
+    if (!haveData) {
+      userHaveData();
+    }
     }, [userHaveData])
 
   return (
