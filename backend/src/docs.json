@@ -1,0 +1,279 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+       "title": "reservaTuApi",
+       "version": "0.1.0"
+    },
+    "servers": [
+       {
+          "url": "http://localhost:3000",
+          "description": "Local"
+       },
+       {
+          "url": "https://reservatuapi-uct.onrender.com",
+          "description": "Production"
+       }
+    ],
+    "paths": {
+       "/citas": {
+          "get": {
+             "summary": "Obtener todas las citas",
+             "responses": {
+                "200": {
+                   "description": "Operación exitosa",
+                   "content": {
+                      "application/json": {
+                         "schema": {
+                            "type": "array",
+                            "items": {
+                               "$ref": "#/components/schemas/Cita"
+                            }
+                         }
+                      }
+                   }
+                },
+                "500": {
+                   "description": "Error al obtener las citas"
+                }
+             }
+          }
+       },
+       "/citas/add": {
+          "post": {
+             "summary": "Agregar una nueva cita",
+             "responses": {
+                "201": {
+                   "description": "Cita guardada"
+                },
+                "500": {
+                   "description": "Error al agregar la cita"
+                }
+             }
+          }
+       },
+       "/citas/especialidad/{especialidad}": {
+          "get": {
+             "summary": "Obtener citas por especialidad",
+             "parameters": [
+                {
+                   "name": "especialidad",
+                   "in": "path",
+                   "required": true,
+                   "schema": {
+                      "type": "string"
+                   }
+                }
+             ],
+             "responses": {
+                "200": {
+                   "description": "Operación exitosa",
+                   "content": {
+                      "application/json": {
+                         "schema": {
+                            "type": "array",
+                            "items": {
+                               "$ref": "#/components/schemas/Cita"
+                            }
+                         }
+                      }
+                   }
+                },
+                "500": {
+                   "description": "Error al obtener las citas"
+                }
+             }
+          }
+       },
+       "/citas/pick/{citaId}": {
+          "put": {
+             "summary": "Seleccionar una cita",
+             "parameters": [
+                {
+                   "name": "citaId",
+                   "in": "path",
+                   "required": true,
+                   "schema": {
+                      "type": "string"
+                   }
+                }
+             ],
+             "responses": {
+                "200": {
+                   "description": "Operación exitosa"
+                },
+                "400": {
+                   "description": "La cita ya fue tomada"
+                },
+                "404": {
+                   "description": "Cita no encontrada"
+                },
+                "500": {
+                   "description": "Error al seleccionar la cita"
+                }
+             }
+          }
+       },
+       "/citas/user/{userId}": {
+          "get": {
+             "summary": "Obtener citas por usuario",
+             "parameters": [
+                {
+                   "name": "userId",
+                   "in": "path",
+                   "required": true,
+                   "schema": {
+                      "type": "string"
+                   }
+                }
+             ],
+             "responses": {
+                "200": {
+                   "description": "Operación exitosa",
+                   "content": {
+                      "application/json": {
+                         "schema": {
+                            "type": "array",
+                            "items": {
+                               "$ref": "#/components/schemas/Cita"
+                            }
+                         }
+                      }
+                   }
+                },
+                "500": {
+                   "description": "Error al obtener las citas"
+                }
+             }
+          }
+       },
+       "/drs": {
+          "get": {
+             "summary": "Obtener todos los doctores",
+             "responses": {
+                "200": {
+                   "description": "Operación exitosa",
+                   "content": {
+                      "application/json": {
+                         "schema": {
+                            "type": "array",
+                            "items": {
+                               "$ref": "#/components/schemas/Doctor"
+                            }
+                         }
+                      }
+                   }
+                },
+                "500": {
+                   "description": "Error al obtener los doctores"
+                }
+             }
+          }
+       },
+       "/profile": {
+          "put": {
+             "summary": "Actualizar perfil de usuario",
+             "responses": {
+                "200": {
+                   "description": "Operación exitosa"
+                },
+                "400": {
+                   "description": "Ya existe un usuario con este RUT"
+                },
+                "404": {
+                   "description": "Usuario no encontrado"
+                },
+                "500": {
+                   "description": "Error al actualizar el perfil"
+                }
+             }
+          }
+       }
+    },
+    "components": {
+       "schemas": {
+          "Cita": {
+             "type": "object",
+             "properties": {
+                "doctor": {
+                   "$ref": "#/components/schemas/Doctor"
+                },
+                "horaInicio": {
+                   "type": "string",
+                   "format": "date-time"
+                },
+                "horaFin": {
+                   "type": "string",
+                   "format": "date-time"
+                },
+                "paciente": {
+                   "$ref": "#/components/schemas/Paciente"
+                },
+                "estado": {
+                   "type": "boolean"
+                },
+                "sala": {
+                   "type": "string"
+                }
+             }
+          },
+          "Paciente": {
+             "type": "object",
+             "properties": {
+                "email": {
+                   "type": "string"
+                },
+                "rut": {
+                   "type": "string"
+                },
+                "nombre": {
+                   "type": "string"
+                },
+                "apellido": {
+                   "type": "string"
+                }
+             }
+          },
+          "Doctor": {
+             "type": "object",
+             "properties": {
+                "nombre": {
+                   "type": "string"
+                },
+                "apellido": {
+                   "type": "string"
+                },
+                "especialidad": {
+                   "type": "string"
+                }
+             }
+          },
+          "User": {
+             "type": "object",
+             "properties": {
+                "email": {
+                   "type": "string"
+                },
+                "password": {
+                   "type": "string"
+                },
+                "nombre": {
+                   "type": "string"
+                },
+                "apellido": {
+                   "type": "string"
+                },
+                "rut": {
+                   "type": "string"
+                },
+                "role": {
+                   "type": "string",
+                   "enum": [
+                      "doctor",
+                      "paciente"
+                   ]
+                }
+             }
+          }
+       }
+    }
+ }
