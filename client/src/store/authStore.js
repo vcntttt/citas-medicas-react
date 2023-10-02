@@ -1,4 +1,3 @@
-// authStore.js
 import {create} from 'zustand';
 import { loginRequest, registerRequest, verifyTokenRequest } from "../api/auth";
 import { getProfileRequest,updateProfile } from "../api/profile";
@@ -73,6 +72,9 @@ const useAuthStore = create((set) => ({
         }catch(error){
             console.log(error.response);
         }
+    },
+    clearErrors : () => {
+        set({ errors: [] });
     }
 }));
 
