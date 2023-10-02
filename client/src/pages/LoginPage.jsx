@@ -5,6 +5,7 @@ import { useAuth } from "../context/AuthContext.jsx";
 import { useEffect } from "react";
 import { Toaster , toast} from "sonner";
 import image from "../assets/loginIMG.webp"
+import Input from "../components/input/input";
 export default function Login() {
 
     const {register, handleSubmit, formState: { errors }} = useForm();
@@ -35,10 +36,15 @@ export default function Login() {
         <form className={styles.form} action="" onSubmit={handleSubmit(onSubmit)}>
 
           <div className={styles.containerData}>
-            <input {...register ("email", { required: true })} placeholder="Email" />
-            {errors.email && <p className={styles.errorField}>Este campo es requerido</p>}
+
+
+            <Input typeText="text" placeHolder="Email" name="email"  registerMethod={register}/>
+            {errors.name && <p className={styles.errorField}>Este campo es requerido {name}</p>}
+
+
             <input type="password" {...register ("password", { required: true })} placeholder="Contraseña" />
             {errors.password && <p className={styles.errorField}>Este campo es requerido</p>}
+
           </div>
           <div className={styles.containerSubmit }>
             <input className={styles.submit} type="submit" value="Entrar"/>
