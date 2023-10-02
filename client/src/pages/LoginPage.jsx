@@ -39,10 +39,9 @@ export default function Login() {
 
 
             <Input typeText="text" placeHolder="Email" name="email"  registerMethod={register}/>
-            {errors.name && <p className={styles.errorField}>Este campo es requerido {name}</p>}
+            {errors.name && <p className={styles.errorField}>Este campo es requerido </p>}
 
-
-            <input type="password" {...register ("password", { required: true })} placeholder="Contraseña" />
+            <Input typeText="password" placeHolder="Contraseña" name="password" registerMethod={register} />
             {errors.password && <p className={styles.errorField}>Este campo es requerido</p>}
 
           </div>
