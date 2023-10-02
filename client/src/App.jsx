@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { AuthProvider } from "./context/AuthContext.jsx";
 import HomePage from "./pages/HomePage.jsx";
 import Jobs from "./pages/DatePages/JobsPage.jsx";
 import DrsPage from "./pages/InfoPages/Drspage.jsx";
@@ -15,7 +14,6 @@ import CalendarPage from "./pages/DatePages/CalendarPage.jsx";
 
 export default function App() {
   return (
-    <AuthProvider>
       <Router>
         <Layout/>
         <Routes>
@@ -34,6 +32,5 @@ export default function App() {
           </Route>
         </Routes>
       </Router>
-    </AuthProvider>
   );
 }

@@ -1,18 +1,16 @@
 import styles from '../../styles/Formulary.module.css'
 import { useNavigate, Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { useAuth } from "../../context/AuthContext.jsx";
-
+import useAuthStore from '../../store/authStore';
 
 export default function Form() {
 
-    const { register, handleSubmit, formState: { errors }, watch} = useForm();
-    const {UpdateUp} = useAuth();
+    const { register, handleSubmit, formState: { errors }} = useForm();
+    const {updateProfile} = useAuthStore();
     const navigate = useNavigate();
 
     const onSubmit =  handleSubmit(async (data,e) => {
-        const gender = watch("gender")
-        UpdateUp(data)
+        updateProfile(data)
         e.preventDefault()
         navigate("/")
     })

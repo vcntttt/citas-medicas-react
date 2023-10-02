@@ -15,19 +15,18 @@ export const getAllCitas = async (req, res) => {
 };
 
 
-//FIXME: Pendiente de Revision
-// export const getAllCitasByUser = async (req, res) => {
-//     try {
+export const getCitasByUser = async (req, res) => {
+    try {
        
-//         const userId = req.user.id;
+        const userEmail = req.user.email;
 
-//         const citas = await Cita.find({ paciente: userId });
+        const citas = await Cita.find({ "paciente.email": userEmail });
 
-//         res.json(citas);
-//     } catch (error) {
-//         res.status(500).json({ message: 'Error al obtener las citas', error: error.message });
-//     }
-// };
+        res.json(citas);
+    } catch (error) {
+        res.status(500).json({ message: 'Error al obtener las citas', error: error.message });
+    }
+};
 
 export const agregarCita = async (req, res) => {
     try {

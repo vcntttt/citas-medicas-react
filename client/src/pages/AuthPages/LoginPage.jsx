@@ -2,30 +2,21 @@ import styles from "../../styles/Login.module.css";
 import { useForm } from "react-hook-form"
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import { Toaster , toast} from "sonner";
+import { Toaster} from "sonner";
 import image from "../../assets/loginIMG.webp"
-import { useAuthStore } from "../../store/authStore";
+import useAuthStore  from "../../store/authStore";
+import useErrorHandler from "../../hooks/useErrors";
+import useIfAuth from "../../hooks/useIfAuth";
 
 export default function Login() {
     const {register, handleSubmit, formState: { errors }} = useForm();
-    const {signIn} = useAuthStore();
+    const {signIn, isAuthenticated, errors: sigInErrors} = useAuthStore();
     const navigate = useNavigate();
     const onSubmit =handleSubmit((data) => {
-      signIn(data);
+      signIn(data, navigate);
     }) 
-
-    // useEffect(() => {
-    //   if (isAuthenticated) {
-    //     navigate("/");
-    // }},[isAuthenticated]);
-
-    // useEffect(() => {
-    //   if(sigInErrors && sigInErrors.length > 0){
-    //     sigInErrors.forEach(error => {
-    //       toast.error(error)
-    //     })
-    //   }
-    // }, [sigInErrors])
+    useIfAuth();
+    useErrorHandler(sigInErrors);
   return (
     <div className={styles.container}>
       <div className={styles.registerMenu}>

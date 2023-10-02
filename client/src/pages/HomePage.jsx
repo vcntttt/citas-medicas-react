@@ -1,22 +1,20 @@
 import styles from '../styles/homePage.module.css';
 import image from '../assets/homeImg.webp'
 import {useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
 import { useEffect } from 'react';
+import useAuthStore from '../store/authStore';
 export default function Home() {
   
   const navigate = useNavigate();
-  const { userData, haveData, userHaveData } = useAuth();
-
+  const { userData, checkData, userHasData } = useAuthStore();
   useEffect(() => {
-      userHaveData();
-    }, [haveData]);
-
+      checkData();
+    }, []);
   return (
     <div className={styles.container}>
       <div className={styles.ui}>
-        <h1 className={styles.title}>Hola, {userData.nombre ? userData.nombre : "usuario"}</h1>
-        <button className={styles.btn} onClick={() => haveData ? navigate("/jobs") : navigate("/formulary")}>Tomar Hora</button>
+        <h1 className={styles.title}>Hola, {userData?.nombre ? userData.nombre : "usuario"}</h1>
+        <button className={styles.btn} onClick={() => userHasData ? navigate("/jobs") : navigate("/formulary")}>Tomar Hora</button>
       </div>
       <aside>
         <img

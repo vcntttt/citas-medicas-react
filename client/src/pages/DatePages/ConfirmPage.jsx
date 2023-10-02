@@ -1,13 +1,13 @@
 import styles from "../../styles/Confirm.module.css";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext";
 import { pickDateRequest } from "../../api/citas.js";
 import { Toaster , toast} from "sonner";
+import useAuthStore from "../../store/authStore";
 
 export default function ConfirmPage() {
   const location = useLocation();
   const event = location.state?.event;
-  const {user} = useAuth();
+  const {user} = useAuthStore();
   const navigate = useNavigate();
   
   const handleClick = async () => {
