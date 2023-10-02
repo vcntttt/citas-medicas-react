@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import styles from "./Calendar.module.css";
 import { useNavigate } from "react-router-dom";
 export default function Event({ event, onClose }) {

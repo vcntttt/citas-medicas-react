@@ -1,8 +1,8 @@
-import styles from "../styles/Register.module.css";
-import image from "../assets/registerImg.webp";
+import styles from "../../styles/Register.module.css";
+import image from "../../assets/registerImg.webp";
 import { useForm } from "react-hook-form";
 
-import { useAuth } from "../context/AuthContext.jsx";
+import { useAuth } from "../../context/AuthContext.jsx";
 import { useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { Toaster , toast} from "sonner";

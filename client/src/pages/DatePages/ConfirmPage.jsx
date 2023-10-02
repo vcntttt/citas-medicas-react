@@ -1,7 +1,7 @@
-import styles from "../styles/Confirm.module.css";
+import styles from "../../styles/Confirm.module.css";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
-import { pickDateRequest } from "../api/citas.js";
+import { useAuth } from "../../context/AuthContext";
+import { pickDateRequest } from "../../api/citas.js";
 import { Toaster , toast} from "sonner";
 
 export default function ConfirmPage() {

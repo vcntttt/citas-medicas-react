@@ -1,17 +1,17 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext.jsx";
 import HomePage from "./pages/HomePage.jsx";
-import Jobs from "./pages/JobsPage.jsx";
-import DrsPage from "./pages/Drspage.jsx";
+import Jobs from "./pages/DatePages/JobsPage.jsx";
+import DrsPage from "./pages/InfoPages/Drspage.jsx";
 import NotFound from "./pages/NotFound.jsx";
-import Login from "./pages/LoginPage.jsx";
-import Register from "./pages/RegisterPage.jsx";
-import ProfilePage from "./pages/ProfilePage.jsx";
-import Form from "./pages/FormularyPage.jsx";
+import Login from "./pages/AuthPages/LoginPage.jsx";
+import Register from "./pages/AuthPages/RegisterPage.jsx";
+import ProfilePage from "./pages/InfoPages/ProfilePage.jsx";
+import Form from "./pages/AuthPages/FormularyPage.jsx";
 import ProtectedRoute from "./ProtectedRoute.jsx";
-import ConfirmPage from "./pages/ConfirmPage.jsx";
+import ConfirmPage from "./pages/DatePages/ConfirmPage.jsx";
 import Layout from "./components/Header/Layout.jsx";
-import CalendarPage from "./pages/CalendarPage.jsx";
+import CalendarPage from "./pages/DatePages/CalendarPage.jsx";
 
 export default function App() {
   return (
