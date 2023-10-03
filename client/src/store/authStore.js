@@ -1,10 +1,11 @@
 import {create} from 'zustand';
 import { loginRequest, registerRequest, verifyTokenRequest } from "../api/auth";
 import { getProfileRequest,updateProfile } from "../api/profile";
-
+import { getCitasByUserRequest } from "../api/citas";
 import Cookies from "js-cookie";
+import {persist} from 'zustand/middleware'
 
-const useAuthStore = create((set) => ({
+const useAuthStore = create(persist((set, get) => ({
     user: null,
     isAuthenticated: false,
     errors: [],
@@ -12,7 +13,6 @@ const useAuthStore = create((set) => ({
     userDates : [],
     userHasData : false,
 
-    //Funciones de autenticacion
     signIn : async (user,navigate) => {
         try{
             const res = await loginRequest(user);
@@ -39,6 +39,7 @@ const useAuthStore = create((set) => ({
             const res = await verifyTokenRequest(cookies.token)
                 if (res.data){
                     set({ user: res.data, isAuthenticated: true });
+                    console.log("checkLogin")
                 }else {
                     set({ user: null, isAuthenticated: false });
                 }
@@ -55,6 +56,7 @@ const useAuthStore = create((set) => ({
     },
     checkData : async () => {
         try{
+            console.log("CheckData");
             const res = await getProfileRequest();
             if(res.data.nombre && res.data.apellido){
                 set({ userData : res.data, userHasData : true });
@@ -75,7 +77,21 @@ const useAuthStore = create((set) => ({
     },
     clearErrors : () => {
         set({ errors: [] });
+    },
+    checkDates : async () => {
+        try{
+            const {user} = get()
+            const email = user.email;
+            const res = await getCitasByUserRequest(email);
+            console.log(res.data)
+            set({ userDates : res.data });
+        } catch(error){
+            console.log(error.response);
+        }
     }
+}),
+{
+  name: 'authStore',
 }));
 
 export default useAuthStore;

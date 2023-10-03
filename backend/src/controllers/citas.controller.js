@@ -1,6 +1,5 @@
 import mongoose from 'mongoose';
 import Cita from '../models/citas.model.js';
-// import {Paciente} from '../models/paciente.model.js';
 import User from '../models/user.model.js';
 
 
@@ -23,6 +22,7 @@ export const getCitasByUser = async (req, res) => {
         const citas = await Cita.find({ "paciente.email": userEmail });
 
         res.json(citas);
+        console.log(citas)
     } catch (error) {
         res.status(500).json({ message: 'Error al obtener las citas', error: error.message });
     }

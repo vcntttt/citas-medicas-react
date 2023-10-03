@@ -23,7 +23,6 @@ export default function App() {
           <Route path="/drspage" element={<DrsPage/>} />
           <Route path="*" element={<NotFound />} />
           <Route element={<ProtectedRoute />}>
-          <Route path="/profile" element={<ProfilePage />}/>
           <Route path="/calendar/:id" element={<CalendarPage />} />
           <Route path="/confirm" element={<ConfirmPage />} />
           <Route path="/jobs" element={<Jobs />} />
