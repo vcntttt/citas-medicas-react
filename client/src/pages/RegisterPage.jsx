@@ -6,6 +6,7 @@ import { useAuth } from "../context/AuthContext.jsx";
 import { useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { Toaster , toast} from "sonner";
+import Input from "../components/input/input";
 
 export default function Register() {
 
@@ -54,35 +55,26 @@ export default function Register() {
           <div className={styles.containerInput}>
             <div className={styles.inputContainer}>
               <label htmlFor=""></label>
-              <input
-                type="email"
-                className={styles.input}
-                {...register("email", { required: true })}
-                placeholder="Email"
-              />
+
+              <Input typeText="email" placeHolder="Email" name="email" registerMethod={register} />
               {errors.email && <p className={styles.errorField}>Este campo es requerido</p>}
+
             </div>
 
             <div className={styles.inputContainer}>
               <label htmlFor=""></label>
-              <input
-                type="password"
-                className={styles.input}
-                {...register("password", { required: true })}
-                placeholder="Contraseña"
-              />
+
+              <Input typeText="password" placeHolder="Contraseña" name="password" registerMethod={register} />
               {errors.password && <p className={styles.errorField}>Este campo es requerido</p>}
+              
             </div>
 
             <div className={styles.inputContainer}>
               <label htmlFor=""></label>
-              <input
-                type="password"
-                className={styles.input}
-                {...register("passwordConfirmation", { required: true })}
-                placeholder="Confirmar Contraseña"
-              />
+
+              <Input typeText="password" placeHolder="Confirmar Contraseña" name="passwordConfirmation" registerMethod={register} />
               {errors.passwordConfirmation && <p className={styles.errorField}>Este campo es requerido</p>}
+
             </div>
           </div>
           <Toaster 
