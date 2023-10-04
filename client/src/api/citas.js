@@ -6,4 +6,3 @@ export const getCitasByEspecialidadRequest = (especialidad) => axios.get(`/citas
 
 export const pickDateRequest = (citaId, email) => axios.put(`/citas/pick/${citaId}`, email);
 
-export const getCitasByUserRequest = (email) => axios.get(`/citas/user/${email}`); 

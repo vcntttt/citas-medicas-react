@@ -6,12 +6,11 @@ function useErrorHandler(errors){
     const {clearErrors} = useAuthStore();
 
     useEffect(() => {
-        if (errors){
+        if (errors && errors.length > 0) {
             errors.forEach(error => {
                 toast.error(error)
             })}
         const timeout = setTimeout(() => {
-            toast.remove();
             clearErrors();
         },3000);
         return () => clearTimeout(timeout);

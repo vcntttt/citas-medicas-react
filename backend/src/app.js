@@ -17,7 +17,7 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(cookieParser());
 
-app.use("/", swaggerUI.serve, swaggerUI.setup(docs));
+app.use("/api/docs", swaggerUI.serve, swaggerUI.setup(docs));
 
 app.use("/api", authRoutes);
 app.use("/api", profileRoutes);

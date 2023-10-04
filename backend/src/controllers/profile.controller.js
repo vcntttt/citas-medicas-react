@@ -1,5 +1,5 @@
 import User from '../models/user.model.js';
-
+import Cita from '../models/citas.model.js';
 
 export const profile = async (req, res) => {
     try {
@@ -62,3 +62,17 @@ export const updateProfile = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
+
+export const getUserDates = async (req, res) => {
+        try {
+            const userId = req.user.id;
+    
+            const user = await User.findById(userId);
+            const citas = await Cita.find({ "paciente.email": user.email });
+                     
+            console.log(citas)
+            res.json(citas);
+        } catch (error) {
+            res.status(500).json({ message: error.message });
+        }
+    };

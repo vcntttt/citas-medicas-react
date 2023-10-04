@@ -14,19 +14,20 @@ export const getAllCitas = async (req, res) => {
 };
 
 
-export const getCitasByUser = async (req, res) => {
-    try {
+// export const getCitasByUser = async (req, res) => {
+//     try {
        
-        const userEmail = req.user.email;
+//         const userEmail = req.user.email;
+//         console.log("email")
+//         // const citas = await Cita.find({ "paciente.email": userEmail });
 
-        const citas = await Cita.find({ "paciente.email": userEmail });
-
-        res.json(citas);
-        console.log(citas)
-    } catch (error) {
-        res.status(500).json({ message: 'Error al obtener las citas', error: error.message });
-    }
-};
+//         // res.json(citas);
+//         // console.log(citas)
+//         res.json({userEmail});
+//     } catch (error) {
+//         res.status(500).json({ message: 'Error al obtener las citas', error: error.message });
+//     }
+// };
 
 export const agregarCita = async (req, res) => {
     try {

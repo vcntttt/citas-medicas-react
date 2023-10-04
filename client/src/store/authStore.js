@@ -1,11 +1,10 @@
 import {create} from 'zustand';
 import { loginRequest, registerRequest, verifyTokenRequest } from "../api/auth";
-import { getProfileRequest,updateProfile } from "../api/profile";
-import { getCitasByUserRequest } from "../api/citas";
+import { getProfileRequest,getUserDates,updateProfile } from "../api/profile";
 import Cookies from "js-cookie";
 import {persist} from 'zustand/middleware'
 
-const useAuthStore = create(persist((set, get) => ({
+const useAuthStore = create(persist((set,get) => ({
     user: null,
     isAuthenticated: false,
     errors: [],
@@ -56,6 +55,8 @@ const useAuthStore = create(persist((set, get) => ({
     },
     checkData : async () => {
         try{
+            const {isAuthenticated} = get();
+            if (!isAuthenticated) return
             console.log("CheckData");
             const res = await getProfileRequest();
             if(res.data.nombre && res.data.apellido){
@@ -80,9 +81,9 @@ const useAuthStore = create(persist((set, get) => ({
     },
     checkDates : async () => {
         try{
-            const {user} = get()
-            const email = user.email;
-            const res = await getCitasByUserRequest(email);
+            const {isAuthenticated} = get();
+            if (!isAuthenticated) return
+            const res = await getUserDates();
             console.log(res.data)
             set({ userDates : res.data });
         } catch(error){
