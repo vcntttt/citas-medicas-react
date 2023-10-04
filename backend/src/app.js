@@ -7,8 +7,6 @@ import profileRoutes from "./routes/profile.routes.js";
 import drsRoutes from "./routes/drs.routes.js";
 import citasRoutes from './routes/citas.routes.js';
 import swaggerUI from "swagger-ui-express"
-import swaggerJsDoc from "swagger-jsdoc";
-import fs from "fs";
 import docs from "./docs.json" assert { type : "json" };
 const app = express();
 app.use(cors({
@@ -19,7 +17,7 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(cookieParser());
 
-app.use("/api/docs", swaggerUI.serve, swaggerUI.setup(docs));
+app.use("/", swaggerUI.serve, swaggerUI.setup(docs));
 
 app.use("/api", authRoutes);
 app.use("/api", profileRoutes);
