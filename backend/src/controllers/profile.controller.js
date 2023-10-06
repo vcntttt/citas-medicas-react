@@ -71,7 +71,6 @@ export const getUserDates = async (req, res) => {
             const user = await User.findById(userId);
             const citas = await Cita.find({ "paciente.email": user.email });
                      
-            console.log(citas)
             res.json(citas);
         } catch (error) {
             res.status(500).json({ message: error.message });

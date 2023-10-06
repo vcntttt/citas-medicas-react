@@ -28,7 +28,7 @@ export default function Home() {
       }
       </div>
       <aside>
-        {userDates && userData 
+        {userDates && userData && userDates.length > 0
         ? <DatesBoard dates={userDates} /> 
         : <img
           className="w-[500px] object-cover rounded-xl"
