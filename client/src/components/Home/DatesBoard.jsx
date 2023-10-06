@@ -8,7 +8,7 @@ export default function DatesBoard({dates}) {
       <h1 className="text-3xl">Tus Citas</h1>
       <ul>
         {newDates.map((date) => (
-          <Date key={date.id} date={date} />
+          <Date key={date._id} date={date}/>
         ))}
       </ul>
     </div>

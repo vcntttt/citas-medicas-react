@@ -18,6 +18,7 @@ export const profile = async (req, res) => {
             nombre: user.nombre,
             apellido: user.apellido,
             rut: user.rut,
+            role: user.role,
             createdAt: user.createdAt,
             updatedAt: user.updatedAt
         });

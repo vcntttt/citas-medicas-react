@@ -11,6 +11,7 @@ const useAuthStore = create(persist((set,get) => ({
     userData : null,
     userDates : [],
     userHasData : false,
+    role : null,
 
     signIn : async (user,navigate) => {
         try{
@@ -61,6 +62,7 @@ const useAuthStore = create(persist((set,get) => ({
             const res = await getProfileRequest();
             if(res.data.nombre && res.data.apellido){
                 set({ userData : res.data, userHasData : true });
+                set({ role : res.data.role });
             } else{
                 set({ userData : null, userHasData : false });
             }
@@ -84,7 +86,6 @@ const useAuthStore = create(persist((set,get) => ({
             const {isAuthenticated} = get();
             if (!isAuthenticated) return
             const res = await getUserDates();
-            console.log(res.data)
             set({ userDates : res.data });
         } catch(error){
             console.log(error.response);

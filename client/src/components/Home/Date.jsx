@@ -12,8 +12,8 @@ export default function Date({date}) {
         <p>Hora de fin: {date.end.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
         </div>
         <div className="flex flex-col justify-end gap-2 ml-4">
-        <Btn name="Modificar"/>
-        <Btn name="Cancelar"/>
+        <Btn>Modificar</Btn>
+        <Btn>Cancelar</Btn>
         </div>
     </div>
   )
