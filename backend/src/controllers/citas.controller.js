@@ -1,6 +1,5 @@
 import mongoose from 'mongoose';
 import Cita from '../models/citas.model.js';
-// import {Paciente} from '../models/paciente.model.js';
 import User from '../models/user.model.js';
 
 
@@ -15,15 +14,16 @@ export const getAllCitas = async (req, res) => {
 };
 
 
-//FIXME: Pendiente de Revision
-// export const getAllCitasByUser = async (req, res) => {
+// export const getCitasByUser = async (req, res) => {
 //     try {
        
-//         const userId = req.user.id;
+//         const userEmail = req.user.email;
+//         console.log("email")
+//         // const citas = await Cita.find({ "paciente.email": userEmail });
 
-//         const citas = await Cita.find({ paciente: userId });
-
-//         res.json(citas);
+//         // res.json(citas);
+//         // console.log(citas)
+//         res.json({userEmail});
 //     } catch (error) {
 //         res.status(500).json({ message: 'Error al obtener las citas', error: error.message });
 //     }

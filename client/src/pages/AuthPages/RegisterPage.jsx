@@ -1,40 +1,24 @@
-import styles from "../styles/Register.module.css";
-import image from "../assets/registerImg.webp";
+import styles from "../../styles/Register.module.css";
+import image from "../../assets/registerImg.webp";
 import { useForm } from "react-hook-form";
-
-import { useAuth } from "../context/AuthContext.jsx";
-import { useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { Toaster , toast} from "sonner";
-import Input from "../components/input/input";
-
+import { Toaster} from "sonner";
+import useAuthStore from "../../store/authStore";
+import useErrorHandler from "../../hooks/useErrors";
+import useIfAuth from "../../hooks/useIfAuth";
+import Input from "../../components/Input/Input.jsx";
 export default function Register() {
 
   const {register, handleSubmit, formState: { errors },} = useForm();
 
-  const { signUp, isAuthenticated, errors: registerErrors} = useAuth();
-
+  const { signUp, errors: registerErrors} = useAuthStore();
+  
   const navigate = useNavigate();
-  useEffect(() => {
-    if (isAuthenticated) {
-      navigate("/");
-    }
-  }, [isAuthenticated, navigate]);
-  
-  
   const onSubmit =  handleSubmit(async (data) => {
-    signUp(data);
+    signUp(data, navigate);
   })
-
-
-  useEffect(() => {
-    if(registerErrors && registerErrors.length > 0){
-      registerErrors.forEach(error => {
-        toast.error(error)
-      })
-    }
-  }, [registerErrors])
-
+  useErrorHandler(registerErrors);
+  useIfAuth();
 
   return (
     <div className={styles.container}>

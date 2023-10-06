@@ -1,4 +1,4 @@
-import styles from "../styles/Profile.module.css";
+import styles from "../../styles/Profile.module.css";
 
 
 export default function ProfilePaga() {

@@ -10,7 +10,6 @@ router.post('/citas/add', agregarCita);
 router.get('/citas/especialidad/:especialidad', getCitasByEspecialidad);
 router.put('/citas/pick/:citaId', authRequired, pickDate);
 
-// FIXME: pa despues
-// router.get('/citas/user/:userId', authRequired, getAllCitasByUser);
+// router.get('/citas/user/:email', getCitasByUser);
 
 export default router;

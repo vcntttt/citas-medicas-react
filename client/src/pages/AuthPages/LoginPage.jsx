@@ -1,32 +1,21 @@
-import styles from "../styles/Login.module.css";
+import styles from "../../styles/Login.module.css";
 import { useForm } from "react-hook-form"
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext.jsx";
-import { useEffect } from "react";
-import { Toaster , toast} from "sonner";
-import image from "../assets/loginIMG.webp"
-import Input from "../components/input/input";
+import { Toaster} from "sonner";
+import image from "../../assets/loginIMG.webp"
+import useAuthStore  from "../../store/authStore";
+import useErrorHandler from "../../hooks/useErrors";
+import useIfAuth from "../../hooks/useIfAuth";
+import Input from "../../components/Input/Input.jsx";
 export default function Login() {
-
     const {register, handleSubmit, formState: { errors }} = useForm();
-    const {isAuthenticated, signIn, errors: sigInErrors} = useAuth();
+    const {signIn, errors: sigInErrors} = useAuthStore();
     const navigate = useNavigate();
     const onSubmit =handleSubmit((data) => {
-      signIn(data);
+      signIn(data, navigate);
     }) 
-
-    useEffect(() => {
-      if (isAuthenticated) {
-        navigate("/");
-    }},[isAuthenticated]);
-
-    useEffect(() => {
-      if(sigInErrors && sigInErrors.length > 0){
-        sigInErrors.forEach(error => {
-          toast.error(error)
-        })
-      }
-    }, [sigInErrors])
+    useIfAuth();
+    useErrorHandler(sigInErrors);
   return (
     <div className={styles.container}>
       <div className={styles.registerMenu}>
@@ -36,8 +25,6 @@ export default function Login() {
         <form className={styles.form} action="" onSubmit={handleSubmit(onSubmit)}>
 
           <div className={styles.containerData}>
-
-
             <Input typeText="text" placeHolder="Email" name="email"  registerMethod={register}/>
             {errors.name && <p className={styles.errorField}>Este campo es requerido </p>}
 
