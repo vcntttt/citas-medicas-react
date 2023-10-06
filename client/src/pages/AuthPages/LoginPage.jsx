@@ -25,11 +25,10 @@ export default function Login() {
         <form className={styles.form} action="" onSubmit={handleSubmit(onSubmit)}>
 
           <div className={styles.containerData}>
-            <Input typeText="text" placeHolder="Email" name="email"  registerMethod={register}/>
-            {errors.name && <p className={styles.errorField}>Este campo es requerido </p>}
 
-            <Input typeText="password" placeHolder="Contraseña" name="password" registerMethod={register} />
-            {errors.password && <p className={styles.errorField}>Este campo es requerido</p>}
+            <Input inputMethod="email" registerMethod={register}/>
+
+            <Input inputMethod="password"registerMethod={register} />
 
           </div>
           <div className={styles.containerSubmit }>

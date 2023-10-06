@@ -40,24 +40,21 @@ export default function Register() {
             <div className={styles.inputContainer}>
               <label htmlFor=""></label>
 
-              <Input typeText="email" placeHolder="Email" name="email" registerMethod={register} />
-              {errors.email && <p className={styles.errorField}>Este campo es requerido</p>}
+              <Input inputMethod="email"  registerMethod={register} />
 
             </div>
 
             <div className={styles.inputContainer}>
               <label htmlFor=""></label>
 
-              <Input typeText="password" placeHolder="Contraseña" name="password" registerMethod={register} />
-              {errors.password && <p className={styles.errorField}>Este campo es requerido</p>}
+              <Input inputMethod="password" registerMethod={register} />
               
             </div>
 
             <div className={styles.inputContainer}>
               <label htmlFor=""></label>
 
-              <Input typeText="password" placeHolder="Confirmar Contraseña" name="passwordConfirmation" registerMethod={register} />
-              {errors.passwordConfirmation && <p className={styles.errorField}>Este campo es requerido</p>}
+              <Input inputMethod="passwordConfirmation" registerMethod={register} />
 
             </div>
           </div>
