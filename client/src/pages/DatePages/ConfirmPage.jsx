@@ -2,18 +2,15 @@ import styles from "../../styles/Confirm.module.css";
 import { useLocation, useNavigate } from "react-router-dom";
 import { pickDateRequest } from "../../api/citas.js";
 import { Toaster , toast} from "sonner";
-import useAuthStore from "../../store/authStore";
 
 export default function ConfirmPage() {
   const location = useLocation();
   const event = location.state?.event;
-  const {user} = useAuthStore();
   const navigate = useNavigate();
   
   const handleClick = async () => {
     try{
-      const userEmail = {email: user.email};
-      const res = await pickDateRequest(event._id, userEmail);
+      const res = await pickDateRequest(event._id);
       console.log(res.data);
       toast.success("Cita confirmada, te esperamos!");
      setTimeout(() => {
