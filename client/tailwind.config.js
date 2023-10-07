@@ -1,4 +1,3 @@
-/** @type {import('tailwindcss').Config} */
 export default {
   content: [
     "./index.html",
@@ -64,12 +63,9 @@ export default {
       boxShadow: {
         "custom": "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
       },
-
       fontFamily: {
-        'inter': ['Inter', 'sans'],
-        "Times": ['Times New Roman', "Times", "serif"], 
+        sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'sans-serif'],
       },
-      
     },
   },
   plugins: [],

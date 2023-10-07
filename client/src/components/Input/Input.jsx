@@ -1,5 +1,3 @@
-import { useForm } from "react-hook-form"
-
 export default function Input({type, errors, register }) {
     return (
         <div>
