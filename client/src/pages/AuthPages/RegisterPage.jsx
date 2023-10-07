@@ -40,21 +40,21 @@ export default function Register() {
             <div className={styles.inputContainer}>
               <label htmlFor=""></label>
 
-              <Input inputMethod="email"  registerMethod={register} />
+              <Input type="email" register={register} errors={errors}/>
 
             </div>
 
             <div className={styles.inputContainer}>
               <label htmlFor=""></label>
 
-              <Input inputMethod="password" registerMethod={register} />
+              <Input  type="password" register={register} errors={errors} />
               
             </div>
 
             <div className={styles.inputContainer}>
               <label htmlFor=""></label>
 
-              <Input inputMethod="passwordConfirmation" registerMethod={register} />
+              <Input  type="passwordConfirmation" register={register} errors={errors} />
 
             </div>
           </div>

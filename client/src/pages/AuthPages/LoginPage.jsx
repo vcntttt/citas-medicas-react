@@ -26,9 +26,9 @@ export default function Login() {
 
           <div className={styles.containerData}>
 
-            <Input inputMethod="email" registerMethod={register}/>
+            <Input type="email" register={register} errors={errors}/>
 
-            <Input inputMethod="password"registerMethod={register} />
+            <Input  type="password" register={register} errors={errors} />
 
           </div>
           <div className={styles.containerSubmit }>
