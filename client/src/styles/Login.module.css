@@ -1,119 +1,73 @@
+
 .container {
-  display: flex;
-  width: 1200px;
-  margin: 0px auto;
-  height: 800px;
-  color: white;
-  text-align: center;
-  margin: 4% auto;
+    display: flex;
+    margin: 80px 0px;
+    text-align: center;
+    justify-content: center;
+
+
 }
 
-.containerTitle {
-  display: flex;
-  width: 100%;
-  height: 30%;
-  color: rgb(255, 255, 255);
-  justify-content: center;
-  align-items: center;
+.user {
+    width: 20%;
+    background-color: #2e3238;
 }
+
+.titleContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20%;
+}
+
 .title {
-  font-size: 36px;
-  font-weight: 400;
+    font-weight: 400;
+    font-size: 36px;
 }
-.imageContainer {
-  width: 65%;
-}
-.imageContainer img {
-  width: 100%;
-  height: 100%;
-}
-.registerMenu {
-  background-color: #2e3238;
-  width: 35%;
-}
+
 .form {
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-  height: 70%;
+    height: 80%;
+
 }
 
-.containerData {
-  display: flex;
-  flex-direction: column;
-  height: 40%;
-  justify-content: center;
-}
-
-.containerData input {
-  font-size: 15px;
-  margin: 20px 40px;
-  color: white;
+.inputs {
+    height: 40%; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .containerSubmit {
-  display: flex;
-  height: 30%;
-  justify-content: center;
-  align-items: center;
-}
-
-.containerSubmit input {
-  padding: 10px 90px;
+    height: 30%;
+    display: flex;
+    justify-content: center;    
+    color: white;
 }
 
 .submit {
-  margin: 10px auto;
-  background-color: #55ccc9;
-  border: none;
-  padding: 10px 40px;
-  color: black;
+    background-color: blue;
+    height: 60px;
+    width: 150px;
 }
 .submit:hover {
-  cursor: pointer;
-  background-color: #c1ffff;
+    cursor: pointer;
+    color: #000;
+    background-color: #55ccc9;
 }
 
-input {
-  color: rgb(0, 0, 0);
-  margin: 20px auto;
-  border: none;
-  outline: none;
-  box-shadow: none;
-  border-bottom: 1px solid white;
-  background-color: #2e3238;
-}
-input::placeholder {
-  color: white;
-  opacity: 0.6;
+.registerContainer {
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.containerRegister {
-  display: flex;
-  height: 30%;
-  justify-content: center;
-  align-items: center;
+.register {
+    color: white;
 }
 
-.containerRegister label {
-  font-size: 17px;
-  font-weight: 400;
-}
 
-.link {
-  color: white;
-}
-.link:hover {
-  color: #55ccc9;
-}
-.errorField {
-  display: flex;
-  color: rgb(221, 58, 58);
-  justify-content: left;
-  margin: 0px 0px 0px 40px;
-  font-size: 15px;
-  font-weight: 200;
-}
-label {
-  color: white;
+.image {
+    width: 40%;
 }
