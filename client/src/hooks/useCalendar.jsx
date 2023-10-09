@@ -19,12 +19,6 @@ function useCalendar() {
     getCitas();
   }, []);
 
-  useEffect(() => {
-    if (citas.length) {
-      console.log(citas);
-    }
-  }, [citas]);
-
   const handleClose = () => {
     setSelectedEvent(null);
   };

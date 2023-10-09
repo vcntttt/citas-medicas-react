@@ -1,4 +1,3 @@
-
 export default function Input({type, errors, register }) {
     return (
         <div>

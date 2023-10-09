@@ -39,7 +39,7 @@ const useAuthStore = create(persist((set,get) => ({
             const res = await verifyTokenRequest(cookies.token)
                 if (res.data){
                     set({ user: res.data, isAuthenticated: true });
-                    console.log("checkLogin")
+                    // console.log("checkLogin")
                 }else {
                     set({ user: null, isAuthenticated: false });
                 }
@@ -58,7 +58,7 @@ const useAuthStore = create(persist((set,get) => ({
         try{
             const {isAuthenticated} = get();
             if (!isAuthenticated) return
-            console.log("CheckData");
+            // console.log("CheckData");
             const res = await getProfileRequest();
             if(res.data.nombre && res.data.apellido){
                 set({ userData : res.data, userHasData : true });
@@ -83,6 +83,7 @@ const useAuthStore = create(persist((set,get) => ({
     },
     checkDates : async () => {
         try{
+            // console.log("checkDates");
             const {isAuthenticated} = get();
             if (!isAuthenticated) return
             const res = await getUserDates();
