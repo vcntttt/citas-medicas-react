@@ -1,4 +1,3 @@
-import styles from "../../styles/Login.module.css";
 import { useForm } from "react-hook-form"
 import { Link, useNavigate } from "react-router-dom";
 import { Toaster } from "sonner";
@@ -17,27 +16,27 @@ export default function Login() {
   useIfAuth();
   useErrorHandler(sigInErrors);
   return (
-    <div className={styles.container}>
+    <div className="flex text-center justify-center mx-0 my-20">
 
-      <div className={styles.user}>
+      <div className="w-1/5 bg-[#2e3238]">
 
-        <div className={styles.titleContainer}>
-          <h1 className={styles.title}>Login</h1>
+        <div className="flex justify-center items-center h-1/5">
+          <h1 className="font-normal text-4xl">Login</h1>
         </div>
 
-        <form className={styles.form} action="" onSubmit={handleSubmit(onSubmit)}>
+        <form className="h-4/5" action="" onSubmit={handleSubmit(onSubmit)}>
 
-          <div className={styles.inputs}>
+          <div className="h-2/5 flex flex-col justify-center items-center">
             <Input type="email" register={register} errors={errors} />
             <Input type="password" register={register} errors={errors} />
           </div>
 
-          <div className={styles.containerSubmit}>
-            <input className={styles.submit} type="submit" value="Entrar" />
+          <div className="h-[30%] flex justify-center text-[white]">
+            <input className=" h-[60px] w-[150px] hover:cursor-pointer hover:text-black hover:bg-[#55ccc9]" type="submit" value="Entrar" />
           </div>
 
-          <div  className={styles.registerContainer} >
-            <label className={styles.register} >No tienes una cuenta? <Link to="/register">Registrate</Link> </label>
+          <div  className="h-[30%] flex justify-center items-center" >
+            <label className="text-[white]" >No tienes una cuenta? <Link to="/register">Registrate</Link> </label>
             <Toaster duration={3000} toastOptions={{ style: { background: "red", color: "#fff", border: 0 } }} />
           </div>
 
@@ -46,7 +45,7 @@ export default function Login() {
       </div>
 
 
-      <img className={styles.image} src={image} />
+      <img className="w-2/5" src={image} />
 
     </div>
   )
