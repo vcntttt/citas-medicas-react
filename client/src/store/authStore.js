@@ -2,9 +2,10 @@ import {create} from 'zustand';
 import { loginRequest, registerRequest, verifyTokenRequest } from "../api/auth";
 import { getProfileRequest,getUserDates,updateProfile } from "../api/profile";
 import Cookies from "js-cookie";
-import {persist} from 'zustand/middleware'
+import {persist, devtools} from 'zustand/middleware'
 
-const useAuthStore = create(persist((set,get) => ({
+
+const useAuthStore = create(devtools(persist((set,get) => ({
     user: null,
     isAuthenticated: false,
     errors: [],
@@ -12,23 +13,25 @@ const useAuthStore = create(persist((set,get) => ({
     userDates : [],
     userHasData : false,
     role : null,
+    token: '',
 
     signIn : async (user,navigate) => {
         try{
             const res = await loginRequest(user);
-            set({ user: res.data, isAuthenticated: true });
+            set({ user: res.data, isAuthenticated: true },false, "SignIn");
             navigate("/");
         } catch(error){
             console.log(error.response);
-            set({ errors: error.response.data });
+            set({ errors: error.response.data },false, "SignInError");
         }
     },
     signUp : async (user,navigate) => {
         try{
             const res = await registerRequest(user);
-            set({ user: res.data, isAuthenticated: true });
+            set({ user: res.data, isAuthenticated: true } ,false, "SignUp");
             navigate("/");
         } catch(error){
+            set({ errors: error.response.data },false, "SignUpError");
             console.log(error.response.data);
         }
         },
@@ -38,27 +41,25 @@ const useAuthStore = create(persist((set,get) => ({
             try {
             const res = await verifyTokenRequest(cookies.token)
                 if (res.data){
-                    set({ user: res.data, isAuthenticated: true });
-                    // console.log("checkLogin")
+                    set({ user: res.data, isAuthenticated: true , token: cookies.token} ,false, "CheckLogin");
                 }else {
-                    set({ user: null, isAuthenticated: false });
+                    set({ user: null, isAuthenticated: false } ,false, "CheckLoginError");
                 }
             } catch (error) {
-                set({ user: null, isAuthenticated: false });
+                set({ user: null, isAuthenticated: false } ,false, "CheckLoginErrors");
                 console.log(error.response.data);
             }
         }
     },
     logOut : (navigate) => {
         Cookies.remove("token");
-        set({ user: null, isAuthenticated: false , userData : null, userHasData : false , userDates : [] });
+        set({ user: null, isAuthenticated: false , userData : null, userHasData : false , userDates : [], role : null, token: '' },false, "LogOut");
         navigate("/");
     },
     checkData : async () => {
         try{
             const {isAuthenticated} = get();
             if (!isAuthenticated) return
-            // console.log("CheckData");
             const res = await getProfileRequest();
             if(res.data.nombre && res.data.apellido){
                 set({ userData : res.data, userHasData : true });
@@ -83,7 +84,6 @@ const useAuthStore = create(persist((set,get) => ({
     },
     checkDates : async () => {
         try{
-            // console.log("checkDates");
             const {isAuthenticated} = get();
             if (!isAuthenticated) return
             const res = await getUserDates();
@@ -95,6 +95,6 @@ const useAuthStore = create(persist((set,get) => ({
 }),
 {
   name: 'authStore',
-}));
+})));
 
 export default useAuthStore;

@@ -59,15 +59,23 @@ export default function Date({date}) {
     <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-95 z-10 flex items-center justify-center">
     <div className="w-2/6 bg-slate-800 p-4 rounded-lg ">
       <h2 className="text-2xl py-2 mb-2 text-white">Citas de {date.doctor.especialidad} disponibles</h2>
-      {citas.map((cita) => (
-        <div className="flex flex-col justify-between bg-white p-4 mb-4 rounded" key={cita._id}>
-          <p><strong>Doctor:</strong> {cita.doctor.nombre} {cita.doctor.apellido}</p>
-          <p><strong>Hora de inicio:</strong> {cita.start.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
-          <p><strong>Hora de fin:</strong> {cita.end.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
-          <p><strong>Sala:</strong> {cita.sala}</p>
-          <button onClick={() => handleChange(cita)} className="bg-onahau-500 py-2 px-2 rounded mt-4">Cambiar Cita</button>
-        </div>
-      ))}
+        {citas.length > 0 ? (
+                citas.map((cita) => (
+                  <div className="flex flex-col justify-between bg-white p-4 mb-4 rounded" key={cita._id}>
+                    <p><strong>Doctor:</strong> {cita.doctor.nombre} {cita.doctor.apellido}</p>
+                    <p><strong>Hora de inicio:</strong> {cita.start.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
+                    <p><strong>Hora de fin:</strong> {cita.end.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
+                    <p><strong>Sala:</strong> {cita.sala}</p>
+                    <button onClick={() => handleChange(cita)} className="bg-onahau-500 py-2 px-2 rounded mt-4">Cambiar Cita</button>
+                  </div>
+                ))
+        ): (
+          <div>
+            <p className="text-white text-center py-4 bg-red-400">No hay citas para {date.doctor.especialidad.toLowerCase()} disponibles</p>
+            <p className="text-white p-2 text-xs mt-2">Si la desea cancelar de todas formas, puede hacerlo en la sección de citas</p>
+          </div>
+        )
+      }
           <button 
           onClick={() => setModal(false)}
           className="bg-onahau-500 py-2 px-2 rounded w-full mt-2">Cerrar</button>
