@@ -24,8 +24,4 @@ app.use("/api", profileRoutes);
 app.use("/api", drsRoutes);
 app.use('/api', citasRoutes);
 
-
-
-
-
 export default app; 

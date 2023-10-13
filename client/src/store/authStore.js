@@ -1,5 +1,5 @@
 import {create} from 'zustand';
-import { loginRequest, registerRequest, verifyTokenRequest } from "../api/auth";
+import {resendToken , loginRequest, registerRequest, verifyTokenRequest } from "../api/auth";
 import { getProfileRequest,getUserDates,updateProfile } from "../api/profile";
 import Cookies from "js-cookie";
 import {persist, devtools} from 'zustand/middleware'
@@ -88,6 +88,17 @@ const useAuthStore = create(devtools(persist((set,get) => ({
             if (!isAuthenticated) return
             const res = await getUserDates();
             set({ userDates : res.data });
+        } catch(error){
+            console.log(error.response);
+        }
+    },
+    renewToken : async () => {
+        try{
+            const {isAuthenticated} = get();
+            if (!isAuthenticated) return
+            const {user} = get();
+            const res = await resendToken(user.email);
+            set({ token: res.data, isAuthenticated: true },false, "RenewToken");
         } catch(error){
             console.log(error.response);
         }

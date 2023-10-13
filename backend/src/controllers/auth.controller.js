@@ -88,3 +88,23 @@ export const verify = async(req, res) => {
             email: userFound.email,
     })
 })}
+
+export const resendToken = async (req, res) => {
+    try {
+        const userEmail = req.params.userEmail;
+        if (!userEmail) {
+            return res.status(400).json(["Email no encontrado"]);
+        }
+        const user = await User.findOne({email: userEmail});
+        if (!user) {
+            return res.status(400).json(["Usuario no encontrado"]);
+        }
+        const token = await createAccesToken({ id: user._id });
+        res.cookie("token", token);
+        res.json({
+            token: token
+        })
+    } catch (error) {
+        console.error(error);
+    }
+}
