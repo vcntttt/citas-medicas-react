@@ -1,4 +1,3 @@
-import styles from "../../styles/Register.module.css";
 import image from "../../assets/registerImg.webp";
 import { useForm } from "react-hook-form";
 import { useNavigate, Link } from "react-router-dom";
@@ -21,20 +20,20 @@ export default function Register() {
   useIfAuth();
 
   return (
-    <div className={styles.container}>
-      <img className={styles.image} src={image} />
+    <div className="flex justify-center mt-20 mb-12 mx-0">
+      <img src={image} />
 
 
-      <div className={styles.register}>
+      <div className="bg-[#2E3238] w-1/5">
 
-        <div className={styles.registerTitle}>
-          <h1>Registro</h1>
+        <div className="flex h-1/4 items-center justify-center">
+          <h1 className=" text-[white] font-medium text-[2rem]">Registro</h1>
         </div>
 
 
-        <form className={styles.registerMenu} action="" onSubmit={handleSubmit(onSubmit)}>
+        <form className="h-3/4" action="" onSubmit={handleSubmit(onSubmit)}>
 
-          <div className={styles.registerMenuInput}>
+          <div className="flex flex-col text-center h-3/6">
             <Input type="email" placeholder="Email" register={register} errors={errors} />
 
             <Input type="password" placeholder="Contraseña" register={register} errors={errors} />
@@ -45,12 +44,12 @@ export default function Register() {
 
           <Toaster duration={3000} toastOptions={{ style: { background: "red", color: "#fff", border: 0 } }} />
 
-          <div className={styles.registerMenuButton}>
-            <input type="submit" value="Entrar" />
+          <div className="flex h-1/5 justify-center items-center">
+            <input className="w-[200px] h-[50px] bg-[#55CCC9] hover:cursor-pointer hover:bg-[#46a4a1]"  type="submit" value="Entrar" />
           </div>
 
-          <div className={styles.registerMenuLink}>
-            <label  >Ya tienes una cuenta? <Link className={styles.link} to="/login"><u>Inicia Sesion</u></Link> </label>
+          <div className="flex h-1/4 justify-center items-center text-[white]">
+            <label  >Ya tienes una cuenta? <Link className="no-underline" to="/login"><u>Inicia Sesion</u></Link> </label>
 
 
           </div>
