@@ -11,6 +11,7 @@ import ProtectedRoute from "./ProtectedRoute.jsx";
 import ConfirmPage from "./pages/DatePages/ConfirmPage.jsx";
 import Layout from "./components/Header/Layout.jsx";
 import CalendarPage from "./pages/DatePages/CalendarPage.jsx";
+import JobsList from "./pages/InfoPages/JobsList.jsx";
 
 export default function App() {
   return (
@@ -20,7 +21,9 @@ export default function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/drspage" element={<DrsPage/>} />
+          <Route path="/drs" element={<DrsPage/>} />
+          <Route path="/jobsList" element={<JobsList />} />
+          <Route path="/drs/:id" element={<DrsPage />} />
           <Route path="*" element={<NotFound />} />
           <Route element={<ProtectedRoute />}>
           <Route path="/calendar/:id" element={<CalendarPage />} />
