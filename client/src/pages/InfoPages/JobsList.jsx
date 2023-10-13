@@ -13,7 +13,7 @@ export default function JobsList() {
       }
     }
     getEspecialidades();
-  })
+  },[])
   return (
     <div className="">
       <h1 className="text-black my-10 text-2xl">Contamos con las siguientes especialidades</h1>

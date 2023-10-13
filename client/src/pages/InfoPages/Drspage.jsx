@@ -16,7 +16,7 @@ export default function Drspage() {
       }
     }
     getDrs();
-  })
+  },[id])
   return (
     <div>
       <h1 className="text-black text-2xl">Aca se podran ver los doctores</h1>
