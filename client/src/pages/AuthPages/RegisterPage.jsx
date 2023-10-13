@@ -2,19 +2,19 @@ import styles from "../../styles/Register.module.css";
 import image from "../../assets/registerImg.webp";
 import { useForm } from "react-hook-form";
 import { useNavigate, Link } from "react-router-dom";
-import { Toaster} from "sonner";
+import { Toaster } from "sonner";
 import useAuthStore from "../../store/authStore";
 import useErrorHandler from "../../hooks/useErrors";
 import useIfAuth from "../../hooks/useIfAuth";
 import Input from "../../components/Input/Input.jsx";
 export default function Register() {
 
-  const {register, handleSubmit, formState: { errors },} = useForm();
+  const { register, handleSubmit, formState: { errors }, } = useForm();
 
-  const { signUp, errors: registerErrors} = useAuthStore();
-  
+  const { signUp, errors: registerErrors } = useAuthStore();
+
   const navigate = useNavigate();
-  const onSubmit =  handleSubmit(async (data) => {
+  const onSubmit = handleSubmit(async (data) => {
     signUp(data, navigate);
   })
   useErrorHandler(registerErrors);
@@ -22,59 +22,42 @@ export default function Register() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.imageContainer}>
-        <img src={image} />
-      </div>
+      <img className={styles.image} src={image} />
 
-      <div className={styles.registerMenu}>
-        <div className={styles.containerTitle}>
+
+      <div className={styles.register}>
+
+        <div className={styles.registerTitle}>
           <h1>Registro</h1>
         </div>
 
-        <form
-          className={styles.form}
-          action=""
-          onSubmit={handleSubmit(onSubmit)}
-        >
-          <div className={styles.containerInput}>
-            <div className={styles.inputContainer}>
-              <label htmlFor=""></label>
 
-              <Input type="email" register={register} errors={errors}/>
+        <form className={styles.registerMenu} action="" onSubmit={handleSubmit(onSubmit)}>
 
-            </div>
+          <div className={styles.registerMenuInput}>
+            <Input type="email" placeholder="Email" register={register} errors={errors} />
 
-            <div className={styles.inputContainer}>
-              <label htmlFor=""></label>
+            <Input type="password" placeholder="Contraseña" register={register} errors={errors} />
 
-              <Input  type="password" register={register} errors={errors} />
-              
-            </div>
-
-            <div className={styles.inputContainer}>
-              <label htmlFor=""></label>
-
-              <Input  type="passwordConfirmation" register={register} errors={errors} />
-
-            </div>
+            <Input type="passwordConfirmation" placeholder="Confirmar Contraseña" register={register} errors={errors} />
           </div>
-          <Toaster 
-          duration={3000}
-          toastOptions={{
-            style: {
-              background: "red",
-              color: "#fff",
-              border: 0
-            }
-          }}
-          />
-          <div className={styles.containerSubmit}>
-            
-            <input className={styles.submit} type="submit" value="Entrar" />
+
+
+          <Toaster duration={3000} toastOptions={{ style: { background: "red", color: "#fff", border: 0 } }} />
+
+          <div className={styles.registerMenuButton}>
+            <input type="submit" value="Entrar" />
           </div>
-          <label className={styles.containerLink} >Ya tienes una cuenta? <Link className={styles.link} to="/login"><u>Inicia Sesion</u></Link> </label>
+
+          <div className={styles.registerMenuLink}>
+            <label  >Ya tienes una cuenta? <Link className={styles.link} to="/login"><u>Inicia Sesion</u></Link> </label>
+
+
+          </div>
         </form>
+
       </div>
+
     </div>
   );
 }
