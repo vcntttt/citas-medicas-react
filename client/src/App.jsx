@@ -12,6 +12,7 @@ import ConfirmPage from "./pages/DatePages/ConfirmPage.jsx";
 import Layout from "./components/Header/Layout.jsx";
 import CalendarPage from "./pages/DatePages/CalendarPage.jsx";
 import JobsList from "./pages/InfoPages/JobsList.jsx";
+import WePage from "./pages/InfoPages/WePage.jsx";
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/we" element={<WePage />} />
           <Route path="/drs" element={<DrsPage/>} />
           <Route path="/jobsList" element={<JobsList />} />
           <Route path="/drs/:id" element={<DrsPage />} />

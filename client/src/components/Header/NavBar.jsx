@@ -8,7 +8,7 @@ export default function NavBar() {
             <li><NavLink className={({isActive}) => isActive ? styles.active : styles.noActive} to="/">Home</NavLink></li>
             <li><NavLink className={({isActive}) => isActive ? styles.active : styles.noActive} to="/jobsList">Especialidades Disponibles</NavLink></li>
             <li><NavLink className={({isActive}) => isActive ? styles.active : styles.noActive} to="/drs">Nuestros Doctores</NavLink></li>
-            <li><NavLink className={({isActive}) => isActive ? styles.active : styles.noActive} to="/drs">Nosotros</NavLink></li>
+            <li><NavLink className={({isActive}) => isActive ? styles.active : styles.noActive} to="/we">Nosotros</NavLink></li>
         </ul>
         <UserCard/>
     </div>
