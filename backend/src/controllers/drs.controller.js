@@ -1,5 +1,8 @@
 import Cita from '../models/citas.model.js';
-
+import { Doctor } from '../models/citas.model.js';
+import User from '../models/user.model.js';
+import bcrypt from 'bcryptjs';
+import { createAccesToken } from '../libs/jwt.js'
 
 export const getDoctors = async (req, res) => {
     try {
@@ -21,4 +24,83 @@ export const getEspecialidades = async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: 'Error al obtener las especialidades', error: error.message });
     }
+}
+
+export const registerDr = async (req, res) => {
+  const { email, password, passwordConfirmation,
+     nombre, apellido, especialidad, role } = req.body;
+
+  if (role !== 'doctor') {
+      return res.status(400).json({ message: "El rol debe ser dr" });
+  }
+  if (password !== passwordConfirmation) {
+      return res.status(400).json({ message: "La contraseña y la confirmación de contraseña no coinciden" });
+  }
+
+  try {
+      const userFound = await User.findOne({ email });
+      if (userFound) {
+          return res.status(400).json(["El email ya esta en uso"]);
+      }
+
+      const passwordHash = await bcrypt.hash(password, 10);
+      const newUser = new User({
+          email,
+          password: passwordHash,
+          role: 'doctor' 
+      });
+      const userSaved = await newUser.save();
+
+      const nuevoDoctor = new Doctor({
+          email,
+          nombre,
+          apellido,
+          especialidad,
+          userId: userSaved._id 
+      });
+      await nuevoDoctor.save();
+
+      const token = await createAccesToken({ id: userSaved._id });
+      res.cookie('token', token);
+      res.json({
+          id: userSaved._id,
+          email: userSaved.email,
+          createdAt: userSaved.createdAt,
+          updatedAt: userSaved.updatedAt,
+          role: 'doctor'
+      });
+  } catch (error) {
+      res.status(500).json({ message: error.message });
+  }
+};
+
+export const newDateAsDr = async (req, res) => {
+  try{
+    const { paciente, horaInicio, horaFin, estado, sala } = req.body;
+
+    const userId = req.user.id
+    const user = await User.findById(userId);
+    const doctor = await Doctor.findOne({email: user.email});
+
+    if (!doctor){
+      return res.status(404).json({ message: 'Usuario no encontrado' });
+    }else{
+      console.log(doctor)
+    }
+    
+    const nuevaCita = new Cita({
+      paciente,
+      doctor,
+      horaInicio,
+      horaFin,
+      estado,
+      sala
+    });
+
+    const citaGuardada = await nuevaCita.save();
+
+    res.status(201).json(citaGuardada);
+  } catch (error) {
+      res.status(500).json({ message: 'Error al tomar la cita', error: error.message });
+  }
 }
