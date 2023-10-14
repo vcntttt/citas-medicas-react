@@ -11,7 +11,7 @@ import ProtectedRoute from "./ProtectedRoute.jsx";
 import ConfirmPage from "./pages/DatePages/ConfirmPage.jsx";
 import Layout from "./components/Header/Layout.jsx";
 import CalendarPage from "./pages/DatePages/CalendarPage.jsx";
-import JobsList from "./pages/InfoPages/JobsList.jsx";
+import JobsList from "./pages/InfoPages/JobsListPage.jsx";
 import WePage from "./pages/InfoPages/WePage.jsx";
 
 export default function App() {
