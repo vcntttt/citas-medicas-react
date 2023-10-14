@@ -1,6 +1,7 @@
 
 //import styles from '../../styles/WePage.module.css';
-import image from '../../assets/homeImg.webp';
+import doc_1 from '../../assets/doc_1.png';
+import doc_2 from '../../assets/doc_2.png';
 import Button from '../../components/Info/Button';
 import { useState } from 'react';
 
@@ -17,7 +18,7 @@ export default function WePage() {
       setText('La historia de la plataforma podría incluir detalles sobre su fundación, por quién y cuándo se creó, así como las etapas clave de su desarrollo y crecimiento. También podría destacar momentos importantes en la evolución de la plataforma.');
     } else if (option == "premios") {
       setText('Los premios que ha recibido una plataforma de citas médicas podrían incluir reconocimientos por su contribución a la atención médica, innovación tecnológica, calidad de servicio o cualquier otro logro significativo. Es importante mencionar los premios específicos que la plataforma haya ganado');
-    }else if (option == "directorio") {
+    } else if (option == "directorio") {
       setText('El directorio de la plataforma incluiría información sobre los profesionales de la salud y los proveedores que están disponibles a través de la plataforma para que los pacientes puedan buscar y programar citas con ellos. Debería proporcionar detalles sobre la especialización de los médicos, su ubicación, horarios disponibles y cualquier otra información relevante para los pacientes.')
     } else {
       setText("error")
@@ -45,12 +46,15 @@ export default function WePage() {
 
       <div className="w-6/12 flex ml-4 ">
         <div className=" w-[80%]">
-          <h1 className=" text-[black] text-[larger] mb-8">Nosotros</h1>
-          <p>
-            {text}
+          <div className='h-[80%]'>
+            <h1 className=" text-[black] mb-8 text-xl">Nosotros</h1>
+            <p className=' mb-8">{'>
+              {text}
+            </p>
 
-          </p>
-          <p className=" bg-[#C1FFFF] mx-0 my-40">
+          </div>
+
+          <p className=" bg-[#C1FFFF] ">
             "La medicina no tiene color; es un puente que nos
             conecta a todos, sin importar el tono de piel.
             Juntos, creamos un futuro de salud y bienestar
@@ -59,9 +63,9 @@ export default function WePage() {
         </div>
 
         <div className=" w-60  ">
-          <img className="m-2.5" src={image} />
+          <img className="m-2.5" src={doc_1} />
 
-          <img className="m-2.5" src={image} />
+          <img className="m-2.5" src={doc_2} />
         </div>
 
       </div>
