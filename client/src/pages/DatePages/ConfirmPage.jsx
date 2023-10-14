@@ -1,4 +1,3 @@
-import styles from "../../styles/Confirm.module.css";
 import { useLocation, useNavigate } from "react-router-dom";
 import { pickDateRequest } from "../../api/citas.js";
 import { Toaster , toast} from "sonner";
@@ -23,23 +22,23 @@ export default function ConfirmPage() {
     }
   };
   
-return (
-    <div className={styles.container}>
-      <div className={styles.subContainer}>
+  return (
+    <div className="flex bg-gray-500 h-[90vh] flex-col">
+      <div className="flex flex-col justify-center m-auto p-[10px] bg-gray-800 w-[70%] h-[80%]">
       <h1>Confirme su cita</h1>
-        <p>
-          <span>Profesional:</span>{event.doctor.nombre} {event.doctor.apellido}
+        <p className="flex items-center m-[20px] text-[13pt] bg-white text-black p-[20px]">
+          <span className="font-bold mr-4">Profesional:</span>{event.doctor.nombre} {event.doctor.apellido}
         </p>
-        <p>
-          <span>Servicio:</span> {event.doctor.especialidad}
+        <p className="flex items-center m-[20px] text-[13pt] bg-white text-black p-[20px]">
+          <span className="font-bold mr-4">Servicio:</span> {event.doctor.especialidad}
         </p>
-        <p>
-          <span>Fechas:</span> {event.start.toLocaleDateString()}
+        <p className="flex items-center m-[20px] text-[13pt] bg-white text-black p-[20px]">
+          <span className="font-bold mr-4">Fechas:</span> {event.start.toLocaleDateString()}
         </p>
-        <p>
-          <span>Ubicación:</span> Av.Alemania 231, {event.sala}
+        <p className="flex items-center m-[20px] text-[13pt] bg-white text-black p-[20px]">
+          <span className="font-bold mr-4">Ubicación:</span> Av.Alemania 231, {event.sala}
         </p>
-        <button onClick={handleClick} className={styles.btn}>
+        <button onClick={handleClick} className="m-auto rounded-[10px] bg-[#c1ffff] text-black font-normal py-[2px] px-[10px] hover:bg-[#55ccc9] hover:cursor-pointer hover:text-white">
           Confirmar
         </button>
         <Toaster
@@ -49,4 +48,3 @@ return (
     </div>
   );
 }
- 

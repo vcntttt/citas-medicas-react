@@ -1,7 +1,7 @@
 
 //import styles from '../../styles/WePage.module.css';
-import doc_1 from '../../assets/doc_1.png';
-import doc_2 from '../../assets/doc_2.png';
+import doc_1 from '../../assets/doc_1.webp';
+import doc_2 from '../../assets/doc_2.webp';
 import Button from '../../components/Info/Button';
 import { useState } from 'react';
 
