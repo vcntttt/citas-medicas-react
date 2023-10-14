@@ -26,17 +26,17 @@ export default function Login() {
 
         <form className="h-4/5" action="" onSubmit={handleSubmit(onSubmit)}>
 
-          <div className="h-2/5 flex flex-col justify-center items-center">
-            <Input type="email" register={register} errors={errors} />
-            <Input type="password" register={register} errors={errors} />
+          <div className="h-2/5 flex flex-col justify-center items-center mb-10">
+            <Input type="email" placeholder="Email" register={register} errors={errors} />
+            <Input type="password"  placeholder="Contraseña" register={register} errors={errors} />
           </div>
 
-          <div className="h-[30%] flex justify-center text-[white]">
-            <input className=" h-[60px] w-[150px] hover:cursor-pointer hover:text-black hover:bg-[#55ccc9]" type="submit" value="Entrar" />
+          <div className="h-[30%] flex justify-center text-[black] ">
+            <input className=" h-[50px] w-[200px] hover:cursor-pointer hover:text-black bg-[#55ccc9] hover:bg-[#55ccc9]" type="submit" value="Entrar" />
           </div>
 
           <div  className="h-[30%] flex justify-center items-center" >
-            <label className="text-[white]" >No tienes una cuenta? <Link to="/register">Registrate</Link> </label>
+            <label className="text-[white]" >No tienes una cuenta? <Link to="/register" className="underline">Registrate</Link> </label>
             <Toaster duration={3000} toastOptions={{ style: { background: "red", color: "#fff", border: 0 } }} />
           </div>
 
