@@ -1,21 +1,29 @@
 import {useForm} from 'react-hook-form'
-import { newDateRequest } from "../../api/drs";
+import { getDoctoresRequest, newDateRequest } from "../../api/drs";
+import useAuthStore from '../../store/authStore';
+import useRequest from '../../hooks/useRequest';
+
 export default function DateForm() {
     const {register, handleSubmit, formState: { errors }} = useForm();
-
+    const {role} = useAuthStore();
+    const {data: drs} = useRequest(() => getDoctoresRequest());
     const onSubmit = handleSubmit(async (data) => {
         try{
             const horaInicio = new Date(data.hora)
             const horaFin = new Date(data.hora)
             horaFin.setHours(horaFin.getHours() + 1)
-    
-            const result = {
-                doctor: 'alo',
-                horaInicio : horaInicio.toISOString(),
+            const doctorFound = drs?.find((item) => item._id === data.doctor)
+            let result = role ==='admin' ? {
+                doctor : doctorFound,
+                horaInicio: horaInicio.toISOString(),
+                horaFin: horaFin.toISOString(),
+                sala: data.sala
+
+            } : {
+                horaInicio: horaInicio.toISOString(),
                 horaFin: horaFin.toISOString(),
                 sala: data.sala
             }
-    
             await newDateRequest(result)
         } catch (error) {
             console.log(error)
@@ -37,6 +45,18 @@ export default function DateForm() {
             <option value="Sala E">Sala E</option>
             </select>
             {errors.sala && <p>Este campo es requerido</p>}
+            {role === 'admin' ? (
+                <>
+                    Escoje un doctor
+                    <select {...register('doctor', {required: true})}>
+                        {drs.map((item) => (
+                            <option key={item._id} value={item._id}>{item.nombre} {item.apellido}</option>
+                        ))}
+                    </select>
+                    {errors.doctor && <p>Este campo es requerido</p>}
+                </>
+            ) : null
+        }
             <input className='hover:cursor-pointer bg-slate-600 p-4 text-white'
             type="submit" />
         </form>

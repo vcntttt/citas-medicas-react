@@ -20,7 +20,6 @@ const useAuthStore = create(devtools(persist((set,get) => ({
         try{
             const res = await loginRequest(user);
             set({ user: res.data, isAuthenticated: true, role: res.data.role },false, "SignIn");
-            console.log(res.data)
             navigate("/");
         } catch(error){
             console.log(error.response);
@@ -65,7 +64,6 @@ const useAuthStore = create(devtools(persist((set,get) => ({
             const res = await getProfileRequest();
             if (res.data.role == 'doctor') {
                 const drRes = await getInfoDoc();
-                console.log(drRes.data)
                 set({ userData : drRes.data, userHasData : true },false, "CheckDataDoctor");
                 set({ role : res.data.role } ,false, "setDoctorRole");
                 return
