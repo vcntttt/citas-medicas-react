@@ -41,9 +41,15 @@
     width: 65%;
 }
 
+.containerInfoText h1 {
+    color: black;
+    font-size: larger;
+    margin-bottom: 2rem;
+}
+
 .date {
-    margin: 0px 2rem;
-    border-radius: 10px;
+
+    margin: 10rem 0px;
     background-color: #C1FFFF;
 }
 
