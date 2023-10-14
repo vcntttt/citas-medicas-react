@@ -29,9 +29,6 @@ export const registerDr = async (req, res) => {
   const { email, password, passwordConfirmation,
      nombre, apellido, especialidad, role } = req.body;
 
-  if (role !== 'doctor') {
-      return res.status(400).json({ message: "El rol debe ser dr" });
-  }
   if (password !== passwordConfirmation) {
       return res.status(400).json({ message: "La contraseña y la confirmación de contraseña no coinciden" });
   }
@@ -55,7 +52,7 @@ export const registerDr = async (req, res) => {
           nombre,
           apellido,
           especialidad,
-          userId: userSaved._id 
+          userId: userSaved._id
       });
       await nuevoDoctor.save();
 

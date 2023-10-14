@@ -9,6 +9,8 @@ import useModal from '../hooks/useModal';
 import Modal from '../components/Modal';
 import DateForm from '../components/Home/DateForm';
 import DrForm from '../components/Home/DrForm';
+import capitalize from '../hooks/capitalizeHelper'; 
+
 export default function Home() {
   const navigate = useNavigate();
   const { userData, userHasData, userDates, role} = useAuthStore();
@@ -20,31 +22,36 @@ export default function Home() {
   return (
     <div className = "mt-30 flex gap-200 items-center justify-center ">
       <div className={styles.ui}>
-        <h1 className = "text-black text-6xl not-italic font-normal leading-normal">
-          
-          Hola , {userData?.nombre ? userData.nombre : "usuario"}
-          </h1>
-        <button className = "w-375 h-105 rounded-xl bg-onahau-500 shadow-custom text-black text-4xl font-normal leading-normal font-inter hover:bg-onahau-600 hover:text-white hover:cursor-pointer" 
+      <h1 className="text-black text-6xl not-italic font-normal leading-normal">
+    {
+        role === "paciente"  || role === null ? 
+        `Hola, ${userData?.nombre ? userData.nombre : "usuario"}` :
+        `Bienvenido ${capitalize(role)}`
+    }
+</h1>
+<div className='flex flex-col items-center'> 
+        <button className = "w-375 h-105 rounded-xl mb-4 bg-onahau-500 shadow-custom text-black text-4xl font-normal leading-normal font-inter hover:bg-onahau-600 hover:text-white hover:cursor-pointer" 
         onClick={() => userHasData ? navigate("/jobs") : navigate("/formulary")}>Tomar Hora</button>
-      {userData?.role === "admin" && 
-      <div className='flex gap-5 mt-3 justify-center'>
-        <Btn onClick={openModalCita}>Ingresar Cita</Btn>
-        <Modal isOpen={isOpenCita} onClose={closeModalCita}>
-          <h1 className='text-black text-2xl py-2 mt-4'>Crear Cita</h1>
-          <DateForm/>
-        </Modal>
-        <Btn onClick={openModalDoctor}>Ingresar Doctor</Btn>
-        <Modal isOpen={isOpenDoctor} onClose={closeModalDoctor}>
-          <h1 className='text-black text-2xl py-2 mt-4'>Agregar Doctor</h1>
-          <DrForm/>
-        </Modal>
-      </div> 
-      }
-      {userData?.role === "doctor" || role === "doctor" && 
-      <div className='flex gap-5 mt-3 justify-center'>
-        <Btn>Ingresar Cita</Btn>
-      </div> 
-      }
+      {role === "admin" || role === "doctor" ? (
+    <>
+      <Btn onClick={openModalCita}>Ingresar Cita</Btn>
+      <Modal isOpen={isOpenCita} onClose={closeModalCita}>
+        <h1 className='text-black text-2xl py-2 mt-4'>Crear Cita</h1>
+        <DateForm />
+      </Modal>
+    </>
+  ) : null}
+  
+  {role === "admin" && (
+    <>
+      <Btn onClick={openModalDoctor}>Ingresar Doctor</Btn>
+      <Modal isOpen={isOpenDoctor} onClose={closeModalDoctor}>
+        <h1 className='text-black text-2xl py-2 mt-4'>Agregar Doctor</h1>
+        <DrForm />
+      </Modal>
+    </>
+  )}
+</div>
       </div>
       <aside>
         {userDates && userData && userDates.length > 0
