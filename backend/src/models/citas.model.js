@@ -1,27 +1,23 @@
 import mongoose from 'mongoose';
 
 
-const DoctorSchema = new mongoose.Schema({
-    nombre: {type: String, required: true},
-    apellido: {type: String, required: true},
-    especialidad: {type: String, required: true},
-});
-
-const PacienteSchema = new mongoose.Schema({
-    email: String,
-    rut: String,
-    nombre: String,
-    apellido: String,
-});
-
 const citaSchema = new mongoose.Schema({
-    doctor: { type: DoctorSchema, required: true },
-    horaInicio: { type: Date, required: true },
-    horaFin: { type: Date, required: true },
-    paciente: PacienteSchema,
-    estado: { type: Boolean, required: true , default: false},
-    sala: { type: String, required: true },
+    doctor_id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Doctor'
+    },
+    paciente_id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Paciente'
+    },
+    especialidad_id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Especialidad'
+    },
+    fechaInicio: Date,
+    fechaTermino: Date,
+    estado: String,
+    sala: String
 });
 
-export const Paciente = mongoose.model('Paciente', PacienteSchema);
-export default mongoose.model('Cita', citaSchema);
+export const Cita = mongoose.model('Cita', citaSchema);

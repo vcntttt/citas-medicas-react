@@ -1,21 +1,6 @@
 import mongoose from 'mongoose';
 
-
-const generateRandomRut = () => {
-    const randomPart = Math.floor(Math.random() * 1000000000); 
-    const rut = `${String(randomPart).padStart(9, '0')}`;
-    const rutFormatted = `${rut.substr(0, 2)}.${rut.substr(2, 3)}.${rut.substr(5, 3)}-${rut.substr(8, 1)}`;
-    return rutFormatted;
-};
-
-
-// const validateRut = (rut) => {
-//     const rutRegex = /^\d{2}\.\d{3}\.\d{3}-\d$/;
-//     return rutRegex.test(rut);
-// };
-
 const userSchema = new mongoose.Schema({
-
     email: {
         type: String,
         required: true,
@@ -26,24 +11,26 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    nombre: String,
-    apellido: String,
-    rut: {
-        type: String,
-        unique: true,
-        default: generateRandomRut
-    },
     role: {
         type: String,
-        enum: ['doctor', 'paciente'],
+        enum: ['administrador', 'doctor', 'paciente'],
         default: 'paciente'
+    },
+    // Agrega campos para relacionar usuarios con sus respectivas colecciones
+    paciente: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Paciente'
+    },
+    doctor: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Doctor'
+    },
+    administrador: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Administrador'
     }
-},
+}, {
+    timestamps: true
+});
 
-    {
-        timestamps: true
-    })
-
-
-
-export default mongoose.model('User', userSchema)
+export default mongoose.model('User', userSchema);
