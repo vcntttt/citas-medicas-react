@@ -1,39 +1,28 @@
 
-import styles from '../../styles/WePage.module.css';
+//import styles from '../../styles/WePage.module.css';
 import image from '../../assets/homeImg.webp';
+import Button from '../../components/Info/Button';
 
 export default function WePage() {
   return (
-    <div className={styles.container}>
+    <div className="flex justify-center text-center mx-20 my-20">
 
 
-      <div className={styles.containerPanel}>
+      <div className="flex w-[20%] bg-[#2E3238] flex-col  ">
 
-        <div className={styles.containerButton}>
-          <button>Nuestra mision</button>
-        </div>
+        <Button name="Historia" />
 
-        <div className={styles.containerButton}>
-          <button>Historia</button>
-        </div>
+        <Button name="Hola" />
 
-        <div className={styles.containerButton}>
-          <button>Premios</button>
-        </div>
+        <Button name="Premios" />
 
-        <div className={styles.containerButton}>
-          <button>Directorio</button>
-
-        </div>
+        <Button name="Directorio" />
 
       </div>
 
-
-
-
-      <div className={styles.containerInfo}>
-        <div className={styles.containerInfoText}>
-          <h1>Nosotros</h1>
+      <div className="w-6/12 flex ml-4 ">
+        <div className=" w-[80%]">
+          <h1 className=" text-[black] text-[larger] mb-8">Nosotros</h1>
           <p>Buenos días/tardes/noches a todos. En este momento, me
             complace enormemente poder compartir con ustedes la misión
             que impulsa nuestra web app de enlace médico.En un mundo
@@ -45,7 +34,7 @@ export default function WePage() {
             explique cómo nuestra misión transformará la forma en
             que las personas acceden y experimentan la atención médica.
           </p>
-          <p className={styles.date}>
+          <p className=" bg-[#C1FFFF] mx-0 my-40">
           "La medicina no tiene color; es un puente que nos 
           conecta a todos, sin importar el tono de piel.
           Juntos, creamos un futuro de salud y bienestar
@@ -53,10 +42,10 @@ export default function WePage() {
           </p>
         </div>
 
-        <div className={styles.containerImages}>
-          <img src={image} />
+        <div className=" w-60  ">
+          <img className="m-2.5" src={image} />
 
-          <img src={image} />
+          <img className="m-2.5" src={image} />
         </div>
 
       </div>
