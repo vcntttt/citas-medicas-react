@@ -3,7 +3,7 @@ import {resendToken , loginRequest, registerRequest, verifyTokenRequest } from "
 import { getProfileRequest,getUserDates,updateProfile } from "../api/profile";
 import Cookies from "js-cookie";
 import {persist, devtools} from 'zustand/middleware'
-import { getInfoDoc } from '../api/drs';
+import { getCitasDoctor, getInfoDoc } from '../api/drs';
 
 
 const useAuthStore = create(devtools(persist((set,get) => ({
@@ -93,6 +93,12 @@ const useAuthStore = create(devtools(persist((set,get) => ({
         try{
             const {isAuthenticated} = get();
             if (!isAuthenticated) return
+            const {role} = get()
+            if (role ==='doctor'){
+                const drRes = await getCitasDoctor();
+                set({ userDates : drRes.data }, false, "CheckDatesDoctor");
+                return
+            }
             const res = await getUserDates();
             set({ userDates : res.data }, false, "CheckDates");
         } catch(error){

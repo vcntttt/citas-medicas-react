@@ -9,3 +9,5 @@ export const newDateRequest = (data) => axios.post(`/citas/add/dr`, data);
 export const getInfoDoc = () => axios.get(`/profile/dr/`);
 
 export const registerDrRequest = (data) => axios.post(`/register/dr`, data);
+
+export const getCitasDoctor = () => axios.get(`/citas/dr`);

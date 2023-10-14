@@ -44,33 +44,38 @@ export default function Date({date}) {
   }
   return (
     <div className="bg-gray-100 p-6 m-2 flex flex-row justify-between items-start">
-        <div className="flex flex-col justify-between min-w-[60%] h-full">
-        <h1 className="text-xl text-black">
-          {role === "doctor" ? '' : date.doctor.especialidad}
-        </h1>
-        <p>
-          <strong>
-            {role === "doctor" ? 'Paciente: ' : 'Doctor: '}
-          </strong> 
-          {role === "doctor" 
-            ? (date.paciente 
-                ? `${date.paciente.nombre} ${date.paciente.apellido}` 
-                : 'Sin asignar')
-            : `${date.doctor.nombre} ${date.doctor.apellido}`
-        }
-        </p>
-        <p><strong>Hora de inicio:</strong> {date.start.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
-        <p><strong>Hora de fin:</strong> {date.end.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
-        <p><strong>Sala:</strong> {date.sala}</p>
-        {role === 'doctor' && (
-          <p><strong>Estado:</strong> {date.estado ? 'No disponible' : 'Disponible'}</p>
+        {role === 'paciente' && (
+          <div>
+                  <div className="flex flex-col justify-between min-w-[60%] h-full">
+                  <h1 className="text-xl text-black">{date.doctor.especialidad}</h1>
+                  <p><strong>Doctor:</strong> {date.doctor.nombre} {date.doctor.apellido}</p>
+                  <p><strong>Hora de inicio:</strong> {date.start.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
+                  <p><strong>Hora de fin:</strong> {date.end.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
+                  <p><strong>Sala:</strong> {date.sala}</p>
+                  </div>
+                  <div className="flex flex-col justify-end gap-2 ml-4 my-auto">
+                  <Btn onClick={handleUpdate}>Modificar</Btn>
+                  <Btn onClick={handleCancel}>Cancelar</Btn>
+                  </div>
+                  <Toaster/>
+          </div>
         )}
-        </div>
-        <div className="flex flex-col justify-end gap-2 ml-4 my-auto">
-        <Btn onClick={handleUpdate}>Modificar</Btn>
-        <Btn onClick={handleCancel}>Cancelar</Btn>
-        </div>
-        <Toaster/>
+        {role === 'doctor' && (
+                    <div>
+                    <div className="flex flex-col justify-between min-w-[60%] h-full">
+                    <h1 className="text-xl text-black">{date.doctor.especialidad}</h1>
+                    <p><strong>Doctor:</strong> {date.doctor.nombre} {date.doctor.apellido}</p>
+                    <p><strong>Hora de inicio:</strong> {date.start.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
+                    <p><strong>Hora de fin:</strong> {date.end.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
+                    <p><strong>Sala:</strong> {date.sala}</p>
+                    </div>
+                    <div className="flex flex-col justify-end gap-2 ml-4 my-auto">
+                    <Btn onClick={handleUpdate}>Modificar</Btn>
+                    <Btn onClick={handleCancel}>Cancelar</Btn>
+                    </div>
+                    <Toaster/>
+            </div>
+        )}
         { modal && (
     <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-95 z-10 flex items-center justify-center">
     <div className="w-2/6 bg-slate-800 p-4 rounded-lg ">
