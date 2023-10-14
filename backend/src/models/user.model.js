@@ -8,12 +8,6 @@ const generateRandomRut = () => {
     return rutFormatted;
 };
 
-
-// const validateRut = (rut) => {
-//     const rutRegex = /^\d{2}\.\d{3}\.\d{3}-\d$/;
-//     return rutRegex.test(rut);
-// };
-
 const userSchema = new mongoose.Schema({
 
     email: {
@@ -35,7 +29,7 @@ const userSchema = new mongoose.Schema({
     },
     role: {
         type: String,
-        enum: ['doctor', 'paciente'],
+        enum: ['doctor', 'paciente, admin'],
         default: 'paciente'
     }
 },

@@ -76,3 +76,30 @@ export const getUserDates = async (req, res) => {
             res.status(500).json({ message: error.message });
         }
     };
+
+
+
+
+
+
+
+
+    // export const agregarDoctor = async (req, res) => {
+    //     try {
+    //         const { email, nombre, apellido, especialidad } = req.body;
+      
+    //         const nuevoDoctor = new Doctor({
+    //             email,
+    //             nombre,
+    //             apellido,
+    //             especialidad
+    //         });
+      
+    //         const doctorGuardado = await nuevoDoctor.save();
+      
+    //         res.status(201).json(doctorGuardado);
+    //     } catch (error) {
+    //         res.status(500).json({ message: 'Error al agregar el doctor', error: error.message });
+    //     }
+    //   }
+      

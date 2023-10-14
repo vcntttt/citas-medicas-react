@@ -2,8 +2,6 @@ import mongoose from 'mongoose';
 import Cita from '../models/citas.model.js';
 import User from '../models/user.model.js';
 
-
-
 export const getAllCitas = async (req, res) => {
     try {
         const citas = await Cita.find();
