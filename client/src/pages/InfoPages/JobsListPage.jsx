@@ -1,7 +1,7 @@
 import { getEspecialidadesRequest } from "../../api/drs";
 import Especialidad from "../../components/Cards/Especialidad";
 import useRequest from "../../hooks/useRequest";
-export default function JobsList() {
+export default function JobsListPage() {
   const {data: especialidades} = useRequest(() => getEspecialidadesRequest());
 
   return (

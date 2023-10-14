@@ -5,10 +5,18 @@ import useAuthStore from '../store/authStore';
 import useIfAuth from '../hooks/useIfAuth';
 import DatesBoard from '../components/Home/DatesBoard';
 import Btn from '../components/Home/Btn';
+import useModal from '../hooks/useModal';
+import Modal from '../components/Modal';
+import DateForm from '../components/Home/DateForm';
+import DrForm from '../components/Home/DrForm';
 export default function Home() {
   const navigate = useNavigate();
   const { userData, userHasData, userDates} = useAuthStore();
   useIfAuth();
+
+  const {isOpen: isOpenCita ,openModal: openModalCita,closeModal  : closeModalCita} = useModal();
+  const {isOpen: isOpenDoctor ,openModal: openModalDoctor,closeModal  : closeModalDoctor} = useModal();
+
   return (
     <div className = "mt-30 flex gap-200 items-center justify-center ">
       <div className={styles.ui}>
@@ -17,8 +25,16 @@ export default function Home() {
         onClick={() => userHasData ? navigate("/jobs") : navigate("/formulary")}>Tomar Hora</button>
       {userData?.role === "admin" && 
       <div className='flex gap-5 mt-3 justify-center'>
-        <Btn>Ingresar Cita</Btn>
-        <Btn>Ingresar Doctor</Btn>
+        <Btn onClick={openModalCita}>Ingresar Cita</Btn>
+        <Modal isOpen={isOpenCita} onClose={closeModalCita}>
+          <h1 className='text-black text-2xl py-2 mt-4'>Crear Cita</h1>
+          <DateForm/>
+        </Modal>
+        <Btn onClick={openModalDoctor}>Ingresar Doctor</Btn>
+        <Modal isOpen={isOpenDoctor} onClose={closeModalDoctor}>
+          <h1 className='text-black text-2xl py-2 mt-4'>Agregar Doctor</h1>
+          <DrForm/>
+        </Modal>
       </div> 
       }
       {userData?.role === "doctor" && 
