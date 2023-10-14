@@ -103,3 +103,14 @@ export const newDateAsDr = async (req, res) => {
       res.status(500).json({ message: 'Error al tomar la cita', error: error.message });
   }
 }
+
+export const getInfoDoctor = async (req, res) => {
+  try {
+    const userId = req.user.id
+    const user = await User.findById(userId);
+    const doctor = await Doctor.findOne({email: user.email});
+    res.json(doctor);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+}

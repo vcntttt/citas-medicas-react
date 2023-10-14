@@ -3,6 +3,7 @@ import {resendToken , loginRequest, registerRequest, verifyTokenRequest } from "
 import { getProfileRequest,getUserDates,updateProfile } from "../api/profile";
 import Cookies from "js-cookie";
 import {persist, devtools} from 'zustand/middleware'
+import { getInfoDoc } from '../api/drs';
 
 
 const useAuthStore = create(devtools(persist((set,get) => ({
@@ -18,7 +19,8 @@ const useAuthStore = create(devtools(persist((set,get) => ({
     signIn : async (user,navigate) => {
         try{
             const res = await loginRequest(user);
-            set({ user: res.data, isAuthenticated: true },false, "SignIn");
+            set({ user: res.data, isAuthenticated: true, role: res.data.role },false, "SignIn");
+            console.log(res.data)
             navigate("/");
         } catch(error){
             console.log(error.response);
@@ -28,7 +30,8 @@ const useAuthStore = create(devtools(persist((set,get) => ({
     signUp : async (user,navigate) => {
         try{
             const res = await registerRequest(user);
-            set({ user: res.data, isAuthenticated: true } ,false, "SignUp");
+            console.log(res.data)
+            set({ user: res.data, isAuthenticated: true, role: res.data.role } ,false, "SignUp");
             navigate("/");
         } catch(error){
             set({ errors: error.response.data },false, "SignUpError");
@@ -51,21 +54,27 @@ const useAuthStore = create(devtools(persist((set,get) => ({
             }
         }
     },
-    logOut : (navigate) => {
+    logOut : () => {
         Cookies.remove("token");
         set({ user: null, isAuthenticated: false , userData : null, userHasData : false , userDates : [], role : null, token: '' },false, "LogOut");
-        navigate("/");
     },
     checkData : async () => {
         try{
             const {isAuthenticated} = get();
             if (!isAuthenticated) return
             const res = await getProfileRequest();
+            if (res.data.role == 'doctor') {
+                const drRes = await getInfoDoc();
+                console.log(drRes.data)
+                set({ userData : drRes.data, userHasData : true },false, "CheckDataDoctor");
+                set({ role : res.data.role } ,false, "setDoctorRole");
+                return
+            } 
             if(res.data.nombre && res.data.apellido){
-                set({ userData : res.data, userHasData : true });
+                set({ userData : res.data, userHasData : true },false, "CheckData");
                 set({ role : res.data.role });
             } else{
-                set({ userData : null, userHasData : false });
+                set({ userData : null, userHasData : false },false, "CheckDataError");
             }
         }catch(error){
             console.log(error.response);
@@ -74,7 +83,7 @@ const useAuthStore = create(devtools(persist((set,get) => ({
     updateProfile: async (user) => {
         try{
             const res = await updateProfile(user);
-            set({ userData : res.data , userHasData : true});
+            set({ userData : res.data , userHasData : true}, false, "UpdateProfile");
         }catch(error){
             console.log(error.response);
         }
@@ -87,7 +96,7 @@ const useAuthStore = create(devtools(persist((set,get) => ({
             const {isAuthenticated} = get();
             if (!isAuthenticated) return
             const res = await getUserDates();
-            set({ userDates : res.data });
+            set({ userDates : res.data }, false, "CheckDates");
         } catch(error){
             console.log(error.response);
         }

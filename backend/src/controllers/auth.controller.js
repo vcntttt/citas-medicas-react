@@ -34,6 +34,7 @@ export const register = async (req, res) => {
             email: userSaved.email,
             createdAt: userSaved.createdAt,
             updatedAt: userSaved.updatedAt,
+            role : userSaved.role
         });
     } catch (error) {
         res.status(500).json({ message: error.message });
@@ -62,6 +63,7 @@ export const login = async (req, res) => {
             email: userFound.email,
             createdAt: userFound.createdAt,
             updatedAt: userFound.updatedAt,
+            role : userSaved.role
         })
     } catch (error) {
         res.status(500).json({ message: error.message });
