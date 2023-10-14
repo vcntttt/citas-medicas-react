@@ -31,6 +31,9 @@ export const agregarCita = async (req, res) => {
     }
   };
 
+
+  
+
 export const getCitasByEspecialidad = async (req, res) => {
   try{
     const especialidad = req.params.especialidad;
