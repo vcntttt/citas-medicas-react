@@ -6,9 +6,9 @@ export default function Especialidad({nombre}) {
     <div 
     className="bg-onahau-500 p-2 rounded-sm text-black flex flex-col items-center py-4">
       <h1 className="text-current py-4 text-xl">{nombre}</h1>
-      <Link to={`/drs/${nombre}`}>
+      <Link to={`/calendar/${nombre}`}>
         <button className="bg-slate-900 hover:bg-greencus-500 text-white px-2 py-1 rounded">
-          Ver Doctores
+          Pedir Hora
         </button>
       </Link>
     </div>
