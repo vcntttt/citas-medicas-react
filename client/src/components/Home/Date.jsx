@@ -45,7 +45,7 @@ export default function Date({date}) {
     } catch (error) {
       console.error(error);
     }}
-  const handleDelete = async (isModificacion = false) => {
+  const handleDelete = async () => {
     try {
       if (role === "paciente") return
       if (role === "doctor") {
@@ -53,7 +53,6 @@ export default function Date({date}) {
           loading: "Cancelando...",
           success: () => {
             checkDates();
-            if (isModificacion) openModal();
             return "Cita cancelada";
           },
           error: "Error al cancelar",
@@ -64,13 +63,17 @@ export default function Date({date}) {
       console.error(error);
     }
   }
+
   const handleChange = (event) => {
     handleCancel();
     navigate("/confirm/", {state: {event}});
   }
+
   const doctorChange = () => {
-    handleDelete(true);
+    handleDelete();
+    navigate("/confirm/dr");
   }
+
   return (
     <div className="bg-gray-100 p-6 m-2 flex flex-row justify-between items-start">
         <div className="flex flex-col justify-between min-w-[60%] h-full">
@@ -126,7 +129,7 @@ export default function Date({date}) {
           ) : (
             <>
             <h1 className="text-3xl text-center py-4">Escoje una nueva fecha</h1>
-            <DateForm />
+            <DateForm closeModal={closeModal}/>
             </>
           )}
         </Modal>

@@ -1,4 +1,3 @@
-import styles from '../../tailwind.config';
 import image from '../assets/homeImg.webp'
 import {useNavigate } from 'react-router-dom';
 import useAuthStore from '../store/authStore';
@@ -59,9 +58,9 @@ export default function Home() {
       </div>
       <aside>
         {userDates && userData && userDates.length > 0
-        ? <DatesBoard dates={userDates} /> 
+        ? <DatesBoard dates={userDates} className={"w-[450px] h-[700px]"}/> 
         : <img
-          className="w-[400px] h-[390px] m-auto mt-[140px] rounded-xl sm:w-[350px] sm:h-[500px] sm:mt-[80px] md:w-[400px] md:h-[580px] md:mt-[70px] lg:w-[550px] lg:h-[700px] lg:mt-[30px]"
+          className="w-[400px] h-[390px] m-auto mt-[140px] rounded-xl sm:w-[350px] sm:h-[500px] sm:mt-[80px] md:w-[400px] md:h-[580px] md:mt-[70px] lg:w-[550px] lg:h-[700px] lg:mt-[30px] mx-10"
           alt='doc'
           src={image}
         /> }

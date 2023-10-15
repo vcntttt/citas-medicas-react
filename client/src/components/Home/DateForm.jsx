@@ -4,7 +4,7 @@ import useAuthStore from '../../store/authStore';
 import useRequest from '../../hooks/useRequest';
 
 
-export default function DateForm() {
+export default function DateForm({closeModal}) {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { role } = useAuthStore();
     const { data: drs } = useRequest(() => getDoctoresRequest());
@@ -26,26 +26,25 @@ export default function DateForm() {
                 sala: data.sala
             }
             await newDateRequest(result)
+            closeModal()
         } catch (error) {
             console.log(error)
         }
     })
     return (
         <div className="flex flex-col justify-center text-center">
-            <form onSubmit={onSubmit} className="bg-[#2E3238] px-8 py-0">
+            <form onSubmit={onSubmit} className="bg-[#2E3238] px-8 py-6">
 
-                <div className="h-1/5 p-0">
+                <div className="h-1/5">
 
                         <h1 className="text-[white] text-2xl">Fecha</h1>
   
-                    <div className="mb-40" >
                         <input
                             type="datetime-local" {...register('hora', { required: true })} />
                         {errors.horaInicio && <p>Este campo es requerido</p>}
-                    </div>
                 </div>
 
-                <div className=" px-0 py-12">
+                <div className=" px-0 py-8">
                     <h1 className="text-2xl text-white">Sala</h1>
                     
                     <select className=" w-40" {...register('sala', { required: true })}>
@@ -58,8 +57,7 @@ export default function DateForm() {
                     {errors.sala && <p>Este campo es requerido</p>}
 
                 </div>
-
-                <div className="text-white px-0 py-12">
+                <div className="text-white">
                     {role === 'admin' ? (
                         <>
                             <h1 >Escoje un doctor</h1>
@@ -76,11 +74,8 @@ export default function DateForm() {
                 </div>
 
 
-                <div className="px-0 py-12">
-                    <input className=" w-40 h-16 bg-[yellowgreen] cursor-pointer"
+                    <input className="bg-white hover:bg-[yellowgreen] cursor-pointer py-4 px-6"
                         type="submit" />
-
-                </div>
 
             </form>
         </div>
