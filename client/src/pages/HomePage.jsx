@@ -32,7 +32,7 @@ export default function Home() {
 <div className='flex flex-col items-center'> 
         <button className = "w-375 h-105 rounded-xl bg-onahau-500 shadow-custom text-black text-4xl font-normal leading-normal font-inter hover:bg-onahau-600 hover:text-white hover:cursor-pointer" 
         onClick={() => userHasData ? navigate("/jobs") : navigate("/formulary")}>Tomar Hora</button>
-      {userData?.role === "admin" && 
+      {role === "admin" && 
       <div className='flex gap-5 mt-3 justify-center'>
         <Btn onClick={openModalCita}>Ingresar Cita</Btn>
         <Modal isOpen={isOpenCita} onClose={closeModalCita}>
@@ -46,7 +46,7 @@ export default function Home() {
         </Modal>
       </div> 
       }
-      {userData?.role === "doctor" && 
+      {role === "doctor" && 
       <div className='flex gap-5 mt-3 justify-center'>
         <Btn onClick={openModalCita}>Ingresar Cita</Btn>
         <Modal isOpen={isOpenCita} onClose={closeModalCita}>
