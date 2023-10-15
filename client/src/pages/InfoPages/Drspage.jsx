@@ -4,8 +4,8 @@ import useRequest from "../../hooks/useRequest";
 import { useState } from "react";
 
 export default function DrsPage() {
-  const {data: drs} = useRequest(() => getDoctoresRequest());
-  const {data: especialidades} = useRequest(() => getEspecialidadesRequest());
+  const { data: drs } = useRequest(() => getDoctoresRequest());
+  const { data: especialidades } = useRequest(() => getEspecialidadesRequest());
 
   const [selectedEspecialidades, setSelectedEspecialidades] = useState([]);
 
@@ -26,21 +26,26 @@ export default function DrsPage() {
   return (
     <div className="grid grid-cols-[1fr,2fr] h-4/6">
       <div className="bg-slate-800 grid grid-cols-1 gap-4">
-        <h1 className="text-2xl py-4">Especialidades</h1>
+        <h1 className="text-2xl py-4 text-center text-white">Especialidades</h1>
         {especialidades.map((item) => (
-          <div key={item}>
-            <input 
-              type="checkbox" 
-              name={item.toLowerCase()} 
-              value={item} 
-              onChange={handleEspecialidadChange}
-            />
-            <label htmlFor={item.toLowerCase()}>{item}</label>
+          <div key={item} className=" flex text-center justify-center  place-items-center   ">
+
+            <div className="flex bg-onahau-500 place-items-center  justify-center w-80 h-20 " >
+              <input className="transform scale-150"
+                type="checkbox"
+                name={item.toLowerCase()}
+                value={item}
+                onChange={handleEspecialidadChange}
+              />
+              <label htmlFor={item.toLowerCase()}  className="mx-4 text-2xl">{item}</label>
+
+            </div>
+
           </div>
         ))}
       </div>
       <div className="bg-onahau-500 p-6 rounded-sm text-black items-center py-4 grid grid-cols-1 gap-2 overflow-y-auto">
-        <h1 className="text-black text-2xl">Aca se podran ver los doctores</h1>
+        <h1 className="text-black text-2xl">Aca se podran ver los doctores wenas</h1>
         {filteredDrs.map((item, index) => (
           <Doctor key={index} doctor={item} />
         ))}

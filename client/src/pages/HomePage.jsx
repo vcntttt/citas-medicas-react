@@ -20,9 +20,9 @@ export default function Home() {
   const {isOpen: isOpenDoctor ,openModal: openModalDoctor,closeModal  : closeModalDoctor} = useModal();
 
   return (
-    <div className = "mt-30 flex gap-200 items-center justify-center ">
-      <div className={styles.ui}>
-      <h1 className="text-black text-6xl not-italic font-normal leading-normal">
+    <div className = "mt-2 flex gap-200 justify-center">
+      <div className="text-center m-auto ml-auto mt-[200px] sm:m-auto sm:mt-[200px] md:mt-[200px]">
+      <h1 className="text-black text-[30pt] not-italic font-normal leading-normal sm:text-[35pt] md:text-[40pt] lg:text-[55pt]">
     {
         role === "paciente"  || role === null ? 
         `Hola, ${userData?.nombre ? userData.nombre : "usuario"}` :
@@ -30,7 +30,7 @@ export default function Home() {
     }
 </h1>
 <div className='flex flex-col items-center'> 
-        <button className = "w-375 h-105 rounded-xl bg-onahau-500 shadow-custom text-black text-4xl font-normal leading-normal font-inter hover:bg-onahau-600 hover:text-white hover:cursor-pointer" 
+        <button className = "w-[180px] h-[40px] rounded-xl mb-4 bg-onahau-500 shadow-custom text-black text-[15pt] font-normal leading-normal font-inter hover:bg-onahau-600 hover:text-white hover:cursor-pointer md:w-[200px] md:h[50px] md:text-[20pt] lg:w-[230px] lg:h-[60px] lg:text-[25pt]"
         onClick={() => userHasData ? navigate("/jobs") : navigate("/formulary")}>Tomar Hora</button>
       {role === "admin" && 
       <div className='flex gap-5 mt-3 justify-center'>
@@ -61,7 +61,7 @@ export default function Home() {
         {userDates && userData && userDates.length > 0
         ? <DatesBoard dates={userDates} /> 
         : <img
-          className="w-[500px] object-cover rounded-xl"
+          className="w-[400px] h-[390px] m-auto mt-[140px] rounded-xl sm:w-[350px] sm:h-[500px] sm:mt-[80px] md:w-[400px] md:h-[580px] md:mt-[70px] lg:w-[550px] lg:h-[700px] lg:mt-[30px]"
           alt='doc'
           src={image}
         /> }
