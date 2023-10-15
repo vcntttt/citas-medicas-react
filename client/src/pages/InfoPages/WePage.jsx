@@ -5,6 +5,7 @@ import doc_2 from '../../assets/doc_2.webp';
 import Button from '../../components/Info/Button';
 import { useState } from 'react';
 
+
 export default function WePage() {
 
 
@@ -29,46 +30,65 @@ export default function WePage() {
 
 
   return (
-    <div className="flex justify-center text-center mx-20 my-20">
+    <div className="bg-[#2E3238] flex w-[83%] mx-40 my-4">
 
 
-      <div className="flex w-[20%] bg-[#2E3238] flex-col  ">
+      <div className="flex flex-col justify-center text-center w-3/12">
+        <div className="flex h-1/4 text-center items-center justify-center">
+          <Button name="otro boton" onClick={() => ChangeText("mision")} text="Mision" />
 
-        <Button name="otro boton" onClick={() => ChangeText("mision")} text="Mision" />
 
-        <Button name="otro boton" onClick={() => ChangeText("historia")} text="Historia" />
 
-        <Button name="otro boton" onClick={() => ChangeText("premios")} text="Premios" />
+        </div>
+        <div className="flex h-1/4 text-center items-center justify-center">
+          <Button name="otro boton" onClick={() => ChangeText("historia")} text="Historia" />
 
-        <Button name="otro boton" onClick={() => ChangeText("directorio")} text="Directorio" />
+
+        </div>
+
+        <div className="flex h-1/4 text-center items-center justify-center">
+          <Button name="otro boton" onClick={() => ChangeText("premios")} text="Premios" />
+
+
+        </div>
+
+
+        <div className="flex h-1/4 text-center items-center justify-center">
+          <Button name="otro boton" onClick={() => ChangeText("directorio")} text="Directorio" />
+
+
+        </div>
 
       </div>
 
-      <div className="w-6/12 flex ml-4 ">
-        <div className=" w-[80%]">
-          <div className='h-[80%]'>
-            <h1 className=" text-[black] mb-8 text-xl">Nosotros</h1>
-            <p className=' mb-8">{'>
-              {text}
-            </p>
+      <div className="w-6/12 text-[black] bg-[white] m-8">
 
-          </div>
+        <div className="m-8" >
+          <h1 className="text-center">Nosotros</h1>
+          <p className="mb-[25rem]" >{text}</p>
 
-          <p className=" bg-[#C1FFFF] ">
+
+
+          <p className="bg-[#C1FFFF]">
             "La medicina no tiene color; es un puente que nos
             conecta a todos, sin importar el tono de piel.
             Juntos, creamos un futuro de salud y bienestar
             para todos, donde la diversidad aumenta nuestro entendimiento y empatía."
           </p>
+
         </div>
 
-        <div className=" w-60  ">
-          <img className="m-2.5" src={doc_1} />
-
-          <img className="m-2.5" src={doc_2} />
-        </div>
 
       </div>
+
+
+
+      <div className=" flex flex-col justify-center text-center items-center w-3/12">
+        <img className="w-56 m-8" src={doc_1} />
+
+        <img className="w-56 m-8" src={doc_2} />
+      </div>
+
 
     </div>
   )
