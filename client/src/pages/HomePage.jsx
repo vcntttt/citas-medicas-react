@@ -41,7 +41,7 @@ export default function Home() {
         <Btn onClick={openModalDoctor}>Ingresar Doctor</Btn>
         <Modal isOpen={isOpenDoctor} onClose={closeModalDoctor}>
           <h1 className='text-black text-2xl py-2 mt-4'>Agregar Doctor</h1>
-          <DrForm/>
+          <DrForm closeModal={closeModalDoctor}/>
         </Modal>
       </div> 
       }

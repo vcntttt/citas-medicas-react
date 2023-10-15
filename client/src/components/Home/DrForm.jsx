@@ -2,14 +2,21 @@ import { useForm } from 'react-hook-form'
 import { getEspecialidadesRequest } from '../../api/drs';
 import useRequest from '../../hooks/useRequest';
 import { registerDrRequest } from "../../api/drs";
+import { Toaster, toast } from 'sonner';
+
 export default function DrForm() {
 
   const { register, handleSubmit, formState: { errors } } = useForm();
   const { data: especialidades } = useRequest(() => getEspecialidadesRequest());
   const onSubmit = handleSubmit(async (data) => {
     try {
-      const res = await registerDrRequest(data);
-      console.log(res.data)
+      toast.promise(registerDrRequest(data), {
+        loading: "Agregando...",
+        success: () => {
+          return "Doctor agregado";
+        },
+        error: "Error al agregar doctor",
+      })
     } catch (error) {
       console.log(error.response.data)
     }
@@ -50,12 +57,9 @@ export default function DrForm() {
 
         </select>
         {errors.especialidad && <p>Este campo es requerido</p>}
-        <div className='flex bg-[yellowgreen] w-40 h-16 mb-4  justify-center text-center text-white'>
-          <input type="submit" />
-
-
-        </div>
+          <input className='bg-lime-500 w-40 h-16 mb-4  text-white hover:cursor-pointer hover:bg-lime-700' type="submit" />
       </form>
+      <Toaster />
     </div>
   )
 }

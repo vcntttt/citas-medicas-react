@@ -1,19 +1,21 @@
 import { useForm } from 'react-hook-form'
-import { getDoctoresRequest, newDateRequest } from "../../api/drs";
+import { getDoctoresRequest, newAdminDateRequest, newDateRequest } from "../../api/drs";
 import useAuthStore from '../../store/authStore';
 import useRequest from '../../hooks/useRequest';
+import { Toaster, toast } from 'sonner';
+import { useNavigate } from 'react-router-dom';
 
-
-export default function DateForm({closeModal}) {
+export default function DateForm() {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const { role } = useAuthStore();
+    const { role, checkDates } = useAuthStore();
     const { data: drs } = useRequest(() => getDoctoresRequest());
+    const navigate = useNavigate();
     const onSubmit = handleSubmit(async (data) => {
         try {
             const horaInicio = new Date(data.hora)
             const horaFin = new Date(data.hora)
             horaFin.setHours(horaFin.getHours() + 1)
-            const doctorFound = drs?.find((item) => item._id === data.doctor)
+            const doctorFound = drs?.find((item) => item._id == data.doctor)
             let result = role === 'admin' ? {
                 doctor: doctorFound,
                 horaInicio: horaInicio.toISOString(),
@@ -25,8 +27,26 @@ export default function DateForm({closeModal}) {
                 horaFin: horaFin.toISOString(),
                 sala: data.sala
             }
-            await newDateRequest(result)
-            closeModal()
+            if (role === 'doctor') {
+                toast.promise(newDateRequest(result), {
+                    loading: "Agregando...",
+                    success: () => {
+                        checkDates();
+                        navigate('/');
+                        return "Cita agregada";
+                    },
+                    error: "Error al agregar",
+                  })
+            } else if(role === 'admin') {
+                toast.promise(newAdminDateRequest(result), {
+                    loading: "Agregando...",
+                    success: () => {
+                        navigate('/');
+                      return "Cita agregada";
+                    },
+                    error: "Error al agregar",
+                  })
+            }
         } catch (error) {
             console.log(error)
         }
@@ -72,12 +92,10 @@ export default function DateForm({closeModal}) {
                     }
 
                 </div>
-
-
                     <input className="bg-white hover:bg-[yellowgreen] cursor-pointer py-4 px-6"
                         type="submit" />
-
             </form>
+            <Toaster />
         </div>
     )
 }

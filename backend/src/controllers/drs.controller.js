@@ -58,7 +58,6 @@ export const registerDr = async (req, res) => {
     });
     await nuevoDoctor.save();
     const token = await createAccesToken({ id: userSaved._id });
-    res.cookie('token', token);
     res.json({
       id: userSaved._id,
       email: userSaved.email,
@@ -99,7 +98,22 @@ export const newDateAsDr = async (req, res) => {
   }
 }
 
-
+export const newDateAsAdmin = async (req, res) => {
+  try {
+    const { doctor, horaInicio, horaFin, estado, sala } = req.body;
+    const nuevaCita = new Cita({
+      doctor,
+      horaInicio,
+      horaFin,
+      estado,
+      sala
+    });
+    const citaGuardada = await nuevaCita.save();
+    res.status(201).json(citaGuardada);
+  } catch (error) {
+    res.status(500).json({ message: 'Error al tomar la cita', error: error.message });
+  }
+}
 
 export const getInfoDoctor = async (req, res) => {
   try {

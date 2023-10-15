@@ -70,8 +70,16 @@ export default function Date({date}) {
   }
 
   const doctorChange = () => {
-    handleDelete();
-    navigate("/confirm/dr");
+    toast.promise(cancelDoctorDateRequest(date._id), {
+      loading: "Cancelando...",
+      success: () => {
+        setTimeout(() => {
+          navigate('/confirm/dr');
+        },1500)
+        return "Cita cancelada";
+      },
+      error: "Error al cancelar",
+    })
   }
 
   return (

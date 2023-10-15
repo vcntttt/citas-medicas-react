@@ -21,7 +21,7 @@ export default function Login() {
       <div className="w-1/5 bg-[#2e3238]">
 
         <div className="flex justify-center items-center h-1/5">
-          <h1 className="font-normal text-4xl">Login</h1>
+          <h1 className="font-normal text-4xl text-white">Login</h1>
         </div>
 
         <form className="h-4/5" action="" onSubmit={handleSubmit(onSubmit)}>
