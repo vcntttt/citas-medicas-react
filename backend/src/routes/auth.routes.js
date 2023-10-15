@@ -1,8 +1,8 @@
 import { Router } from 'express';
 import {
     login,
-    register, 
-    resendToken, 
+    register,
+    resendToken,
     verify as verifyToken
 } from '../controllers/auth.controller.js';
 import { validateSchema } from '../middlewares/validator.middleware.js'
