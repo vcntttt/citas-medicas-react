@@ -36,7 +36,7 @@ export default function Home() {
       <div className='flex gap-5 mt-3 justify-center'>
         <Btn onClick={openModalCita}>Ingresar Cita</Btn>
         <Modal isOpen={isOpenCita} onClose={closeModalCita}>
-          <h1 className='text-black text-2xl py-2 mt-4'>Crear Cita</h1>
+          <h1 className='text-black text-2xl py-2 mt-4 text-center'>Crear Cita</h1>
           <DateForm/>
         </Modal>
         <Btn onClick={openModalDoctor}>Ingresar Doctor</Btn>
