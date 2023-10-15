@@ -1,5 +1,6 @@
 import Btn from "./Btn";
 import { cancelDateRequest, getCitasByEspecialidadRequest } from "../../api/citas";
+import { cancelDoctorDateRequest } from "../../api/drs";
 import { Toaster, toast } from "sonner";
 import { useState } from "react";
 import dateHelper from "../../hooks/dateHelper";
@@ -44,14 +45,15 @@ export default function Date({date}) {
     } catch (error) {
       console.error(error);
     }}
-  const handleDelete = async () => {
+  const handleDelete = async (isModificacion = false) => {
     try {
       if (role === "paciente") return
       if (role === "doctor") {
-        toast.promise(cancelDateRequest(date._id), {
+        toast.promise(cancelDoctorDateRequest(date._id), {
           loading: "Cancelando...",
           success: () => {
             checkDates();
+            if (isModificacion) openModal();
             return "Cita cancelada";
           },
           error: "Error al cancelar",
@@ -65,6 +67,9 @@ export default function Date({date}) {
   const handleChange = (event) => {
     handleCancel();
     navigate("/confirm/", {state: {event}});
+  }
+  const doctorChange = () => {
+    handleDelete(true);
   }
   return (
     <div className="bg-gray-100 p-6 m-2 flex flex-row justify-between items-start">
@@ -92,8 +97,8 @@ export default function Date({date}) {
         )}
         </div>
         <div className="flex flex-col justify-end gap-2 ml-4 my-auto">
-        <Btn onClick={handleUpdate}>Modificar</Btn>
-        <Btn onClick={handleCancel}>Cancelar</Btn>
+        <Btn onClick={role === "doctor" ? doctorChange : handleUpdate}>Modificar</Btn>
+        <Btn onClick={role === "doctor" ? handleDelete : handleChange}>Cancelar</Btn>
         </div>
         <Toaster/>
         <Modal isOpen={isOpen} onClose={closeModal}>
