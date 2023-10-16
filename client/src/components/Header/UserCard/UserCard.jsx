@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import styles from "./UserCard.module.css";
-import { useAuth } from "../../../context/AuthContext";
+import useAuthStore from "../../../store/authStore";
 
 export default function UserCard() {
-  const { logOut, isAuthenticated } = useAuth();
+  const { logOut, isAuthenticated } = useAuthStore();
 
   return isAuthenticated ? (
     <div className={styles.flex}>

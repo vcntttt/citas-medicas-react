@@ -1,0 +1,15 @@
+
+.input {
+    color: rgb(255, 255, 255);
+    margin: 20px auto;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    border-bottom: 1px solid white;
+    background-color: #2e3238;
+}
+
+input::placeholder {
+    color: white;
+    opacity: 0.6;
+  }
