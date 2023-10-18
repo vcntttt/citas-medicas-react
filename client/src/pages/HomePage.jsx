@@ -28,7 +28,7 @@ export default function Home() {
         `Bienvenido ${capitalize(role)}`
     }
 </h1>
-<div className='flex flex-col items-center'> 
+<div className='flex flex-col items-center'>
         <button className = "w-[180px] h-[40px] rounded-xl mb-4 bg-onahau-500 shadow-custom text-black text-[15pt] font-normal leading-normal font-inter hover:bg-onahau-600 hover:text-white hover:cursor-pointer md:w-[200px] md:h[50px] md:text-[20pt] lg:w-[230px] lg:h-[60px] lg:text-[25pt]"
         onClick={() => userHasData ? navigate("/jobs") : navigate("/formulary")}>Tomar Hora</button>
       {role === "admin" && 
