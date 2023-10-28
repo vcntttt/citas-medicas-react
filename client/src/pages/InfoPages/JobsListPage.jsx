@@ -6,7 +6,7 @@ export default function JobsListPage() {
 
   return (
     <div className="">
-      <h1 className="text-black my-10 text-2xl">Contamos con las siguientes especialidades</h1>
+      <h1 className="text-black my-10 text-2xl text-center">Contamos con las siguientes especialidades</h1>
       <div className="grid m-5 md:grid-cols-2 gap-8 sm:grid-cols-1">
       {especialidades.map((item, index) => (
         <Especialidad nombre={item} key={index}/>

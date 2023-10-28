@@ -1,5 +1,5 @@
 import image from '../assets/homeImg.webp'
-import {useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import useAuthStore from '../store/authStore';
 import useIfAuth from '../hooks/useIfAuth';
 import DatesBoard from '../components/Home/DatesBoard';

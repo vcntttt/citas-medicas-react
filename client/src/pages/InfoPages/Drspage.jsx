@@ -24,25 +24,23 @@ export default function DrsPage() {
   });
 
   return (
-    <div className="grid grid-cols-[1fr,2fr] min-h-[90vh]">
-      <div className="bg-slate-800 grid grid-cols-1 gap-4 min-h-[90vh]">
+    <div className="grid grid-cols-[1fr,2fr] h-[92vh]">
+      <div className="bg-slate-800 flex flex-col gap-4">
         <h1 className="text-2xl py-4 text-center text-white">Especialidades</h1>
         {especialidades.map((item) => (
-          <div key={item} className="justify-center mx-10">
-            <div className="bg-onahau-500" >
-              <input className="pl-4"
+          <div key={item} className="px-4 mx-6 bg-onahau-500 h-8 rounded">
+              <input className=""
                 type="checkbox"
                 name={item.toLowerCase()}
                 value={item}
                 onChange={handleEspecialidadChange}
-              />
+                />
               <label htmlFor={item.toLowerCase()}  className="mx-4 text-2xl">{item}</label>
-            </div>
           </div>
         ))}
       </div>
-      <div className="bg-onahau-500 p-6 rounded-sm text-black items-center py-4 grid grid-cols-1 gap-2 max-h-[90vh] overflow-y-auto">
-        <h1 className="text-black text-2xl">Nuestros doctores: </h1>
+      <div className="bg-onahau-500 p-6 rounded-sm text-black items-center py-4 flex flex-col gap-2 overflow-y-auto">
+        <h1 className="text-black my-2 text-2xl">Nuestros doctores: </h1>
         {filteredDrs.map((item, index) => (
           <Doctor key={index} doctor={item} />
         ))}

@@ -1,14 +1,9 @@
-
-//import styles from '../../styles/WePage.module.css';
 import doc_1 from '../../assets/doc_1.webp';
 import doc_2 from '../../assets/doc_2.webp';
-import Button from '../../components/Info/Button';
 import { useState } from 'react';
-
+import Btn from '../../components/Home/Btn'
 
 export default function WePage() {
-
-
 
   const [text, setText] = useState('La misión de una plataforma de citas médicas en línea podría ser proporcionar a los pacientes un acceso fácil y conveniente a servicios de atención médica de calidad, permitiéndoles programar citas con profesionales de la salud de manera eficiente y mejorar su experiencia en la búsqueda de atención médica.');
 
@@ -23,73 +18,32 @@ export default function WePage() {
       setText('El directorio de la plataforma incluiría información sobre los profesionales de la salud y los proveedores que están disponibles a través de la plataforma para que los pacientes puedan buscar y programar citas con ellos. Debería proporcionar detalles sobre la especialización de los médicos, su ubicación, horarios disponibles y cualquier otra información relevante para los pacientes.')
     } else {
       setText("error")
-
     }
-
   };
 
 
   return (
-    <div className="bg-[#2E3238] flex w-[83%] mx-40 my-4">
-
-
-      <div className="flex flex-col justify-center text-center w-3/12">
-        <div className="flex h-1/4 text-center items-center justify-center">
-          <Button name="otro boton" onClick={() => ChangeText("mision")} text="Mision" />
-
-
-
-        </div>
-        <div className="flex h-1/4 text-center items-center justify-center">
-          <Button name="otro boton" onClick={() => ChangeText("historia")} text="Historia" />
-
-
-        </div>
-
-        <div className="flex h-1/4 text-center items-center justify-center">
-          <Button name="otro boton" onClick={() => ChangeText("premios")} text="Premios" />
-
-
-        </div>
-
-
-        <div className="flex h-1/4 text-center items-center justify-center">
-          <Button name="otro boton" onClick={() => ChangeText("directorio")} text="Directorio" />
-
-
-        </div>
-
+    <div className="bg-greycus-800 w-full h-[93vh] pt-8 grid grid-cols-[1fr,3fr,1fr] gap-2">
+      <div className="flex flex-col w-2/3 mx-auto gap-4">
+          <Btn styles='' onClick={() => ChangeText("mision")}>Mision</Btn>
+          <Btn styles='' onClick={() => ChangeText("historia")}>Historia</Btn>
+          <Btn styles='' onClick={() => ChangeText("premios")}>Premios</Btn>
+          <Btn styles='' onClick={() => ChangeText("directorio")}>Directorio</Btn>
       </div>
-
-      <div className="w-6/12 text-[black] bg-[white] m-8">
-
-        <div className="m-8" >
+      <div className=" text-black bg-white rounded-md p-10">
           <h1 className="text-center">Nosotros</h1>
           <p className="mb-[25rem]" >{text}</p>
-
-
-
-          <p className="bg-[#C1FFFF]">
-            "La medicina no tiene color; es un puente que nos
+          <cite className="">
+            La medicina no tiene color; es un puente que nos
             conecta a todos, sin importar el tono de piel.
             Juntos, creamos un futuro de salud y bienestar
-            para todos, donde la diversidad aumenta nuestro entendimiento y empatía."
-          </p>
-
-        </div>
-
-
+            para todos, donde la diversidad aumenta nuestro entendimiento y empatía.
+          </cite>
       </div>
-
-
-
-      <div className=" flex flex-col justify-center text-center items-center w-3/12">
-        <img className="w-56 m-8" src={doc_1} />
-
-        <img className="w-56 m-8" src={doc_2} />
+      <div className="flex flex-col">
+        <img className="object-cover h-full" src={doc_1} />
+        <img className="object-cover h-full" src={doc_2} />
       </div>
-
-
     </div>
   )
 }
