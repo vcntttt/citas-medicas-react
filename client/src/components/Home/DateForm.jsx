@@ -5,7 +5,7 @@ import useRequest from '../../hooks/useRequest';
 import { Toaster, toast } from 'sonner';
 import { useNavigate } from 'react-router-dom';
 
-export default function DateForm() {
+export default function DateForm({bgColor}) {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { role, checkDates } = useAuthStore();
     const { data: drs } = useRequest(() => getDoctoresRequest());
@@ -53,17 +53,13 @@ export default function DateForm() {
     })
     return (
         <div className="flex flex-col justify-center text-center">
-            <form onSubmit={onSubmit} className="bg-[#2E3238] px-8 py-6">
-
+            <form onSubmit={onSubmit} className={`bg-${bgColor} px-8 py-6`}>
                 <div className="h-1/5">
-
                         <h1 className="text-[white] text-2xl">Fecha</h1>
-  
                         <input
                             type="datetime-local" {...register('hora', { required: true })} />
                         {errors.horaInicio && <p>Este campo es requerido</p>}
                 </div>
-
                 <div className=" px-0 py-8">
                     <h1 className="text-2xl text-white">Sala</h1>
                     
@@ -75,7 +71,6 @@ export default function DateForm() {
                         <option value="Sala E">Sala E</option>
                     </select>
                     {errors.sala && <p>Este campo es requerido</p>}
-
                 </div>
                 <div className="text-white">
                     {role === 'admin' ? (

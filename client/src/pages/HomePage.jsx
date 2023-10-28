@@ -34,22 +34,22 @@ export default function Home() {
       {role === "admin" && 
       <div className='flex gap-5 mt-3 justify-center'>
         <Btn onClick={openModalCita}>Ingresar Cita</Btn>
-        <Modal isOpen={isOpenCita} onClose={closeModalCita}>
-          <h1 className='text-black text-2xl py-2 mt-4 text-center'>Crear Cita</h1>
+        <Modal isOpen={isOpenCita} onClose={closeModalCita} bgColor="[#2E3238]">
+          <h1 className='text-white text-2xl py-2 mt-4 text-center'>Crear Cita</h1>
           <DateForm/>
         </Modal>
         <Btn onClick={openModalDoctor}>Ingresar Doctor</Btn>
-        <Modal isOpen={isOpenDoctor} onClose={closeModalDoctor}>
-          <h1 className='text-black text-2xl py-2 mt-4'>Agregar Doctor</h1>
-          <DrForm closeModal={closeModalDoctor}/>
+        <Modal isOpen={isOpenDoctor} onClose={closeModalDoctor} bgColor="[#2E3238]">
+          <h1 className='text-white text-2xl py-2 mt-4'>Agregar Doctor</h1>
+          <DrForm/>
         </Modal>
-      </div> 
+      </div>
       }
       {role === "doctor" && 
       <div className='flex gap-5 mt-3 justify-center'>
         <Btn onClick={openModalCita}>Ingresar Cita</Btn>
-        <Modal isOpen={isOpenCita} onClose={closeModalCita}>
-          <h1 className='text-black text-2xl py-2 mt-4'>Crear Cita</h1>
+        <Modal isOpen={isOpenCita} onClose={closeModalCita} bgColor="[#2E3238]">
+          <h1 className='text-white text-2xl py-2 mt-4'>Crear Cita</h1>
           <DateForm/>
         </Modal>
       </div> 
