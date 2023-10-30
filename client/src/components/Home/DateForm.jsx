@@ -52,43 +52,40 @@ export default function DateForm({bgColor}) {
         }
     })
     return (
-        <div className="flex flex-col justify-center text-center">
-            <form onSubmit={onSubmit} className={`bg-${bgColor} px-8 py-6`}>
-                <div className="h-1/5">
-                        <h1 className="text-[white] text-2xl">Fecha</h1>
-                        <input
-                            type="datetime-local" {...register('hora', { required: true })} />
+        <div className="">
+            <form onSubmit={onSubmit} className={` px-8 py-6`}>
+                <div className="h-1/4 my-10">
+                        <input type="datetime-local" {...register('hora', { required: true })}  className='py-2.5 w-1/3 pr-10 text-white bg-transparent border-0 border-b-2 '/>
                         {errors.horaInicio && <p>Este campo es requerido</p>}
                 </div>
-                <div className=" px-0 py-8">
-                    <h1 className="text-2xl text-white">Sala</h1>
+                <div className="h-1/4 my-10">
                     
-                    <select className=" w-40" {...register('sala', { required: true })}>
-                        <option value="Sala A">Sala A</option>
-                        <option value="Sala B">Sala B</option>
-                        <option value="Sala C">Sala C</option>
-                        <option value="Sala D">Sala D</option>
-                        <option value="Sala E">Sala E</option>
+                    <select className='py-2.5 w-1/3 pr-10 text-white bg-transparent border-0 border-b-2 '
+                        {...register('sala', { required: true })}>
+                        <option value="Sala A" className='text-black'>Sala A</option>
+                        <option value="Sala B" className='text-black'>Sala B</option>
+                        <option value="Sala C" className='text-black'>Sala C</option>
+                        <option value="Sala D" className='text-black'>Sala D</option>
+                        <option value="Sala E" className='text-black'>Sala E</option>
                     </select>
                     {errors.sala && <p>Este campo es requerido</p>}
                 </div>
-                <div className="text-white">
+                <div className="h-1/4 my-10">
                     {role === 'admin' ? (
                         <>
-                            <h1 >Escoje un doctor</h1>
-                            <select className="text-black" {...register('doctor', { required: true })}>
+                            <select className='py-2.5 w-1/3 pr-10 text-white bg-transparent border-0 border-b-2 ' {...register('doctor', { required: true })}>
                                 {drs.map((item) => (
-                                    <option key={item._id} value={item._id}>{item.nombre} {item.apellido}</option>
+                                    <option className='text-black' placeholder='Escoje un doctor'
+                                    key={item._id} value={item._id}>{item.nombre} {item.apellido}</option>
                                 ))}
                             </select>
-                            {errors.doctor && <p>Este campo es requerido</p>}
+                            {errors.doctor && <p className='text-red-500'>Este campo es requerido</p>}
                         </>
                     ) : null
                     }
 
                 </div>
-                    <input className="bg-white hover:bg-[yellowgreen] cursor-pointer py-4 px-6"
-                        type="submit" />
+                    <input className=" bg-green-500 rounded-lg w-1/6  hover:bg-green-700 " type="submit" value="Enviar" />
             </form>
             <Toaster />
         </div>

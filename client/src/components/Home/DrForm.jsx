@@ -23,41 +23,62 @@ export default function DrForm() {
   })
   return (
     <div >
-      <form onSubmit={onSubmit} className='bg-[#2E3238] flex flex-col gap-4 mx-5 my-4 items-center justify-center'>
-        <h2 className='text-white'>Email</h2>
-        <input className='text-[#2E3238] shadow-none bg-white mx-auto my-5 mt-4'
-          type="email" {...register('email', { required: true })} />
-        {errors.email && <p>Este campo es requerido</p>}
+      <form onSubmit={onSubmit} className='flex flex-col '>
 
-        <h2 className='text-white'>Password</h2>
-        <input className='text-[#2E3238] shadow-none bg-white mx-auto my-5'
-          type="password" {...register('password', { required: true })} />
-        {errors.password && <p>Este campo es harmonido</p>}
+        <div className="h-1/7 m-5">
 
-        <h2 className='text-white'>Password Confirmation</h2>
-        <input className='text-[#2E3238] shadow-none bg-white mx-auto my-5'
-          type="password" {...register('passwordConfirmation', { required: true })} />
-        {errors.passwordConfirmation && <p>Este campo es requerido</p>}
+          <input className='py-2.5 w-1/3 pr-10 text-white bg-transparent border-0 border-b-2 ' placeholder='Email'
+            type="email" {...register('email', { required: true })} />
+          {errors.email && <p className='text-red-500'>Este campo es requerido</p>}
 
-        <h2 className='text-white'>Nombre</h2>
-        <input className='text-[#2E3238] shadow-none bg-white0 mx-auto my-5'
-          type="text" {...register('nombre', { required: true })} />
-        {errors.nombre && <p>Este campo es requerido</p>}
+        </div>
 
-        <h2 className='text-white'>Apellido</h2>
-        <input className='text-[#2E3238] shadow-none bg-white mx-auto my-5'
-          type="text" {...register('apellido', { required: true })} />
-        {errors.apellido && <p>Este campo es requerido</p>}
+        <div className="h-1/7 m-5">
+          <input className='py-2.5 w-1/3 pr-10 text-white bg-transparent border-0 border-b-2 ' placeholder='Contraseña'
+            type="password" {...register('password', { required: true })} />
+          {errors.password && <p className='text-red-500'>Este campo es harmonido</p>}
 
-        <h2 className='text-white'>Especialidad</h2>
-        <select {...register('especialidad', { required: true })} >
-          {especialidades.map((item, index) => (
-            <option key={index}>{item}</option>
-          ))}
+        </div>
 
-        </select>
-        {errors.especialidad && <p>Este campo es requerido</p>}
-          <input className='bg-lime-500 w-40 h-16 mb-4  text-white hover:cursor-pointer hover:bg-lime-700' type="submit" />
+
+        <div className="h-1/7 m-5">
+          <input className='py-2.5 w-1/3 pr-10 text-white bg-transparent border-0 border-b-2 ' placeholder='Confirmar Contraseña'
+            type="password" {...register('passwordConfirmation', { required: true })} />
+          {errors.passwordConfirmation && <p className='text-red-500'>Este campo es requerido</p>}
+        </div>
+
+        <div className="h-1/7 m-5">
+          <input className='py-2.5 w-1/3 pr-10 text-white bg-transparent border-0 border-b-2 ' placeholder='Nombre'
+            type="text" {...register('nombre', { required: true })} />
+          {errors.nombre && <p className='text-red-500'>Este campo es requerido</p>}
+
+        </div>
+
+        <div className="h-1/7 m-5">
+          <input className='py-2.5 w-1/3 pr-10 text-white bg-transparent border-0 border-b-2 ' placeholder='Apellido'
+            type="text" {...register('apellido', { required: true })} />
+          {errors.apellido && <p className='text-red-500'>Este campo es requerido</p>}
+
+        </div>
+
+        <div className="h-1/7 m-5">
+          <select className='py-2.5 w-1/3 pr-10 text-white bg-transparent border-0 border-b-2 '
+            {...register('especialidad', { required: true })} >
+            {especialidades.map((item, index) => (
+              <option className='text-black'
+                key={index}>{item}</option>
+            ))}
+
+          </select>
+          {errors.especialidad && <p className='text-red-500'>Este campo es requerido</p>}
+
+        </div>
+
+        <div>
+          <input className=' bg-green-500 rounded-lg w-1/6  hover:bg-green-700' type="submit" value="Enviar" />
+
+
+        </div>
       </form>
       <Toaster />
     </div>
