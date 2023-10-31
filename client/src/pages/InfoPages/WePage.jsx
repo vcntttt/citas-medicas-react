@@ -21,51 +21,36 @@ export default function WePage() {
     }
   };
 
-
   return (
     <div className=" md:flex bg-greycus-800 w-full h-screen ">
-
-      <div className="   md:w-2/6 flex flex-col items-center justify-center ">
-
-        <div className=' md:flex h-1/4 w-2/3 items-center '>
-          <Btn styles='' onClick={() => ChangeText("mision")}>Mision</Btn>
-
+      <div className="md:w-2/6 flex flex-col items-center justify-center ">
+        <div className='md:flex h-1/4 w-2/3 items-center'>
+          <Btn onClick={() => ChangeText("mision")}>Mision</Btn>
         </div>
         <div className='md:flex h-1/4 w-2/3 items-center'>
-          <Btn styles='' onClick={() => ChangeText("historia")}>Historia</Btn>
-
+          <Btn onClick={() => ChangeText("historia")}>Historia</Btn>
         </div>
         <div className='md:flex h-1/4 w-2/3 items-center'>
-          <Btn styles='' onClick={() => ChangeText("premios")}>Premios</Btn>
-
-
+          <Btn onClick={() => ChangeText("premios")}>Premios</Btn>
         </div>
         <div className='md:flex h-1/4 w-2/3 items-center'>
-          <Btn styles='' onClick={() => ChangeText("directorio")}>Directorio</Btn>
-
+          <Btn onClick={() => ChangeText("directorio")}>Directorio</Btn>
         </div>
-
-
-
       </div>
-
       <div className=" md:w-4/6 flex flex-col items-center justify-center">
-
-        <div className='bg-white h-4/6 rounded text-center '>
+        <div className='bg-white h-4/6 rounded text-center py-4'>
           <h1 className="h-1/6 text-2xl ">Nosotros</h1>
           <p className="h-2/6 m-4" >{text}</p>
           <p className="h-1/6 m-4">
-            <cite >
+            <cite className='m-4'>
               La medicina no tiene color; es un puente que nos
               conecta a todos, sin importar el tono de piel.
               Juntos, creamos un futuro de salud y bienestar
               para todos, donde la diversidad aumenta nuestro entendimiento y empatía.
             </cite>
           </p>
-
         </div>
       </div>
-
       <div className="bg-greycus-800 md:w-2/6 flex flex-col items-center justify-center">
         <img className="w-3/6 m-2 mx-auto" src={doc_1} />
         <img className="w-3/6 m-2 mx-auto" src={doc_2} />
