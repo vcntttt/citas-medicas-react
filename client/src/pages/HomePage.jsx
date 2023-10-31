@@ -29,8 +29,8 @@ export default function Home() {
   
   return (
     <div className="md:mx-20 md:items-center grid md:grid-cols-2 grid-cols-1 grid-rows-none justify-center h-[92vh] items-start">
-      <section className="flex flex-col justify-center text-center">
-        <h1 className="text-black text-[30pt] sm:text-[35pt] md:text-[40pt] lg:text-[55pt]">
+      <section className="flex flex-col items-center my-auto">
+        <h1 className="text-black text-center text-[30pt] sm:text-[35pt] md:text-[40pt] lg:text-[55pt]">
           {role === "paciente" || role === null
             ? `Hola, ${userData?.nombre ? userData.nombre : "usuario"}`
             : `Bienvenido ${capitalize(role)}`}
@@ -45,7 +45,7 @@ export default function Home() {
             Tomar Hora
           </Btn>
           {role === "admin" && (
-            <div className="flex gap-5 mt-3 justify-center">
+            <div className="flex md:flex-row flex-col gap-5 mt-3 justify-center">
               <Btn onClick={openModalCita}>Ingresar Cita</Btn>
               <Btn onClick={openModalDoctor}>Ingresar Doctor</Btn>
             </div>
@@ -80,7 +80,11 @@ export default function Home() {
       <aside className="flex justify-center md:items-center items-start">
         {userData && userDates.length > 0 ? 
         (
-          <DatesBoard dates={userDates} className={"w-auto md:h-[800px] h-full lg:min-w-[500px]"} />
+          <DatesBoard dates={userDates} 
+          className={`
+            w-full h-full
+            md:h-[650px] md:min-w-[300px]
+            lg:h-[800px] lg:min-w-[400px] lg:max-w-[500px]`} />
         ) : 
         (
           <>
