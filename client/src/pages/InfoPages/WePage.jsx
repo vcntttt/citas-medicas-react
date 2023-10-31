@@ -23,44 +23,52 @@ export default function WePage() {
 
 
   return (
-    <div className="bg-greycus-800 w-full h-[93vh] pt-8 grid grid-cols-[1fr,3fr,1fr] gap-2">
-      <div className=" flex flex-col w-2/3 h-5/6 mx-auto gap-4 me-4 ">
-        <div className='flex h-1/4 place-items-center'>
+    <div className=" md:flex bg-greycus-800 w-full h-screen ">
+
+      <div className="   md:w-2/6 flex flex-col items-center justify-center ">
+
+        <div className=' md:flex h-1/4 w-2/3 items-center '>
           <Btn styles='' onClick={() => ChangeText("mision")}>Mision</Btn>
 
         </div>
-        <div className='flex h-1/4 place-items-center'>
+        <div className='md:flex h-1/4 w-2/3 items-center'>
           <Btn styles='' onClick={() => ChangeText("historia")}>Historia</Btn>
 
-
         </div>
-        <div className='flex h-1/4 place-items-center'>
+        <div className='md:flex h-1/4 w-2/3 items-center'>
           <Btn styles='' onClick={() => ChangeText("premios")}>Premios</Btn>
 
 
         </div>
-        <div className='flex h-1/4 place-items-center'>
+        <div className='md:flex h-1/4 w-2/3 items-center'>
           <Btn styles='' onClick={() => ChangeText("directorio")}>Directorio</Btn>
-        </div>
-
-      </div>
-      <div className=" bg-white text-black  rounded-md p-10 h-5/6 ms-10">
-        <div className="bg-white m-5">
-          <h1 className="text-center text-2xl">Nosotros</h1>
-          <p className="mb-[25rem]" >{text}</p>
-          <cite className="">
-            La medicina no tiene color; es un puente que nos
-            conecta a todos, sin importar el tono de piel.
-            Juntos, creamos un futuro de salud y bienestar
-            para todos, donde la diversidad aumenta nuestro entendimiento y empatía.
-          </cite>
 
         </div>
 
+
+
       </div>
-      <div className="flex flex-col place-items-center justify-center h-5/6">
-        <img className="w-3/6 my-10" src={doc_1} />
-        <img className="w-3/6 my-10" src={doc_2} />
+
+      <div className=" md:w-4/6 flex flex-col items-center justify-center">
+
+        <div className='bg-white h-4/6 rounded text-center '>
+          <h1 className="h-1/6 text-2xl ">Nosotros</h1>
+          <p className="h-2/6 m-4" >{text}</p>
+          <p className="h-1/6 m-4">
+            <cite >
+              La medicina no tiene color; es un puente que nos
+              conecta a todos, sin importar el tono de piel.
+              Juntos, creamos un futuro de salud y bienestar
+              para todos, donde la diversidad aumenta nuestro entendimiento y empatía.
+            </cite>
+          </p>
+
+        </div>
+      </div>
+
+      <div className="bg-greycus-800 md:w-2/6 flex flex-col items-center justify-center">
+        <img className="w-3/6 m-2 mx-auto" src={doc_1} />
+        <img className="w-3/6 m-2 mx-auto" src={doc_2} />
       </div>
     </div>
   )
