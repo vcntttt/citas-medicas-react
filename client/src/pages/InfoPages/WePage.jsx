@@ -24,14 +24,29 @@ export default function WePage() {
 
   return (
     <div className="bg-greycus-800 w-full h-[93vh] pt-8 grid grid-cols-[1fr,3fr,1fr] gap-2">
-      <div className="flex flex-col w-2/3 mx-auto gap-4">
+      <div className=" flex flex-col w-2/3 h-5/6 mx-auto gap-4 me-4 ">
+        <div className='flex h-1/4 place-items-center'>
           <Btn styles='' onClick={() => ChangeText("mision")}>Mision</Btn>
+
+        </div>
+        <div className='flex h-1/4 place-items-center'>
           <Btn styles='' onClick={() => ChangeText("historia")}>Historia</Btn>
+
+
+        </div>
+        <div className='flex h-1/4 place-items-center'>
           <Btn styles='' onClick={() => ChangeText("premios")}>Premios</Btn>
+
+
+        </div>
+        <div className='flex h-1/4 place-items-center'>
           <Btn styles='' onClick={() => ChangeText("directorio")}>Directorio</Btn>
+        </div>
+
       </div>
-      <div className=" text-black bg-white rounded-md p-10">
-          <h1 className="text-center">Nosotros</h1>
+      <div className=" bg-white text-black  rounded-md p-10 h-5/6 ms-10">
+        <div className="bg-white m-5">
+          <h1 className="text-center text-2xl">Nosotros</h1>
           <p className="mb-[25rem]" >{text}</p>
           <cite className="">
             La medicina no tiene color; es un puente que nos
@@ -39,10 +54,13 @@ export default function WePage() {
             Juntos, creamos un futuro de salud y bienestar
             para todos, donde la diversidad aumenta nuestro entendimiento y empatía.
           </cite>
+
+        </div>
+
       </div>
-      <div className="flex flex-col">
-        <img className="object-cover h-full" src={doc_1} />
-        <img className="object-cover h-full" src={doc_2} />
+      <div className="flex flex-col place-items-center justify-center h-5/6">
+        <img className="w-3/6 my-10" src={doc_1} />
+        <img className="w-3/6 my-10" src={doc_2} />
       </div>
     </div>
   )
