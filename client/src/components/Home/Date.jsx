@@ -7,7 +7,7 @@ import dateHelper from "../../hooks/dateHelper";
 import { useNavigate } from "react-router-dom";
 import useAuthStore from "../../store/authStore";
 import useModal from "../../hooks/useModal";
-import Modal from "../../components/Modal";
+import Modal from "../Modals/Modal";
 import DateForm from "./DateForm";
 
 export default function Date({date}) {
