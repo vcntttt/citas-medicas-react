@@ -1,5 +1,5 @@
 import image from "../assets/homeImg.webp";
-import horizontalImg from '../assets/horizontalHomeImg.avif'
+// import horizontalImg from '../assets/smHomeImg.avif'
 import { useNavigate } from "react-router-dom";
 import useAuthStore from "../store/authStore";
 import useIfAuth from "../hooks/useIfAuth";
@@ -28,7 +28,7 @@ export default function Home() {
   } = useModal();
   
   return (
-    <div className="md:mx-20 md:items-center grid md:grid-cols-2 grid-cols-1 grid-rows-none justify-center h-[92vh] items-start">
+    <div className="lg:mx-20 md:mx-5 md:items-center grid md:grid-cols-2 grid-cols-1 grid-rows-none justify-center h-[92vh]">
       <section className="flex flex-col items-center my-auto">
         <h1 className="text-black text-center text-[30pt] sm:text-[35pt] md:text-[40pt] lg:text-[55pt]">
           {role === "paciente" || role === null
@@ -37,7 +37,7 @@ export default function Home() {
         </h1>
         {/* buttons container */}
         <div className="flex flex-col items-center justify-center">
-          <Btn
+          <Btn styles={`lg:text-3xl md:text-2xl text-xl`}
             onClick={() =>
               userHasData ? navigate("/jobs") : navigate("/formulary")
             }
@@ -87,18 +87,18 @@ export default function Home() {
             lg:h-[800px] lg:min-w-[400px] lg:max-w-[500px]`} />
         ) : 
         (
-          <>
+          <div className="md:mx-0 mx-10">
             <img
-              className="object-cover w-auto h-[800px] rounded-lg md:flex hidden"
+              className="object-cover w-auto lg:h-[800px] rounded-lg md:flex hidden"
               alt="doc"
               src={image}
             />
-            <img
+            {/* <img
               className="md:hidden flex"
               src={horizontalImg}
               alt="docMobile"
-            />
-          </>
+            /> */}
+          </div>
         )}
       </aside>
     </div>

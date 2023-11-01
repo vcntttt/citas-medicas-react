@@ -8,7 +8,8 @@ export function createAccesToken(payload) {
             payload,
             TOKEN_SECRET,
             {
-                expiresIn: "1d",
+                expiresIn: "1h",
+                algorithm: "HS256"
             },
             (err, token) => {
                 if (err) console.log(err)
