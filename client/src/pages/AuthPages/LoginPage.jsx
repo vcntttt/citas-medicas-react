@@ -16,37 +16,40 @@ export default function Login() {
   useIfAuth();
   useErrorHandler(sigInErrors);
   return (
-    <div className="flex text-center justify-center mx-0 my-20">
+    <div className=" md:flex items-center justify-center h-screen">
 
-      <div className="w-1/5 bg-[#2e3238]">
+      <div className=" h-4/6  items-center   md:h-2/6     lg:h-4/5 lg:w-2/6">
+        <div className="bg-[#2E3238] w-6/6 md:bg-[#2E3238] h-full   lg:bg-[#2E3238]">
 
-        <div className="flex justify-center items-center h-1/5">
-          <h1 className="font-normal text-4xl text-white">Login</h1>
+          <div className="flex h-1/4 items-center justify-center md: md:h-1/6 lg:lg:bg-[#2E3238] ">
+            <h1 className="text-white text-center text-3xl">Login</h1>
+          </div>
+          <form className=" h-3/4" action="" onSubmit={handleSubmit(onSubmit)}>
+
+            <div className="h-2/6 justify-center text-center md: md:h-4/6    lg:h-2/6">
+              <Input type="email" placeholder="Email" register={register} errors={errors} />
+              <Input type="password" placeholder="Contraseña" register={register} errors={errors} />
+            </div>
+
+            <div className="  h-1/4 flex justify-center  items-center ">
+              <input className="h-1/3 w-2/6 hover:cursor-pointer hover:text-black bg-[#55ccc9] hover:bg-[#55ccc9]" type="submit" value="Entrar" />
+            </div>
+
+            <div className="h-1/6  flex justify-center  items-center " >
+              <label className="text-[white]" >No tienes una cuenta? <Link to="/register" className="underline">Registrate</Link> </label>
+
+              <Toaster duration={3000} toastOptions={{ style: { background: "red", color: "#fff", border: 0 } }} />
+            </div>
+
+          </form>
+
+
         </div>
-
-        <form className="h-4/5" action="" onSubmit={handleSubmit(onSubmit)}>
-
-          <div className="h-2/5 flex flex-col justify-center items-center mb-10">
-            <Input type="email" placeholder="Email" register={register} errors={errors} />
-            <Input type="password"  placeholder="Contraseña" register={register} errors={errors} />
-          </div>
-
-          <div className="h-[30%] flex justify-center text-[black] ">
-            <input className=" h-[50px] w-[200px] hover:cursor-pointer hover:text-black bg-[#55ccc9] hover:bg-[#55ccc9]" type="submit" value="Entrar" />
-          </div>
-
-          <div  className="h-[30%] flex justify-center items-center" >
-            <label className="text-[white]" >No tienes una cuenta? <Link to="/register" className="underline">Registrate</Link> </label>
-            <Toaster duration={3000} toastOptions={{ style: { background: "red", color: "#fff", border: 0 } }} />
-          </div>
-
-        </form>
-
       </div>
 
+        <img className="w-auto   md:h-2/6                  lg:h-4/5" src={image} />
 
-      <img className="w-2/5" src={image} />
-
+      
     </div>
   )
 }
