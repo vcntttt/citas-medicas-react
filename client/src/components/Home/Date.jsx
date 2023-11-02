@@ -1,89 +1,24 @@
 import Btn from "./Btn";
-import { cancelDateRequest, getCitasByEspecialidadRequest } from "../../api/citas";
-import { cancelDoctorDateRequest } from "../../api/drs";
-import { Toaster, toast } from "sonner";
-import { useState } from "react";
-import dateHelper from "../../hooks/dateHelper";
-import { useNavigate } from "react-router-dom";
-import useAuthStore from "../../store/authStore";
+import { Toaster } from "sonner";
 import useModal from "../../hooks/useModal";
-import Modal from "../../components/Modal";
+import Modal from "../Modals/Modal";
 import DateForm from "./DateForm";
+import useDate from '../../hooks/useDate';
+import useAuthStore from "../../store/authStore";
 
 export default function Date({date}) {
   const {isOpen, closeModal, openModal} = useModal();
-  const [citas, setCitas] = useState([]);
-  const {checkDates, role} = useAuthStore();
-
-  const navigate = useNavigate();
-  const handleUpdate = async () => {
-    const especialidad = date.doctor.especialidad;
-    try{
-      const res = await getCitasByEspecialidadRequest(especialidad);
-      const filteredCitas = res.data.filter(cita => cita.estado === false);
-      const formatedCitas = dateHelper(filteredCitas);
-      openModal();
-      setCitas(formatedCitas);
-    }catch(error){
-      console.error(error);
-    }
-  }
-  const handleCancel = () => {
-    try {
-      if (role === "paciente") {
-        toast.promise(cancelDateRequest(date._id), {
-          loading: "Cancelando...",
-          success: () => {
-            checkDates();
-            return "Cita cancelada";
-          },
-          error: "Error al cancelar",
-        })
-      } else if (role === "doctor") {
-        console.log('doctor cancelando')
-      }
-    } catch (error) {
-      console.error(error);
-    }}
-  const handleDelete = async () => {
-    try {
-      if (role === "paciente") return
-      if (role === "doctor") {
-        toast.promise(cancelDoctorDateRequest(date._id), {
-          loading: "Cancelando...",
-          success: () => {
-            checkDates();
-            return "Cita cancelada";
-          },
-          error: "Error al cancelar",
-        })
-      }
-    }
-     catch (error) {
-      console.error(error);
-    }
-  }
-
-  const handleChange = (event) => {
-    handleCancel();
-    navigate("/confirm/", {state: {event}});
-  }
-
-  const doctorChange = () => {
-    toast.promise(cancelDoctorDateRequest(date._id), {
-      loading: "Cancelando...",
-      success: () => {
-        setTimeout(() => {
-          navigate('/confirm/dr');
-        },1500)
-        return "Cita cancelada";
-      },
-      error: "Error al cancelar",
-    })
-  }
+  const {role} = useAuthStore();
+  const {
+    citas,
+    handleUpdate,
+    handleDelete,
+    handleChange,
+    doctorChange,
+  } = useDate(date, openModal);
 
   return (
-    <div className="bg-gray-100 p-6 m-2 flex flex-row justify-between items-start">
+    <div className="bg-gray-100 p-6 m-2 flex lg:flex-row flex-col justify-between items-start">
         <div className="flex flex-col justify-between min-w-[60%] h-full">
         <h1 className="text-xl text-black">
           {role === "doctor" ? '' : date.doctor.especialidad}
@@ -107,9 +42,13 @@ export default function Date({date}) {
           <p><strong>Estado:</strong> {date.estado ? 'No disponible' : 'Disponible'}</p>
         )}
         </div>
-        <div className="flex flex-col justify-end gap-2 ml-4 my-auto">
-        <Btn onClick={role === "doctor" ? doctorChange : handleUpdate}>Modificar</Btn>
-        <Btn onClick={role === "doctor" ? handleDelete : handleChange}>Cancelar</Btn>
+        <div className={`flex flex-col w-full md:justify-end md:gap-2 gap-1 justify-center md:mt-4 mt-0`}>
+        <Btn onClick={role === "doctor" ? doctorChange : handleUpdate}>
+          Modificar
+        </Btn>
+        <Btn onClick={role === "doctor" ? handleDelete : handleChange}>
+          Cancelar
+        </Btn>
         </div>
         <Toaster/>
         <Modal isOpen={isOpen} onClose={closeModal}>

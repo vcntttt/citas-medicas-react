@@ -9,7 +9,5 @@ export default function Input({ type, placeholder, errors, register }) {
             {errors[type] && <p className="text-red-600">Este campo es requerido</p>}
 
         </div>
-
-
     );
 } 

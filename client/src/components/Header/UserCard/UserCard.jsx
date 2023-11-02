@@ -14,7 +14,7 @@ export default function UserCard() {
       </button>
     </div>
   ) : (
-    <Link to="/login" className=""id="">
+    <Link to="/login" className="underline hover:font-bold">
       <div>
         <p>Iniciar Sesion</p>
       </div>

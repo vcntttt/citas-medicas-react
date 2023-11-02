@@ -5,7 +5,7 @@ import useRequest from '../../hooks/useRequest';
 import { Toaster, toast } from 'sonner';
 import { useNavigate } from 'react-router-dom';
 
-export default function DateForm({bgColor}) {
+export default function DateForm() {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { role, checkDates } = useAuthStore();
     const { data: drs } = useRequest(() => getDoctoresRequest());

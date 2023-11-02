@@ -11,7 +11,6 @@ export default function NotFound() {
           <h1 className="content-center text-white font-[400] text-[2rem]">No podemos encontrar la página que estás buscando</h1>
           <p className="text-center text-white mt-[70px]">Regresa a la página de inicio apretando el boton de abajo</p>
         </div>
-
         <div className="bg-teal-300 mx-4 px-2 py-1 text-black text-center no-underline">
           <label className="text-[20px] font-[80px]">
             <Link className="bg-teal-300 mx-4 px-2 py-1 text-black text-center no-underline" to="/">
