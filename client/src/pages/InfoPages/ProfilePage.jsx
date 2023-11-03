@@ -6,7 +6,7 @@ export default function ProfilePage() {
   const { userData, role, userDates } = useAuthStore();
 
   return (
-    <div className="grid grid-cols-2 min-h-[90vh] gap-4 p-4">
+    <div className="grid md:grid-cols-2 min-h-[90vh] gap-4 p-4">
         <DatesBoard dates={userDates} className="col-span-1"/>
       <div className="bg-gray-800 rounded-lg p-4">
       <h1 className="text-white text-xl mb-4">¡Hola, {role}!</h1>
