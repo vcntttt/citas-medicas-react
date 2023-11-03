@@ -5,11 +5,14 @@ import { toast } from "sonner";
 import dateHelper from "./dateHelper";
 import { useNavigate } from "react-router-dom";
 import useAuthStore from "../store/authStore";
+import useIfAuth from "./useIfAuth";
 
 export default function useDate(date, openModal) {
-    const {checkDates, role} = useAuthStore();
+    const {role} = useAuthStore();
+    const { checkDates } = useIfAuth();
     const [citas, setCitas] = useState([]);
     const navigate = useNavigate();
+    
   const handleUpdate = async () => {
     const especialidad = date.doctor.especialidad;
     try{
@@ -22,6 +25,7 @@ export default function useDate(date, openModal) {
       console.error(error);
     }
   }
+  //para el paciente
   const handleCancel = () => {
     try {
       if (role === "paciente") {
@@ -39,6 +43,8 @@ export default function useDate(date, openModal) {
     } catch (error) {
       console.error(error);
     }}
+
+  // para el doctor
   const handleDelete = async () => {
     try {
       if (role === "paciente") return

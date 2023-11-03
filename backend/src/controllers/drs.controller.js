@@ -107,7 +107,6 @@ export const getCitasDoctor = async (req, res) => {
   try {
     const userId = req.user.id;
     const user = await User.findById(userId);
-    const drEmail = user.email;
     const citas = await Cita.find({ 'doctor.email': user.email });
     res.json(citas);
   } catch (error) {
@@ -120,9 +119,7 @@ export const eliminarCita = async (req, res) => {
     const citaId = req.params.citaId;
     const userId = req.user.id;
     const user = await User.findById(userId);
-    const drEmail = user.email;
-    const citas = await Cita.find({ 'doctor.email': user.email });
-    const cita = await Cita.findOne({ _id: citaId, 'doctor._id': doctor._id });
+    const cita = await Cita.findOne({ _id: citaId, 'doctor.email': user.email });
     if (!cita) {
       return res.status(404).json({ message: 'Cita no encontrada' });
     }

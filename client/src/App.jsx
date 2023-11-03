@@ -13,7 +13,7 @@ import CalendarPage from "./pages/DatePages/CalendarPage.jsx";
 import JobsListPage from "./pages/InfoPages/JobsListPage.jsx";
 import WePage from "./pages/InfoPages/WePage.jsx";
 import DrsPage from "./pages/InfoPages/Drspage.jsx";
-import DateForm from "./components/Home/DateForm.jsx";
+import DateFormPage from "./pages/DatePages/DateFormPage.jsx";
 
 export default function App() {
   return (
@@ -30,7 +30,7 @@ export default function App() {
           <Route element={<ProtectedRoute />}>
           <Route path="/calendar/:id" element={<CalendarPage />} />
           <Route path="/confirm" element={<ConfirmPage />} />
-          <Route path="/confirm/dr" element={<DateForm />} />
+          <Route path="/confirm/dr" element={<DateFormPage />} />
           <Route path="/jobs" element={<Jobs />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/formulary" element={<Form />} />

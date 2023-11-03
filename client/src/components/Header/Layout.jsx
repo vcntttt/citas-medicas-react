@@ -13,6 +13,9 @@ export default function Layout() {
   if(path == "/we" || path == "/jobs") {
     styles = 'bg-greycus-800 text-white';
   }
+  if(path == "/confirm/dr") {
+    styles = 'bg-[#2E3238] text-white';
+  }
   return (
     <div>
       <NavBar styles={styles}/>

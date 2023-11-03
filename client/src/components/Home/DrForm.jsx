@@ -64,6 +64,7 @@ export default function DrForm() {
         <div className="h-1/7 m-5">
           <select className='py-2.5 w-1/3 pr-10 text-white bg-transparent border-0 border-b-2 '
             {...register('especialidad', { required: true })} >
+            <option className='text-black' value="">Asignar especialidad</option>
             {especialidades.map((item, index) => (
               <option className='text-black'
                 key={index}>{item}</option>

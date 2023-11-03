@@ -11,7 +11,8 @@ const useAuthStore = create(devtools(persist((set) => ({
 
     setToken : (token) => set(state => ({
         ...state,
-        token
+        token,
+        isAuthenticated: true
     }), false, "setToken"),
 
     setUserData : (data) => set(state => ({

@@ -28,7 +28,7 @@ export default function Login() {
   useErrorHandler(sigInErrors);
   return (
     <div className=" md:flex items-center justify-center h-screen bg-[#2E3238]">
-      <div className=" h-4/6 md:h-2/6 lg:h-4/5 lg:w-2/6">
+      <div className=" h-4/6 md:h-2/6 lg:h-4/5 lg:w-2/6 rounded-lg shadow-2xl">
         <div className="w-full  h-full">
           <div className="flex h-1/4 items-center justify-center md: md:h-1/6">
             <h1 className="text-white text-center text-3xl">Login</h1>

@@ -4,10 +4,12 @@ import useAuthStore from '../../store/authStore';
 import useRequest from '../../hooks/useRequest';
 import { Toaster, toast } from 'sonner';
 import { useNavigate } from 'react-router-dom';
+import useIfAuth from '../../hooks/useIfAuth';
 
-export default function DateForm() {
+export default function DateForm({styles}) {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const { role, checkDates } = useAuthStore();
+    const { role } = useAuthStore();
+    const { checkDates } = useIfAuth();
     const { data: drs } = useRequest(() => getDoctoresRequest());
     const navigate = useNavigate();
     const onSubmit = handleSubmit(async (data) => {
@@ -52,10 +54,10 @@ export default function DateForm() {
         }
     })
     return (
-        <div className="">
-            <form onSubmit={onSubmit} className={`px-8 py-6`}>
+        <div className={`${styles}`}>
+            <form onSubmit={onSubmit} className={`flex flex-col px-8 py-6 items-center`}>
                 <div className='flex flex-col justify-center items-center mx-auto gap-4'>
-                <input type="datetime-local" {...register('hora', { required: true })}  className='py-2.5 w-2/3 text-white bg-transparent border-0 border-b-2 '/>
+                <input type="datetime-local" {...register('hora', { required: true })}  className='py-2.5 text-white bg-transparent border-0 border-b-2 '/>
                     {errors.horaInicio && <p>Este campo es requerido</p>}
 
                     <select className='py-2.5 w-1/2 text-white bg-transparent border-0 border-b-2 '
@@ -84,7 +86,7 @@ export default function DateForm() {
                     }
 
                 </div>
-                    <input className=" bg-green-500 rounded-lg text-white hover:bg-green-700 cursor-pointer p-1 w-1/2" type="submit" value="Enviar" />
+                    <input className=" bg-green-500 rounded-lg text-white hover:bg-green-700 cursor-pointer p-1 w-1/2 mx-auto" type="submit" value="Enviar" />
             </form>
             <Toaster />
         </div>

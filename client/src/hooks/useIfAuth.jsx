@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import useAuthStore from "../store/authStore";
 import { getCitasDoctorRequest } from "../api/drs";
 import { getUserDates } from "../api/profile";
@@ -6,23 +6,29 @@ import { getUserDates } from "../api/profile";
 function useIfAuth() {
     const { setUserDates, role, isAuthenticated} = useAuthStore();
 
-    useEffect(() => {
-        async function checkDates() {
-            try {
-                if (!isAuthenticated) setUserDates([]);
-                let response = null;
-                if (role === "doctor") {
-                    response = await getCitasDoctorRequest();
-                    setUserDates(response.data);
-                } else if (role === "paciente") {
-                    response = await getUserDates();
-                    setUserDates(response.data);
-            }} catch (error) {
-                console.error(error.response);
+    const checkDates = useCallback(async ()=>{
+        try{
+            if (!isAuthenticated) {
+                setUserDates([]);
+                return
             }
+            let response = null;
+            if (role === 'doctor') {
+                response = await getCitasDoctorRequest();
+            } else if (role === 'user') {
+                response = await getUserDates();
+            }
+            if (response) setUserDates(response.data);
+        }catch(error){
+            console.error(error);
         }
+    }, [isAuthenticated, role]);
+
+    useEffect(()=>{
         checkDates();
-    }, [isAuthenticated, role])
+    }, [checkDates]);
+    
+    return {checkDates};
 }
 
 export default useIfAuth;
