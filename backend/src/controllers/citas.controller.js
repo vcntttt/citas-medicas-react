@@ -1,8 +1,5 @@
-import mongoose from 'mongoose';
 import Cita from '../models/citas.model.js';
 import User from '../models/user.model.js';
-
-
 
 export const getAllCitas = async (req, res) => {
   try {
@@ -12,8 +9,6 @@ export const getAllCitas = async (req, res) => {
     res.status(500).json({ message: 'Error al obtener las citas', error: error.message });
   }
 };
-
-
 
 export const agregarCita = async (req, res) => {
   try {
@@ -33,9 +28,6 @@ export const agregarCita = async (req, res) => {
   }
 };
 
-
-
-
 export const getCitasByEspecialidad = async (req, res) => {
   try {
     const especialidad = req.params.especialidad;
@@ -45,8 +37,6 @@ export const getCitasByEspecialidad = async (req, res) => {
     res.status(500).json({ message: 'Error al obtener las citas', error: error.message });
   }
 }
-
-
 
 export const pickDate = async (req, res) => {
   try {
@@ -73,8 +63,6 @@ export const pickDate = async (req, res) => {
     res.status(500).json({ message: 'Error al tomar la cita', error: error.message });
   }
 }
-
-
 
 export const cancelDate = async (req, res) => {
   try {

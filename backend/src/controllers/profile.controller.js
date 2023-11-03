@@ -1,8 +1,6 @@
 import User from '../models/user.model.js';
 import Cita from '../models/citas.model.js';
 
-
-
 export const profile = async (req, res) => {
     try {
         const userId = req.user.id;
@@ -24,8 +22,6 @@ export const profile = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
-
-
 
 export const updateProfile = async (req, res) => {
     const userId = req.user.id;

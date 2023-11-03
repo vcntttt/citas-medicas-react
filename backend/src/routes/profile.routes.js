@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { profile, updateProfile, getUserDates } from "../controllers/profile.controller.js";
-import { authRequired } from '../middlewares/validateToken.js'
+import { authRequired } from '../middlewares/requireAuth.js'
 
 const router = Router()
 

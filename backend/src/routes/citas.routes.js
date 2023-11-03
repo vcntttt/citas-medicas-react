@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { getAllCitas, agregarCita, getCitasByEspecialidad, pickDate, cancelDate } from '../controllers/citas.controller.js';
-import { authRequired } from '../middlewares/validateToken.js'
+import { authRequired } from '../middlewares/requireAuth.js'
 
 const router = Router();
 

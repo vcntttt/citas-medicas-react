@@ -9,7 +9,6 @@ const generateRandomRut = () => {
 };
 
 const userSchema = new mongoose.Schema({
-
     email: {
         type: String,
         required: true,
@@ -31,9 +30,13 @@ const userSchema = new mongoose.Schema({
         type: String,
         enum: ['doctor', 'paciente', 'admin'],
         default: 'paciente'
+    },
+    // solo para los doctores
+    especialidad: {
+        type: String,
+        default : ''
     }
 },
-
     {
         timestamps: true
     })

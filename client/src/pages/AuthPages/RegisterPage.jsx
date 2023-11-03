@@ -6,15 +6,23 @@ import useAuthStore from "../../store/authStore";
 import useErrorHandler from "../../hooks/useErrors";
 import useIfAuth from "../../hooks/useIfAuth";
 import Input from "../../components/Input/Input.jsx";
+import { registerRequest } from "../../api/auth.js";
 export default function Register() {
 
   const { register, handleSubmit, formState: { errors }, } = useForm();
 
-  const { signUp, errors: registerErrors } = useAuthStore();
+  const { setToken, setUserData, setError, errors: registerErrors } = useAuthStore();
 
   const navigate = useNavigate();
   const onSubmit = handleSubmit(async (data) => {
-    signUp(data, navigate);
+    try{
+      const res = await registerRequest(data);
+      setToken(res.data.token)
+      setUserData([])
+      navigate('/')
+    } catch (error){
+      setError(error.response.data)
+    }
   })
   useErrorHandler(registerErrors);
   useIfAuth();
@@ -22,16 +30,11 @@ export default function Register() {
   return (
     <div className=" md:flex items-center justify-center h-screen">
       <img className="w-auto   md:h-2/6                  lg:h-4/5" src={image} />
-
-
       <div className=" h-4/6  items-center   md:h-2/6     lg:h-4/5 lg:w-2/6">
-
         <div className="bg-[#2E3238] w-6/6 md:bg-[#2E3238] h-full   lg:bg-[#2E3238]">
           <div className="flex h-1/4 items-center justify-center md: md:h-1/6 lg:lg:bg-[#2E3238] ">
             <h1 className=" text-white text-center text-3xl">Registro</h1>
           </div>
-
-
           <form className="h-3/4" action="" onSubmit={handleSubmit(onSubmit)}>
 
             <div className="h-2/6 justify-center text-center md: md:h-4/6    lg:h-2/6">

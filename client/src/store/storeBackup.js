@@ -6,7 +6,7 @@ import {persist, devtools} from 'zustand/middleware'
 import { getCitasDoctor, getInfoDoc } from '../api/drs';
 
 
-const useAuthStore = create(devtools(persist((set,get) => ({
+const useAuthStore2 = create(devtools(persist((set,get) => ({
     user: null,
     isAuthenticated: false,
     errors: [],
@@ -121,4 +121,4 @@ const useAuthStore = create(devtools(persist((set,get) => ({
   name: 'authStore',
 })));
 
-export default useAuthStore;
+export default useAuthStore2

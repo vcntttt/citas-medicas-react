@@ -13,7 +13,7 @@ import capitalize from "../hooks/capitalizeHelper";
 
 export default function Home() {
   const navigate = useNavigate();
-  const { userData, userHasData, userDates, role } = useAuthStore();
+  const { user, userHasData, userDates, role } = useAuthStore();
   useIfAuth();
   const {
     isOpen: isOpenCita,
@@ -26,17 +26,16 @@ export default function Home() {
     openModal: openModalDoctor,
     closeModal: closeModalDoctor,
   } = useModal();
-  
   return (
     <div className="lg:mx-20 md:mx-5 md:items-center grid md:grid-cols-2 grid-cols-1 grid-rows-none justify-center h-[92vh]">
       <section className="flex flex-col items-center my-auto">
         <h1 className="text-black text-center text-[30pt] sm:text-[35pt] md:text-[40pt] lg:text-[55pt]">
           {role === "paciente" || role === null
-            ? `Hola, ${userData?.nombre ? userData.nombre : "usuario"}`
+            ? `Hola, ${user?.nombre ? user.nombre : "usuario"}`
             : `Bienvenido ${capitalize(role)}`}
         </h1>
         {/* buttons container */}
-        <div className="flex flex-col items-center justify-center">
+        <div className="flex flex-col items-center justify-center gap-2">
           <Btn styles={`lg:text-3xl md:text-2xl text-xl`}
             onClick={() =>
               userHasData ? navigate("/jobs") : navigate("/formulary")
@@ -46,8 +45,8 @@ export default function Home() {
           </Btn>
           {role === "admin" && (
             <div className="flex md:flex-row flex-col gap-5 mt-3 justify-center">
-              <Btn onClick={openModalCita}>Ingresar Cita</Btn>
-              <Btn onClick={openModalDoctor}>Ingresar Doctor</Btn>
+              <Btn styles={`lg:text-3xl md:text-2xl text-xl`} onClick={openModalCita}>Ingresar Cita</Btn>
+              <Btn styles={`lg:text-3xl md:text-2xl text-xl`} onClick={openModalDoctor}>Ingresar Doctor</Btn>
             </div>
           )}
           {role === "doctor" && (
@@ -78,7 +77,7 @@ export default function Home() {
       </div>
       </section>
       <aside className="flex justify-center md:items-center items-start">
-        {userData && userDates.length > 0 ? 
+        {user && userDates.length > 0 ? 
         (
           <DatesBoard dates={userDates} 
           className={`

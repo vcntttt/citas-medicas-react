@@ -6,10 +6,10 @@ export default function UserCard() {
 
   return isAuthenticated ? (
     <div className="text-current flex gap-4">
-      <Link to="/profile" className="underline">
+      <Link to="/profile" className="underline hover:font-bold">
         <p>Perfil</p>
       </Link>
-      <button onClick={logOut} className="underline">
+      <button onClick={logOut} className="underline hover:font-bold">
         Cerrar Sesion
       </button>
     </div>

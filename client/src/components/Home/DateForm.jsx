@@ -53,15 +53,13 @@ export default function DateForm() {
     })
     return (
         <div className="">
-            <form onSubmit={onSubmit} className={` px-8 py-6`}>
-                <div className="h-1/4 my-10">
-                        <input type="datetime-local" {...register('hora', { required: true })}  className='py-2.5 w-1/3 pr-10 text-white bg-transparent border-0 border-b-2 '/>
-                        {errors.horaInicio && <p>Este campo es requerido</p>}
-                </div>
-                <div className="h-1/4 my-10">
-                    
-                    <select className='py-2.5 w-1/3 pr-10 text-white bg-transparent border-0 border-b-2 '
-                        {...register('sala', { required: true })}>
+            <form onSubmit={onSubmit} className={`px-8 py-6`}>
+                <div className='flex flex-col justify-center items-center mx-auto gap-4'>
+                <input type="datetime-local" {...register('hora', { required: true })}  className='py-2.5 w-2/3 text-white bg-transparent border-0 border-b-2 '/>
+                    {errors.horaInicio && <p>Este campo es requerido</p>}
+
+                    <select className='py-2.5 w-1/2 text-white bg-transparent border-0 border-b-2 '
+                        {...register('sala', { required: true, defaultValue: 'Sala A' })}>
                         <option value="Sala A" className='text-black'>Sala A</option>
                         <option value="Sala B" className='text-black'>Sala B</option>
                         <option value="Sala C" className='text-black'>Sala C</option>
@@ -73,7 +71,8 @@ export default function DateForm() {
                 <div className="h-1/4 my-10">
                     {role === 'admin' ? (
                         <>
-                            <select className='py-2.5 w-1/3 pr-10 text-white bg-transparent border-0 border-b-2 ' {...register('doctor', { required: true })}>
+                            <select className='py-2.5 w-1/3  text-white bg-transparent border-0 border-b-2 ' {...register('doctor', { required: true })}>
+                                <option value="" className='text-black'>Escoje un doctor</option>
                                 {drs.map((item) => (
                                     <option className='text-black' placeholder='Escoje un doctor'
                                     key={item._id} value={item._id}>{item.nombre} {item.apellido}</option>
@@ -85,7 +84,7 @@ export default function DateForm() {
                     }
 
                 </div>
-                    <input className=" bg-green-500 rounded-lg w-1/6  hover:bg-green-700 " type="submit" value="Enviar" />
+                    <input className=" bg-green-500 rounded-lg text-white hover:bg-green-700 cursor-pointer p-1 w-1/2" type="submit" value="Enviar" />
             </form>
             <Toaster />
         </div>

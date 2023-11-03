@@ -12,6 +12,6 @@ export const getInfoDoc = () => axios.get(`/profile/dr/`);
 
 export const registerDrRequest = (data) => axios.post(`/register/dr`, data);
 
-export const getCitasDoctor = () => axios.get(`/citas/dr`);
+export const getCitasDoctorRequest = () => axios.get(`/citas/dr`);
 
 export const cancelDoctorDateRequest = (citaId) => axios.delete(`/citas/${citaId}`);
