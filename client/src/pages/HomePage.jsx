@@ -13,7 +13,7 @@ import capitalize from "../hooks/capitalizeHelper";
 
 export default function Home() {
   const navigate = useNavigate();
-  const { user, userHasData, userDates, role } = useAuthStore();
+  const { user, userDates, role } = useAuthStore();
   useIfAuth();
   const {
     isOpen: isOpenCita,
@@ -38,7 +38,7 @@ export default function Home() {
         <div className="flex flex-col items-center justify-center gap-2">
           <Btn styles={`lg:text-3xl md:text-2xl text-xl`}
             onClick={() =>
-              userHasData ? navigate("/jobs") : navigate("/formulary")
+              (user?.nombre && user?.apellido) ? navigate("/jobs") : navigate("/formulary")
             }
           >
             Tomar Hora
