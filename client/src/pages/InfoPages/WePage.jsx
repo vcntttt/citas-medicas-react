@@ -22,22 +22,32 @@ export default function WePage() {
   };
 
   return (
-    <div className=" md:flex bg-greycus-800 w-full h-screen ">
-      <div className="md:w-2/6 flex flex-col items-center justify-center ">
-        <div className='md:flex h-1/4 w-2/3 items-center'>
-          <Btn onClick={() => ChangeText("mision")}>Mision</Btn>
+    <div className="bg-greycus-800 w-full h-screen  md:flex  ">
+      {/*  md:w-2/6 h-1/3 flex flex-col items-center justify-center bg-red-600 md:bg-lime-500 lg:bg-indigo-700 */}
+
+      <div className="flex justify-center  md:w-2/6  lg:w-1/3">
+
+        <div className='  flex-col h-4/6 w-full '>
+
+          <div className='h-1/4 flex justify-center items-center py-5   '>
+            <Btn onClick={() => ChangeText("mision")}>Mision</Btn>
+          </div>
+          <div className='h-1/4 flex justify-center items-center py-5  '>
+            <Btn onClick={() => ChangeText("historia")}>Historia</Btn>
+          </div>
+          <div className='h-1/4 flex justify-center items-center py-5   '>
+            <Btn onClick={() => ChangeText("premios")}>Premios</Btn>
+          </div>
+          <div className='h-1/4 flex justify-center items-center py-5 '>
+            <Btn onClick={() => ChangeText("directorio")}>Directorio</Btn>
+          </div>
+
         </div>
-        <div className='md:flex h-1/4 w-2/3 items-center'>
-          <Btn onClick={() => ChangeText("historia")}>Historia</Btn>
-        </div>
-        <div className='md:flex h-1/4 w-2/3 items-center'>
-          <Btn onClick={() => ChangeText("premios")}>Premios</Btn>
-        </div>
-        <div className='md:flex h-1/4 w-2/3 items-center'>
-          <Btn onClick={() => ChangeText("directorio")}>Directorio</Btn>
-        </div>
+
       </div>
-      <div className=" md:w-4/6 flex flex-col items-center justify-center">
+
+
+      <div className="md:w-4/6 flex-col ">
         <div className='bg-white h-4/6 rounded text-center py-4'>
           <h1 className="h-1/6 text-2xl ">Nosotros</h1>
           <p className="h-2/6 m-4" >{text}</p>
@@ -51,7 +61,8 @@ export default function WePage() {
           </p>
         </div>
       </div>
-      <div className="bg-greycus-800 md:w-2/6 flex flex-col items-center justify-center">
+      
+      <div className="bg-greycus-800 md:w-2/6 flex-col ">
         <img className="w-3/6 m-2 mx-auto" src={doc_1} />
         <img className="w-3/6 m-2 mx-auto" src={doc_2} />
       </div>
