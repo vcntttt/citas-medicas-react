@@ -23,23 +23,22 @@ export default function WePage() {
 
   return (
     <div className="bg-greycus-800 w-full h-screen  md:flex  ">
-      {/*  md:w-2/6 h-1/3 flex flex-col items-center justify-center bg-red-600 md:bg-lime-500 lg:bg-indigo-700 */}
 
       <div className="flex justify-center  md:w-2/6  lg:w-1/3">
 
         <div className='  flex-col h-4/6 w-full '>
 
           <div className='h-1/4 flex justify-center items-center py-5   '>
-            <Btn onClick={() => ChangeText("mision")}>Mision</Btn>
+            <Btn styles={'w-2/3'} onClick={() => ChangeText("mision")}>Mision</Btn>
           </div>
           <div className='h-1/4 flex justify-center items-center py-5  '>
-            <Btn onClick={() => ChangeText("historia")}>Historia</Btn>
+            <Btn styles={'w-2/3'} onClick={() => ChangeText("historia")}>Historia</Btn>
           </div>
           <div className='h-1/4 flex justify-center items-center py-5   '>
-            <Btn onClick={() => ChangeText("premios")}>Premios</Btn>
+            <Btn styles={'w-2/3'} onClick={() => ChangeText("premios")}>Premios</Btn>
           </div>
           <div className='h-1/4 flex justify-center items-center py-5 '>
-            <Btn onClick={() => ChangeText("directorio")}>Directorio</Btn>
+            <Btn styles={'w-2/3'} onClick={() => ChangeText("directorio")}>Directorio</Btn>
           </div>
 
         </div>
