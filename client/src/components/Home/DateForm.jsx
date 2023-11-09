@@ -57,7 +57,7 @@ export default function DateForm({ styles }) {
         <div className={`${styles}`}>
             <form onSubmit={onSubmit} className={` bg flex-col px-8 py-6`}>
                 <div className=' flex flex-col  items-center gap-4'>
-                    <input type="datetime-local" {...register('hora', { required: true })} className='py-2.5 text-white bg-transparent border-0 border-b-2 ' />
+                    <input type="datetime-local" {...register('hora', { required: true })} className='w-3/6 py-2.5 text-white bg-transparent border-0 border-b-2 ' />
                     {errors.horaInicio && <p>Este campo es requerido</p>}
 
                     <select className='py-2.5 px-3.5 w-1/2 text-white bg-transparent border-0 border-b-2 '

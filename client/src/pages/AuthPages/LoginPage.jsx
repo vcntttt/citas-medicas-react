@@ -39,7 +39,7 @@ export default function Login() {
               <Input type="password" placeholder="Contraseña" register={register} errors={errors} />
             </div>
             <div className="  h-1/4 flex justify-center  items-center ">
-              <input className="h-1/3 w-2/6 hover:cursor-pointer hover:text-black bg-[#55ccc9] hover:bg-[#55ccc9]" type="submit" value="Entrar" />
+              <input className="w-[200px] h-[50px] bg-[#55CCC9] hover:cursor-pointer hover:bg-[#46a4a1]" type="submit" value="Entrar" />
             </div>
             <div className="h-1/6  flex justify-center  items-center " >
               <label className="text-[white]" >No tienes una cuenta? <Link to="/register" className="underline">Registrate</Link> </label>
