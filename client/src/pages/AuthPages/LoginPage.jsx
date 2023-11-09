@@ -33,8 +33,8 @@ export default function Login() {
           <div className="flex h-1/4 items-center justify-center md: md:h-1/6">
             <h1 className="text-white text-center text-3xl">Login</h1>
           </div>
-          <form className=" h-3/4" action="" onSubmit={handleSubmit(onSubmit)}>
-            <div className="h-2/6 justify-center text-center md: md:h-4/6    lg:h-2/6">
+          <form className="h-3/4" action="" onSubmit={handleSubmit(onSubmit)}>
+            <div className="h-2/6 justify-center text-center md:h-4/6 lg:h-2/6">
               <Input type="email" placeholder="Email" register={register} errors={errors} />
               <Input type="password" placeholder="Contraseña" register={register} errors={errors} />
             </div>

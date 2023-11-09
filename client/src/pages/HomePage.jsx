@@ -70,7 +70,7 @@ export default function Home() {
           bgColor="[#2E3238]"
         >
           <h1 className="text-white text-2xl py-2 mt-4">
-            Crear Cita
+            Crear Doctor
           </h1>
           <DrForm />
         </Modal>
