@@ -13,6 +13,23 @@ export const getAllCitas = async (req, res) => {
 export const agregarCita = async (req, res) => {
   try {
     const { paciente, doctor, horaInicio, horaFin, estado, sala } = req.body;
+    const citasChocadas = await Cita.find({
+      doctor: doctor,
+      $or: [
+        { horaInicio: { $lte: horaInicio }, horaFin: { $gte: horaInicio } },
+        { horaInicio: { $lte: horaFin }, horaFin: { $gte: horaFin } },
+      ],
+    });
+
+    if (citasChocadas.length > 0) {
+      return res.status(400).json({ message: 'La nueva cita choca con una cita existente' });
+    }
+
+    const salasValidas = ['sala A', 'sala B', 'sala C','sala D', 'sala E', 'sala F']; 
+    if (!salasValidas.includes(sala)) {
+      return res.status(400).json({ message: 'Sala no válida' });
+    }
+
     const nuevaCita = new Cita({
       paciente,
       doctor,
@@ -51,6 +68,9 @@ export const pickDate = async (req, res) => {
     if (!cita) {
       return res.status(404).json({ message: 'Cita no encontrada' });
     }
+    if (cita.doctor.email === paciente.email) {
+      return res.status(400).json({ message: 'El doctor no puede tomar su propia cita como paciente' });
+    }
     if (cita.estado) {
       return res.status(400).json({ message: 'La cita ya fue tomada' });
     }
@@ -76,6 +96,9 @@ export const cancelDate = async (req, res) => {
     }
     if (cita.paciente.email !== email) {
       return res.status(404).json({ message: 'Cita y email no coinciden' });
+    }
+    if (cita.estado === false) {
+      return res.status(400).json({ message: 'La cita ya ha sido cancelada' });
     }
     cita.set("paciente", undefined);
     cita.estado = false;
