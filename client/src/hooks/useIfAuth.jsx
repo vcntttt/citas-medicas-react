@@ -15,7 +15,7 @@ function useIfAuth() {
             let response = null;
             if (role === 'doctor') {
                 response = await getCitasDoctorRequest();
-            } else if (role === 'user') {
+            } else if (role === 'admin' || role === 'paciente') {
                 response = await getUserDates();
             }
             if (response) setUserDates(response.data);

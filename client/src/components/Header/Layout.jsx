@@ -16,6 +16,9 @@ export default function Layout() {
   if(path == "/confirm/dr") {
     styles = 'bg-[#2E3238] text-white';
   }
+  if(path == "/confirm/") {
+    styles = 'bg-gray-500 text-white';
+  }
   return (
     <div>
       <NavBar styles={styles}/>

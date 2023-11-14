@@ -35,7 +35,7 @@ export default function DrsPage() {
                 value={item}
                 onChange={handleEspecialidadChange}
                 />
-              <label htmlFor={item.toLowerCase()}  className="mx-4 text-2xl">{item}</label>
+              <label htmlFor={item.toLowerCase()}  className="text-2xl">{item}</label>
           </div>
         ))}
       </div>

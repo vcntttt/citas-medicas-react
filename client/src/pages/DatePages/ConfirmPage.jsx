@@ -24,7 +24,7 @@ export default function ConfirmPage() {
   
   return (
     <div className="flex bg-gray-500 h-[90vh] flex-col">
-      <div className="flex flex-col justify-center m-auto p-[10px] bg-gray-800 w-[70%] h-[80%] p-8">
+      <div className="flex flex-col justify-center m-auto bg-gray-800 rounded-lg w-[70%] h-[80%] p-8">
       <h1 className="text-2xl text-white">Confirme su cita</h1>
         <p className="flex items-center m-[20px] text-[13pt] bg-white text-black p-[20px]">
           <span className="font-bold mr-4">Profesional:</span>{event.doctor.nombre} {event.doctor.apellido}
