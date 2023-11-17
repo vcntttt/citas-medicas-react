@@ -66,6 +66,18 @@ export const newDateAsDr = async (req, res) => {
     } else {
       console.log(doctor)
     }
+    const citaExistente = await Cita.findOne({
+      sala,
+      $or: [
+        { horaInicio: { $gte: horaInicio, $lt: horaFin } }, 
+        { horaFin: { $gt: horaInicio, $lte: horaFin } },
+        { $and: [{ horaInicio: { $lte: horaInicio } }, { horaFin: { $gte: horaFin } }] }, 
+      ],
+    });
+
+    if (citaExistente) {
+      return res.status(400).json({ message: 'Ya existe una cita en esa hora y sala' });
+    }
     const nuevaCita = new Cita({
       paciente,
       doctor : {

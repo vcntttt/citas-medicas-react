@@ -13,23 +13,18 @@ export const getAllCitas = async (req, res) => {
 export const agregarCita = async (req, res) => {
   try {
     const { paciente, doctor, horaInicio, horaFin, estado, sala } = req.body;
-    const citasChocadas = await Cita.find({
-      doctor: doctor,
+    const citaExistente = await Cita.findOne({
+      sala,
       $or: [
-        { horaInicio: { $lte: horaInicio }, horaFin: { $gte: horaInicio } },
-        { horaInicio: { $lte: horaFin }, horaFin: { $gte: horaFin } },
+        { horaInicio: { $gte: horaInicio, $lt: horaFin } }, 
+        { horaFin: { $gt: horaInicio, $lte: horaFin } }, 
+        { $and: [{ horaInicio: { $lte: horaInicio } }, { horaFin: { $gte: horaFin } }] }, 
       ],
     });
 
-    if (citasChocadas.length > 0) {
-      return res.status(400).json({ message: 'La nueva cita choca con una cita existente' });
+    if (citaExistente) {
+      return res.status(400).json({ message: 'Ya existe una cita en esa hora y sala' });
     }
-
-    const salasValidas = ['sala A', 'sala B', 'sala C','sala D', 'sala E', 'sala F']; 
-    if (!salasValidas.includes(sala)) {
-      return res.status(400).json({ message: 'Sala no válida' });
-    }
-
     const nuevaCita = new Cita({
       paciente,
       doctor,
