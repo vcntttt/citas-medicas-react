@@ -29,14 +29,14 @@ export default function DrsPage() {
       <div className="bg-slate-800 md:flex md:flex-col gap-4 grid grid-cols-2 pb-4">
       <h1 className="md:flex text-2xl py-4 text-center bg-slate-800 text-white hidden">Especialidades</h1>
         {especialidades.map((item) => (
-          <div key={item} className="px-2 mx-6 bg-onahau-500 h-8 rounded">
+          <div key={item} className="px-2 mx-3 bg-onahau-500 h-8 rounded">
               <input className=""
                 type="checkbox"
                 name={item.toLowerCase()}
                 value={item}
                 onChange={handleEspecialidadChange}
                 />
-              <label htmlFor={item.toLowerCase()} className="text-2xl">{item}</label>
+              <label htmlFor={item.toLowerCase()} className="md:text-2xl text-lg">{item}</label>
           </div>
         ))}
       </div>
