@@ -9,13 +9,19 @@ export default function ConfirmPage() {
   
   const handleClick = async () => {
     try{
-      const res = await pickDateRequest(event._id);
-      console.log(res.data);
-      toast.success("Cita confirmada, te esperamos!");
-     setTimeout(() => {
-       navigate("/");
-     }, 1500);
-      
+      toast.promise(pickDateRequest(event._id), {
+        loading: "Agregando...",
+        success: () => {
+          setTimeout(() => {
+            navigate("/");
+          }, 1500);
+            return "Cita confirmada, te esperamos";
+        },
+        error: (err)=>{
+            let error = err.response?.data?.message
+            return error
+        }
+    })
     }    catch(error){
       console.error(error);
       toast.error(error.response.data);
@@ -23,7 +29,7 @@ export default function ConfirmPage() {
   };
   
   return (
-    <div className="flex bg-gray-500 h-[90vh] flex-col">
+    <div className="flex bg-gray-500 h-[93vh] flex-col">
       <div className="flex flex-col justify-center m-auto bg-gray-800 rounded-lg w-[70%] h-[80%] p-8">
       <h1 className="text-2xl text-white">Confirme su cita</h1>
         <p className="flex items-center m-[20px] text-[13pt] bg-white text-black p-[20px]">
@@ -38,7 +44,7 @@ export default function ConfirmPage() {
         <p className="flex items-center m-[20px] text-[13pt] bg-white text-black p-[20px]">
           <span className="font-bold mr-4">Ubicación:</span> Av.Alemania 231, {event.sala}
         </p>
-        <button onClick={handleClick} className="m-auto rounded-[10px] bg-[#c1ffff] text-black font-normal py-[2px] px-[10px] hover:bg-[#55ccc9] hover:cursor-pointer hover:text-white">
+        <button onClick={handleClick} className="m-auto rounded-[10px] bg-[#c1ffff] text-black font-normal p-2 px-4 hover:bg-[#55ccc9] hover:cursor-pointer hover:text-white">
           Confirmar
         </button>
         <Toaster

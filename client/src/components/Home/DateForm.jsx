@@ -37,7 +37,10 @@ export default function DateForm({ styles }) {
                         navigate('/');
                         return "Cita agregada";
                     },
-                    error: "Error al agregar",
+                    error: (err)=>{
+                        let error = err.response?.data?.message
+                        return error
+                    }
                 })
             } else if (role === 'admin') {
                 toast.promise(newAdminDateRequest(result), {
@@ -84,14 +87,10 @@ export default function DateForm({ styles }) {
                         </>
                     ) : null
                     }
-
                 </div>
-
-
                 <div className=''>
                     <input className=" bg-green-500 rounded-lg py-1 w-3/6 text-white hover:bg-green-700 cursor-pointer " type="submit" value="Enviar" />
                 </div>
-                
             </form>
             <Toaster />
         </div>

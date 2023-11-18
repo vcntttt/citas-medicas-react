@@ -22,6 +22,13 @@ export default function ProfilePage() {
             <p className="text-gray-700">{user.apellido}</p>
             <Btn>Modificar</Btn>
           </div>
+        {role ==='doctor' && (
+          <div className="flex justify-between items-center mb-2">
+          <p className="text-black">Especialidad:</p>
+          <p className="text-gray-700">{user.especialidad}</p>
+          <Btn>Modificar</Btn>
+        </div>
+        )  }
         </div>
         <div className="bg-white p-4 rounded-lg">
           <p className="text-black text-xl font-bold mb-4">Datos de Contacto</p>

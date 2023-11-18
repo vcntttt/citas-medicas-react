@@ -24,23 +24,25 @@ export default function DrsPage() {
   });
 
   return (
-    <div className="grid grid-cols-[1fr,2fr] h-[92vh]">
-      <div className="bg-slate-800 flex flex-col gap-4">
-        <h1 className="text-2xl py-4 text-center text-white">Especialidades</h1>
+    <div className="grid md:grid-cols-[1fr,2fr] h-[93vh] grid-cols-1 overflow-y-auto md:overflow-y-hidden">
+        <h1 className="md:hidden text-2xl py-4 text-center bg-slate-800 text-white">Especialidades</h1>
+      <div className="bg-slate-800 md:flex md:flex-col gap-4 grid grid-cols-2 pb-4">
+      <h1 className="md:flex text-2xl py-4 text-center bg-slate-800 text-white hidden">Especialidades</h1>
         {especialidades.map((item) => (
-          <div key={item} className="px-4 mx-6 bg-onahau-500 h-8 rounded">
+          <div key={item} className="px-2 mx-6 bg-onahau-500 h-8 rounded">
               <input className=""
                 type="checkbox"
                 name={item.toLowerCase()}
                 value={item}
                 onChange={handleEspecialidadChange}
                 />
-              <label htmlFor={item.toLowerCase()}  className="text-2xl">{item}</label>
+              <label htmlFor={item.toLowerCase()} className="text-2xl">{item}</label>
           </div>
         ))}
       </div>
-      <div className="bg-onahau-500 p-6 rounded-sm text-black items-center py-4 flex flex-col gap-2 overflow-y-auto">
-        <h1 className="text-black my-2 text-2xl">Nuestros doctores: </h1>
+      <h1 className="bg-onahau-500 md:hidden text-black py-2 text-2xl text-center">Nuestros doctores: </h1>
+      <div className="bg-onahau-500 p-6 rounded-sm text-black items-center py-4 grid md:grid-cols-1 grid-cols-2 gap-2 overflow-y-auto">
+        <h1 className="text-black my-2 text-2xl hidden md:flex">Nuestros doctores: </h1>
         {filteredDrs.map((item, index) => (
           <Doctor key={index} doctor={item} />
         ))}
