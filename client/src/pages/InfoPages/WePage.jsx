@@ -5,6 +5,7 @@ import Btn from '../../components/Home/Btn'
 
 export default function WePage() {
 
+
   const [text, setText] = useState('La misión de una plataforma de citas médicas en línea podría ser proporcionar a los pacientes un acceso fácil y conveniente a servicios de atención médica de calidad, permitiéndoles programar citas con profesionales de la salud de manera eficiente y mejorar su experiencia en la búsqueda de atención médica.');
 
   const ChangeText = (option) => {
@@ -21,24 +22,50 @@ export default function WePage() {
     }
   };
 
+  const [buttonColors, setButtonColors] = useState({
+    mision: 'bg-onahau-500',
+    historia: 'bg-onahau-500',
+    premios: 'bg-onahau-500',
+    directorio: 'bg-onahau-500',
+  });
+
+  const ChangeStatus = (option) => {
+
+    setButtonColors(updatedColors => {
+      updatedColors = { mision: 'bg-onahau-500', historia: 'bg-onahau-500', premios: 'bg-onahau-500', directorio: 'bg-onahau-500' };
+      if (option === "mision") {
+        updatedColors.mision = 'bg-onahau-600' 
+      } else if (option === "historia") {
+        updatedColors.historia = 'bg-onahau-600' 
+      } else if (option === "premios") {
+        updatedColors.premios = 'bg-onahau-600' 
+      } else if (option === "directorio") {
+        updatedColors.directorio = 'bg-onahau-600' 
+      }
+      return updatedColors; 
+    });
+
+
+  }
+
   return (
     <div className="bg-greycus-800 w-full h-screen  md:flex  ">
 
-      <div className="flex justify-center  items-center  md:w-2/6  lg:w-1/3">
+      <div className=" flex justify-center  items-center  md:w-2/6  lg:w-1/3">
 
         <div className='  flex-col h-4/6 w-full '>
 
           <div className='h-1/4 flex justify-center items-center py-5   '>
-            <Btn styles={'w-2/3'} onClick={() => ChangeText("mision")}>Mision</Btn>
+            <Btn styles={'w-2/3 '} onClick={() =>{ ChangeText("mision"); ChangeStatus("mision")}} color={buttonColors.mision}>Mision</Btn>
           </div>
           <div className='h-1/4 flex justify-center items-center py-5  '>
-            <Btn styles={'w-2/3'} onClick={() => ChangeText("historia")}>Historia</Btn>
-          </div>
+            <Btn styles={'w-2/3'} onClick={() =>{ ChangeText("historia"); ChangeStatus('historia')}}   color={buttonColors.historia}>Historia</Btn>
+          </div> 
           <div className='h-1/4 flex justify-center items-center py-5   '>
-            <Btn styles={'w-2/3'} onClick={() => ChangeText("premios")}>Premios</Btn>
+            <Btn styles={'w-2/3'} onClick={() =>{ ChangeText("premios"); ChangeStatus('premios')}} color={buttonColors.premios}>Premios</Btn>
           </div>
           <div className='h-1/4 flex justify-center items-center py-5 '>
-            <Btn styles={'w-2/3'} onClick={() => ChangeText("directorio")}>Directorio</Btn>
+            <Btn styles={'w-2/3'} onClick={() =>{ ChangeText("directorio"); ChangeStatus("directorio")}} color={buttonColors.directorio}>Directorio</Btn>
           </div>
 
         </div>
@@ -46,9 +73,9 @@ export default function WePage() {
       </div>
 
 
-      <div className=" flex items-center md:w-4/6 ">
+      <div className=" h-full flex items-start md:items-center md:w-4/6 ">
 
-        <div className='bg-white h-4/6 rounded text-center py-4'>
+        <div className='bg-white   h-4/6 rounded text-center py-4'>
           <h1 className="h-1/6 text-2xl ">Nosotros</h1>
           <p className="h-2/6 m-4" >{text}</p>
           <p className="h-1/6 m-4">
@@ -63,7 +90,7 @@ export default function WePage() {
 
       </div>
       
-      <div className=" md:flex md:flex-col md:items-center md:justify-center  md:w-2/6 lg:w-2/6">
+      <div className="hidden md:flex md:flex-col md:items-center md:justify-center  md:w-2/6 lg:w-2/6">
         <img className="w-3/6 m-2 mx-auto lg:w-3/6" src={doc_1} />
         <img className="w-3/6 m-2 mx-auto lg:w-3/6" src={doc_2} />
       </div>
