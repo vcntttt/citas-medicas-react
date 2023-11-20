@@ -24,9 +24,9 @@ export default function DrsPage() {
   });
 
   return (
-    <div className="grid md:grid-cols-[1fr,2fr] h-[93vh] grid-cols-1 overflow-y-auto md:overflow-y-hidden">
+    <main className="grid md:grid-cols-[1fr,2fr] h-[93vh] grid-cols-1 overflow-y-auto md:overflow-y-hidden">
         <h1 className="md:hidden text-2xl py-4 text-center bg-slate-800 text-white">Especialidades</h1>
-      <div className="bg-slate-800 md:flex md:flex-col gap-4 grid grid-cols-2 pb-4">
+      <section className="bg-slate-800 md:flex md:flex-col gap-4 grid grid-cols-2 pb-4">
       <h1 className="md:flex text-2xl py-4 text-center bg-slate-800 text-white hidden">Especialidades</h1>
         {especialidades.map((item) => (
           <div key={item} className="px-2 mx-3 bg-onahau-500 h-8 rounded">
@@ -39,14 +39,14 @@ export default function DrsPage() {
               <label htmlFor={item.toLowerCase()} className="md:text-2xl text-lg">{item}</label>
           </div>
         ))}
-      </div>
+      </section>
       <h1 className="bg-onahau-500 md:hidden text-black py-2 text-2xl text-center">Nuestros doctores: </h1>
-      <div className="bg-onahau-500 p-6 rounded-sm text-black items-center py-4 grid md:grid-cols-1 grid-cols-2 gap-2 overflow-y-auto">
+      <section className="bg-onahau-500 p-6 rounded-sm text-black py-4 grid md:grid-cols-1 grid-cols-2 gap-2 overflow-y-auto">
         <h1 className="text-black my-2 text-2xl hidden md:flex">Nuestros doctores: </h1>
         {filteredDrs.map((item, index) => (
           <Doctor key={index} doctor={item} />
         ))}
-      </div>
-    </div>
+      </section>
+    </main>
   );
 }

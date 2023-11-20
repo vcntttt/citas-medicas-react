@@ -4,8 +4,6 @@ import { useState } from 'react';
 import Btn from '../../components/Home/Btn'
 
 export default function WePage() {
-
-
   const [text, setText] = useState('La misión de una plataforma de citas médicas en línea podría ser proporcionar a los pacientes un acceso fácil y conveniente a servicios de atención médica de calidad, permitiéndoles programar citas con profesionales de la salud de manera eficiente y mejorar su experiencia en la búsqueda de atención médica.');
 
   const ChangeText = (option) => {
@@ -44,17 +42,12 @@ export default function WePage() {
       }
       return updatedColors; 
     });
-
-
   }
 
   return (
     <div className="bg-greycus-800 w-full h-screen  md:flex  ">
-
       <div className=" flex justify-center  items-center  md:w-2/6  lg:w-1/3">
-
         <div className='  flex-col h-4/6 w-full '>
-
           <div className='h-1/4 flex justify-center items-center py-5   '>
             <Btn styles={'w-2/3 '} onClick={() =>{ ChangeText("mision"); ChangeStatus("mision")}} color={buttonColors.mision}>Mision</Btn>
           </div>
@@ -67,17 +60,13 @@ export default function WePage() {
           <div className='h-1/4 flex justify-center items-center py-5 '>
             <Btn styles={'w-2/3'} onClick={() =>{ ChangeText("directorio"); ChangeStatus("directorio")}} color={buttonColors.directorio}>Directorio</Btn>
           </div>
-
         </div>
-
       </div>
 
-
       <div className=" h-full flex items-start md:items-center md:w-4/6 ">
-
-        <div className='bg-white   h-4/6 rounded text-center py-4'>
+        <div className='bg-white h-4/6 rounded text-center py-4'>
           <h1 className="h-1/6 text-2xl ">Nosotros</h1>
-          <p className="h-2/6 m-4" >{text}</p>
+          <p className="md:h-3/6 m-4" >{text}</p>
           <p className="h-1/6 m-4">
             <cite className='m-4'>
               La medicina no tiene color; es un puente que nos
@@ -87,7 +76,6 @@ export default function WePage() {
             </cite>
           </p>
         </div>
-
       </div>
       
       <div className="hidden md:flex md:flex-col md:items-center md:justify-center  md:w-2/6 lg:w-2/6">
