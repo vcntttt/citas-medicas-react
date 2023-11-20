@@ -52,9 +52,9 @@ export default function Date({date}) {
         </div>
         <Toaster/>
         <Modal isOpen={isOpen} onClose={closeModal}>
-        {role === "paciente" ? (
+        {role === "paciente" || role === "admin" ? (
             <div className="h-[800px] overflow-y-auto py-8">
-              <h2 className="text-2xl py-2 mb-2 text-black">Citas de {date.doctor.especialidad} disponibles</h2>
+              <h2 className="text-2xl py-2 mb-2 text-white">Citas de {date.doctor.especialidad} disponibles</h2>
               {citas.length > 0 ? (
                   citas.map((cita) => (
                     <div className="flex flex-col justify-between bg-white p-4 mb-4 rounded" key={cita._id}>
@@ -75,8 +75,8 @@ export default function Date({date}) {
             </div>
           ) : (
             <>
-            <h1 className="text-3xl text-center py-4">Escoje una nueva fecha</h1>
-            <DateForm closeModal={closeModal}/>
+            <h1 className="text-3xl text-white text-center py-4">Escoje una nueva fecha</h1>
+            <DateForm closeModal={closeModal} styles={'bg-[#2E3238]'}/>
             </>
           )}
         </Modal>

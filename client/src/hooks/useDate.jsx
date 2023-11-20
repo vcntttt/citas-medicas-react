@@ -28,7 +28,7 @@ export default function useDate(date, openModal) {
   //para el paciente
   const handleCancel = () => {
     try {
-      if (role === "paciente") {
+      if (role === "paciente" || role === "admin") {
         toast.promise(cancelDateRequest(date._id), {
           loading: "Cancelando...",
           success: () => {
