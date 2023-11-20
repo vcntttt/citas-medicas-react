@@ -1,4 +1,4 @@
-import MyCalendar from '../components/MyCalendar/MyCalendar.jsx'
+import MyCalendar from '../../components/MyCalendar/MyCalendar.jsx'
 
 export default function CalendarPage() {
   return (

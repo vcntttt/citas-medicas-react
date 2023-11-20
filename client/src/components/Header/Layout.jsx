@@ -6,9 +6,22 @@ export default function Layout() {
   if (path === "/login" || path === "/register") {
     return null;
   }
+  let styles = ''
+  if (path === "/drs") {
+    styles = 'bg-slate-800 text-white';
+  }
+  if(path == "/we" || path == "/jobs") {
+    styles = 'bg-greycus-800 text-white';
+  }
+  if(path == "/confirm/dr") {
+    styles = 'bg-[#2E3238] text-white';
+  }
+  if(path == "/confirm/") {
+    styles = 'bg-gray-500 text-white';
+  }
   return (
     <div>
-      <NavBar />
+      <NavBar styles={styles}/>
     </div>
   );
 }

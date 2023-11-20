@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 
 
 const DoctorSchema = new mongoose.Schema({
+    email: {type: String, required: true},
     nombre: {type: String, required: true},
     apellido: {type: String, required: true},
     especialidad: {type: String, required: true},
@@ -23,5 +24,5 @@ const citaSchema = new mongoose.Schema({
     sala: { type: String, required: true },
 });
 
-export const Paciente = mongoose.model('Paciente', PacienteSchema);
+export const Doctor = mongoose.model('Doctor', DoctorSchema);
 export default mongoose.model('Cita', citaSchema);
