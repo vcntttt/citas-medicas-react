@@ -35,14 +35,15 @@ export default function Login() {
             <h1 className="text-white text-center text-3xl">Login</h1>
           </div>
           <form className="h-3/4" action="" onSubmit={handleSubmit(onSubmit)}>
-            <div className="h-2/6 justify-center text-center md:h-4/6 lg:h-2/6">
+            <div className="h-2/6 justify-center text-center md:h-2/6 lg:h-2/6">
               <Input type="email" placeholder="Email" register={register} errors={errors} />
               <Input type="password" placeholder="Contraseña" register={register} errors={errors} />
             </div>
-            <div className="  h-1/4 flex justify-center  items-center ">
+            
+            <div className="  h-1/4 flex justify-center  items-center md:h-2/6 ">
               <input className="w-[200px] h-[50px] bg-[#55CCC9] hover:cursor-pointer hover:bg-[#46a4a1]" type="submit" value="Entrar" />
             </div>
-            <div className="h-1/6  flex justify-center  items-center " >
+            <div className="h-1/6  flex justify-center  items-center  md:text-sm md:h-3/6 lg:text-lg  " >
               <label className="text-[white]" >No tienes una cuenta? <Link to="/register" className="underline">Registrate</Link> </label>
               <Toaster duration={3000} toastOptions={{ style: { background: "red", color: "#fff", border: 0 } }} />
             </div>
