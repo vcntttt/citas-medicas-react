@@ -51,13 +51,8 @@ export default function Date({date}) {
         </Btn>
         </div>
         <Toaster/>
-<<<<<<< HEAD
-        <Modal isOpen={isOpen} onClose={closeModal} bgColor="[#2E3238]">
-        {role === "paciente" ? (
-=======
         <Modal isOpen={isOpen} onClose={closeModal}>
         {role === "paciente" || role === "admin" ? (
->>>>>>> develop
             <div className="h-[800px] overflow-y-auto py-8">
               <h2 className="text-2xl py-2 mb-2 text-white">Citas de {date.doctor.especialidad} disponibles</h2>
               {citas.length > 0 ? (
