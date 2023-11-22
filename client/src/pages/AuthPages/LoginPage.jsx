@@ -29,27 +29,29 @@ export default function Login() {
   return (
     <div className="flex md:flex items-center justify-center h-screen bg-[#2E3238]">
 
-      <div className="h-4/6 md:h-3/6  lg:h-4/5 lg:w-2/6 rounded-lg lg:shadow-2xl">
+      <div className="w-full h-4/6 md:h-3/6  lg:h-4/5 lg:w-2/6 rounded-lg lg:shadow-2xl">
+
         <div className="w-full h-full">
           <div className="flex h-1/4 items-center justify-center md: md:h-1/6">
             <h1 className="text-white text-center text-3xl">Login</h1>
           </div>
           <form className="h-3/4" action="" onSubmit={handleSubmit(onSubmit)}>
-            <div className="h-2/6 justify-center text-center md:h-4/6 lg:h-2/6">
+            <div className="bg-[#2E3238]  h-3/6 justify-center text-center md:h-2/6 lg:h-2/6">
               <Input type="email" placeholder="Email" register={register} errors={errors} />
               <Input type="password" placeholder="Contraseña" register={register} errors={errors} />
             </div>
-            <div className="  h-1/4 flex justify-center  items-center ">
+            
+            <div className="  h-1/4 flex justify-center  items-center md:h-2/6 ">
               <input className="w-[200px] h-[50px] bg-[#55CCC9] hover:cursor-pointer hover:bg-[#46a4a1]" type="submit" value="Entrar" />
             </div>
-            <div className="h-1/6  flex justify-center  items-center " >
+            <div className="h-1/6  flex justify-center  items-center  md:text-sm md:h-3/6 lg:text-lg  " >
               <label className="text-[white]" >No tienes una cuenta? <Link to="/register" className="underline">Registrate</Link> </label>
               <Toaster duration={3000} toastOptions={{ style: { background: "red", color: "#fff", border: 0 } }} />
             </div>
           </form>
         </div>
       </div>
-        <img className="w-auto md:h-3/6 md:flex md:ml-4 lg:h-4/5  hidden" src={image} />
+        <img className="w-auto md:h-3/6 md:flex md:ml-3 lg:h-4/5  hidden" src={image} />
     </div>
   )
 }
