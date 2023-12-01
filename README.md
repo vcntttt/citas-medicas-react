@@ -17,7 +17,3 @@ El proyecto ha sido desarrollado utilizando React y NodeJS, junto con Express y 
 ### Agradecimientos
 
 Un agradecimiento especial a [midudev](https://www.youtube.com/@midulive) y [fazt](https://www.youtube.com/@FaztCode) por sus tutoriales educativos, que han sido una inspiración y un recurso valioso en el desarrollo de este proyecto.
-
-## Proyecto en Producción
-
-El proyecto está actualmente desplegado y puede ser accedido en [reservatumed.netlify.app](https://reservatumed.netlify.app/).
